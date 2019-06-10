@@ -15,4 +15,5 @@ angular.module("HikingApp")
     .otherwise({
         redirectTo: "/home"
     })
-}]);
+"use strict";
+
