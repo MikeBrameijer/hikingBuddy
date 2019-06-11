@@ -1,4 +1,4 @@
 "use strict";
 // getter syntax
-angular.module("HikingApp", []);
+angular.module("HikingApp", ["ngRoute"]);
 // "ngRoute"
