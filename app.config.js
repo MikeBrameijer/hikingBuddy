@@ -1,19 +1,26 @@
 "use strict";
 
-angular.module("HikingApp")
+angular
+.module("HikingApp")
 .config(["$routeProvider", ($routeProvider) => {
     $routeProvider
-    .when("/home", {
-        template: "<search></search><movie-list></movie-list>"
+    .when("/search", {
+        template: "<search></search>"
     })
-    .when("/watchList", {
-        template: "<watch-list></watch-list>"
+    .when("/results", {
+        template: "<results></results>"
     })
-    .when("/moreInfo", {
-        template: "<more-info></more-info>"
+    .when("/details", {
+        template: "<details></details>"
+    })
+    .when("/saved", {
+        template: "<saved></saved>"
+    })
+    .when("/hiking-list", {
+        template: "<hiking-list></hiking-list>"
     })
     .otherwise({
-        redirectTo: "/home"
+        redirectTo: "/search"
     })
-"use strict";
+}]);
 
