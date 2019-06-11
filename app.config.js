@@ -23,3 +23,4 @@ angular
         redirectTo: "/search"
     })
 }]);
+
