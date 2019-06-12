@@ -1,10 +1,10 @@
 "use strict";
-function SearchController(HikingService) {  
+function SearchController(hikingService) {  
     const ctrl = this;
     ctrl.search = (location) => {
 
 
-        HikingService.getGeocode(location) 
+        hikingService.getGeocode(location) 
 
 
     }
