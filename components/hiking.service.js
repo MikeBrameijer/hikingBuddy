@@ -10,6 +10,14 @@ function HikingService($http, $q) {
         let apiParam = {
             lat: locationLat,
             lon: localtionLon,
+            //NOTE: distance refers to distance between trail and LAT&LONG point(miles)
+            maxDistance: 100,
+            maxResults: 3,
+            //NOTE: minLength refers to length of trail(miles)
+            minLength: 100,
+            minStars: 4,
+            //NOTE: Need to find sortby values other than distance & quality
+            sort: 'distance',
             key: service.key
         }
         return $q(function (resolve, reject) {
