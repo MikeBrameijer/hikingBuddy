@@ -1,6 +1,5 @@
 function HikingService($http, $q) {
     const service = this;
-    console.log("hello");
     service.favoriteArray = [];
     service.key = '200488347-7449e5616f0f75c446c24d3c0da3ba39';
     service.geoKey = 'AIzaSyAzWLrTiTrHUeTKCGNNpPkFLVrJ-ncycK0';
@@ -19,12 +18,12 @@ function HikingService($http, $q) {
                 params: apiParam,
             })
                 .then((response) => {
-                    console.log("it worked!!!!!!")
-                    console.log(response)
+                    console.log("it worked in the service!");
+                    console.log(response);
                     resolve(response.data.hits);
                 })
-                .catch((err) => {  
-                    console.log("it didnt work")
+                .catch((err) => {
+                    console.log("it didnt work in the service");
                     console.log(err);
                     reject(error);
                 })
@@ -46,30 +45,30 @@ function HikingService($http, $q) {
             })
                 .then((response) => {
                     service.location = {
-                        lat:  response.data.results[0].geometry.location.lat,
+                        lat: response.data.results[0].geometry.location.lat,
                         lon: response.data.results[0].geometry.location.lng
                     }
-                    console.log("geocode worked!!!!!!")
-                    console.log(response.data.results[0].geometry.location)
-                    resolve(service.location );
+                    console.log("geocode worked!");
+                    console.log(response.data.results[0].geometry.location);
+                    resolve(service.location);
                 })
-                .catch((err) => {  
-                    console.log("it didnt work")
+                .catch( (err) => {
+                    console.log("geocode didnt work");
                     console.log(err);
                     reject(error);
                 })
         })
     }
 
-    service.setFavorites = (favoriteParam) =>{
-        service.favoriteArray.push(favoriteParam);
+    service.theStart = () => {
+        service.getGeocode()
+            .then( (response) => {
+                service.getTrails(response.lat, response.lon);
+        }).then( (results)=>{
+            console.log("theStart function worked")
+            resolve(results.data.trails);
+        })
     }
-    service.setRemoveFavorites = (removeParam) =>{
-        service.favoriteArray.splice(service.favoriteArray.indexOf(removeParam), 1);
-    }
-    service.getGeocode().then( (response) => {
-        service.getTrails(response.lat, response.lon);
-    });
 }
 
 angular
