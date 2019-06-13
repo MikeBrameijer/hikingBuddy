@@ -42,7 +42,7 @@ function HikingService($http, $q) {
     service.getGeocode = (search) => {
         let url = 'https://maps.googleapis.com/maps/api/geocode/json';
         let apiParam = {
-            address: 'grand+rapids',
+            address: search,
             key: service.geoKey
         }
 
@@ -53,13 +53,17 @@ function HikingService($http, $q) {
                 params: apiParam,
             })
                 .then((response) => {
-                    service.location = {
+                    let location = {
                         lat:  response.data.results[0].geometry.location.lat,
                         lon: response.data.results[0].geometry.location.lng
                     }
+                    // service.getGeocode().then( (response) => {
+                    //     
+                    // });
                     console.log("geocode worked!!!!!!")
                     console.log(response.data.results[0].geometry.location)
-                    resolve(service.location );
+                    service.getTrails(location.lat, location.lon);
+                    // resolve(service.location );
                 })
                 .catch((err) => {  
                     console.log("it didnt work")
@@ -75,10 +79,7 @@ function HikingService($http, $q) {
     service.setRemoveFavorites = (removeParam) =>{
         service.favoriteArray.splice(service.favoriteArray.indexOf(removeParam), 1);
     }
-    service.getGeocode().then( (response) => {
-        service.getTrails(response.lat, response.lon);
-    });
-}
+ }
 
 angular
     .module('HikingApp')
