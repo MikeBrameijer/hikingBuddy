@@ -1,23 +1,16 @@
 "use strict";
-function SearchController(hikingService) {  
+function SearchController() {  
     const ctrl = this;
-    ctrl.search = (location) => {
 
+    ctrl.getSearch = (search) => {
+        ctrl.searchRec({
+          que: search
+        });
+      }
 
-        hikingService.getGeocode(location) 
-
-
-    }
-   
-   
-   
-  
-
-
-
-
-
-
+    // ctrl.search = (location) => {
+    //     hikingService.getGeocode(location) 
+    // }
 
 }
 angular
@@ -26,14 +19,13 @@ angular
     template: `
 
         <input type="text" ng-model="location" />
-        <button ng-click="$ctrl.search(location)">Click</button>
-    
-    
-    
-    
-    
+        <button ng-click="$ctrl.getSearch(location)">Click</button>
     
     
     
     `,  
-    controller: SearchController});
+    controller: SearchController,
+    bindings: {
+        searchRec: '&'
+      }
+});
