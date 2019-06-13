@@ -1,0 +1,31 @@
+"use strict";
+function SearchController() {  
+    const ctrl = this;
+
+    ctrl.getSearch = (search) => {
+        ctrl.searchRec({
+          que: search
+        });
+      }
+
+    // ctrl.search = (location) => {
+    //     hikingService.getGeocode(location) 
+    // }
+
+}
+angular
+  .module("HikingApp")
+  .component("searchComponent", {
+    template: `
+
+        <input type="text" ng-model="location" />
+        <button ng-click="$ctrl.getSearch(location)">Click</button>
+    
+    
+    
+    `,  
+    controller: SearchController,
+    bindings: {
+        searchRec: '&'
+      }
+});

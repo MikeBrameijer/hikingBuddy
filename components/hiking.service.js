@@ -20,6 +20,7 @@ function HikingService($http, $q) {
                 .then((response) => {
                     console.log("it worked in the service!");
                     console.log(response);
+                    service.globalLocation = response.data.hits;
                     resolve(response.data.hits);
                 })
                 .catch((err) => {
@@ -33,7 +34,7 @@ function HikingService($http, $q) {
     service.getGeocode = (search) => {
         let url = 'https://maps.googleapis.com/maps/api/geocode/json';
         let apiParam = {
-            address: 'grand+rapids',
+            address: search,
             key: service.geoKey
         }
 
@@ -44,13 +45,17 @@ function HikingService($http, $q) {
                 params: apiParam,
             })
                 .then((response) => {
-                    service.location = {
-                        lat: response.data.results[0].geometry.location.lat,
+                    let location = {
+                        lat:  response.data.results[0].geometry.location.lat,
                         lon: response.data.results[0].geometry.location.lng
                     }
-                    console.log("geocode worked!");
+                    console.log("geocode worked!!!!!!");
                     console.log(response.data.results[0].geometry.location);
-                    resolve(service.location);
+                    // service.getTrails(location.lat, location.lon);
+                    // service.getTrails(location.lat, location.lon).then( (resp) => {
+                    //     resolve(resp);
+                    // })
+                    resolve(service.getTrails(location.lat, location.lon));
                 })
                 .catch( (err) => {
                     console.log("geocode didnt work");
@@ -60,16 +65,8 @@ function HikingService($http, $q) {
         })
     }
 
-    service.theStart = () => {
-        service.getGeocode()
-            .then( (response) => {
-                service.getTrails(response.lat, response.lon);
-        }).then( (results)=>{
-            console.log("theStart function worked")
-            resolve(results.data.trails);
-        })
-    }
-}
+   
+ }
 
 angular
     .module('HikingApp')

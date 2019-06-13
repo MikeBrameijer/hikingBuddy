@@ -1,14 +1,19 @@
 function HikingListController(hikingService) {
     const ctrl = this;
 
-
-    ctrl.getList = () => {
-        hikingService.theStart()
+    // ctrl.search = (location) => {
+    //     hikingService.getGeocode(location) 
+    // }
+    ctrl.getList = (location) => {
+        console.log(location);
+        hikingService.getGeocode(location) 
             .then((results) => {
-                console.log("it worked in hikingList.js!");
-                ctrl.hikingList = [];
-                ctrl.hikingList = results;
-                console.log(ctrl.hikingList);
+                console.log("it worked in hikingList.js");
+                console.log(results.data.trails);
+                // console.log("it worked in hikingList.js!");
+                // ctrl.hikingList = [];
+                // ctrl.hikingList = results;
+                // console.log(ctrl.hikingList);
             })
             .catch((err) => {
                 console.log("it didnt work in hikingList.js");
@@ -16,22 +21,23 @@ function HikingListController(hikingService) {
             });
     }
 
-    ctrl.getList();
+   
 
 }
-
+ // <div class="container" id="searchResults">
+            // test
+            //     <div class="container" ng-repeat="trail in $ctrl.hikingList">
+            //         <h2>{{trail.name}}</h2>
+            //     </div>
+            // </div>
 
 angular
     .module('HikingApp')
     .component('hikingList', {
         template: `
             <p> this is the hiking list component </p>
-            <div class="container" id="searchResults">
-            test
-                <div class="container" ng-repeat="trail in $ctrl.hikingList">
-                    <h2>{{trail.name}}</h2>
-                </div>
-            </div>
+            <search-component search-rec="$ctrl.getList(que)"></search-component>
+           
     `, 
         controller: HikingListController,
         // bindings: {
