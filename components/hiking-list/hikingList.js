@@ -8,12 +8,10 @@ function HikingListController(hikingService) {
         console.log(location);
         hikingService.getGeocode(location) 
             .then((results) => {
+
                 console.log("it worked in hikingList.js");
-                console.log(results.data.trails);
-                // console.log("it worked in hikingList.js!");
-                // ctrl.hikingList = [];
-                // ctrl.hikingList = results;
-                // console.log(ctrl.hikingList);
+                console.log(results);
+
             })
             .catch((err) => {
                 console.log("it didnt work in hikingList.js");
