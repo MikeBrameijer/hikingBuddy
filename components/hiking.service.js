@@ -10,11 +10,11 @@ function HikingService($http, $q) {
             lat: locationLat,
             lon: localtionLon,
             //NOTE: distance refers to distance between trail and LAT&LONG point(miles)
-            maxDistance: 100,
-            maxResults: 3,
+            // maxDistance: 100,
+            // maxResults: 3,
             //NOTE: minLength refers to length of trail(miles)
-            minLength: 100,
-            minStars: 4,
+            // minLength: 100,
+            // minStars: 4,
             //NOTE: Need to find sortby values other than distance & quality
             sort: 'distance',
             key: service.key
@@ -39,6 +39,27 @@ function HikingService($http, $q) {
                     reject(error);
                 })
         })
+    }
+
+    service.getCampgrounds = () => {
+        let url = 'https://www.hikingproject.com/data/get-campgrounds';
+        let apiParam = {
+            lat: 40.0274,
+            lon: -105.2519,
+            key = service.key
+        }
+    return $q(function (resolve, reject) {
+        $http({
+            url: url,
+            method: 'GET',
+            params: apiParam,
+        })
+            .then((response) => {
+                console.log("getCampgrounds service response");
+                console.log(response.data.)
+            })
+    }
+    })
     }
 
     service.getGeocode = (search) => {
