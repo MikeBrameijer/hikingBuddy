@@ -41,25 +41,52 @@ function HikingService($http, $q) {
         })
     }
 
-    service.getCampgrounds = () => {
+    // service.getCampgrounds = () => {
+    //     let url = 'https://www.hikingproject.com/data/get-campgrounds';
+    //     let apiParam = {
+    //         lat: locationLat,
+    //         lon: localtionLon,
+    //         key = service.key
+    //     }
+    // return $q(function (resolve, reject) {
+    //     $http({
+    //         url: url,
+    //         method: 'GET',
+    //         params: apiParam,
+    //     })
+    //         .then((response) => {
+    //             console.log("getCampgrounds service response");
+    //             console.log(response.data.)
+    //         })
+    // }
+
+    // }
+
+    service.getTrails = (locationLat, localtionLon) => {
         let url = 'https://www.hikingproject.com/data/get-campgrounds';
         let apiParam = {
-            lat: 40.0274,
-            lon: -105.2519,
-            key = service.key
+            lat: locationLat,
+            lon: localtionLon,
+            sort: 'distance',
+            key: service.key
         }
-    return $q(function (resolve, reject) {
-        $http({
-            url: url,
-            method: 'GET',
-            params: apiParam,
-        })
-            .then((response) => {
-                console.log("getCampgrounds service response");
-                console.log(response.data.)
+        return $q(function (resolve, reject) {
+            $http({
+                url: url,
+                method: 'GET',
+                params: apiParam,
             })
-    }
-    })
+                .then((response) => {
+                    console.log("getCampgrounds service response");
+                    console.log(response.data.trails);
+                    resolve(response.data.trails);
+                })
+                .catch((err) => {
+                    console.log("Camping didn't work in the service");
+                    console.log(err);
+                    reject(error);
+                })
+        })
     }
 
     service.getGeocode = (search) => {
