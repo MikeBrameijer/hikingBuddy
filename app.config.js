@@ -18,6 +18,9 @@ angular
     })
     .when("/hiking-list", {
         template: "<hiking-list></hiking-list>"
+    })    
+    .when("/difficuly-calc", {
+        template: "<difficulty-calculator></difficulty-calculator>"
     })
     .otherwise({
         redirectTo: "/search"
