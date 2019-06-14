@@ -20,25 +20,35 @@ function DifficultyCalcController() {
                 totalHikeTime = totalHikeTime/60;
                 console.log(`${totalHikeTime} hours`);
             } else {
-                console.log(`${totalHikeTime} minutes`);
+                return(`${totalHikeTime} minutes`);
             }
     }
+
+    ctrl.waterIntake = () => {
+        let totalWaterIntake = ((ctrl.calculateTime()/30) * 8);
+            console.log(`${totalWaterIntake} ounces`);
+    }
+
 
     ctrl.calculateDifficulty = () => {
         if (ctrl.trails[0].difficulty === "green") {
             
-
         }
     }
-
-
-    
     ctrl.calculateTime();
 }
+
+
+    // 8oz every 30 minutes
+    // prehydtrate 2 hours before 20 oz
+
+    
 
 angular.module("HikingApp")
 .component("difficultyCalculator", {
     template: `
+
+    
     
     `,
     controller: DifficultyCalcController,
