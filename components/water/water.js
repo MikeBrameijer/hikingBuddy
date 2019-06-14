@@ -5,32 +5,34 @@ function WaterController() {
     ctrl.trails = [
         {
             difficulty: "green",
-            distance: 5
+            distance: 5,
+            ouncesEverythirty: 16
         }
     ];
 
-    
+    console.log(ctrl.trails[0].distance);
+
+    ctrl.calculateTime = () => {
+        let totalHikeTime = ((ctrl.trails[0].distance * 30) + ((ctrl.trails[0].ascent/1000) * 30));
+
+            if (totalHikeTime >= 60) {
+                totalHikeTime = totalHikeTime/60;
+                console.log(`${totalHikeTime} hours`);
+            } else {
+                console.log(`${totalHikeTime} minutes`);
+            }
+    }
+
+    ctrl.waterIntake = () => {
+        let totalWaterIntake = ((totalHikeTime/30) * 8);
+            console.log(`${totalWaterIntake} ounces`);
+    }
 
 
-    // if trail = green && <= 1 Mile
-    //     return("Pre-hydrate with 20 fluid ounces of water and pack at a minimum 10 fluid ounces of water.")
+    // 8oz every 30 minutes
+    // prehydtrate 2 hours before
 
         
-        
-    //     if (green)
-
-  
-  
-  
-    // ctrl.getSearch = (search) => {
-    //     ctrl.searchRec({
-    //       que: search
-    //     });
-    //   }
-
-    // ctrl.search = (location) => {
-    //     hikingService.getGeocode(location) 
-    // }
 
 }
 angular
