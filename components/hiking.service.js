@@ -41,6 +41,54 @@ function HikingService($http, $q) {
         })
     }
 
+    // service.getCampgrounds = () => {
+    //     let url = 'https://www.hikingproject.com/data/get-campgrounds';
+    //     let apiParam = {
+    //         lat: locationLat,
+    //         lon: localtionLon,
+    //         key = service.key
+    //     }
+    // return $q(function (resolve, reject) {
+    //     $http({
+    //         url: url,
+    //         method: 'GET',
+    //         params: apiParam,
+    //     })
+    //         .then((response) => {
+    //             console.log("getCampgrounds service response");
+    //             console.log(response.data.)
+    //         })
+    // }
+
+    // }
+
+    service.getCamping = (locationLat, localtionLon) => {
+        let url = 'https://www.hikingproject.com/data/get-campgrounds';
+        let apiParam = {
+            lat: locationLat,
+            lon: localtionLon,
+            sort: 'distance',
+            key: service.key
+        }
+        return $q(function (resolve, reject) {
+            $http({
+                url: url,
+                method: 'GET',
+                params: apiParam,
+            })
+                .then((response) => {
+                    console.log("getCampgrounds service response");
+                    console.log(response.data.campgrounds);
+                    resolve(response.data.campgrounds);
+                })
+                .catch((err) => {
+                    console.log("Camping didn't work in the service");
+                    console.log(err);
+                    reject(error);
+                })
+        })
+    }
+
     service.getGeocode = (search) => {
         let url = 'https://maps.googleapis.com/maps/api/geocode/json';
         let apiParam = {
@@ -67,7 +115,9 @@ function HikingService($http, $q) {
                     // service.getTrails(location.lat, location.lon).then( (resp) => {
                     //     resolve(resp);
                     // })
-                    resolve(service.getTrails(location.lat, location.lon));
+                    service.getTrails(location.lat, location.lon);
+                    service.getCamping(location.lat, location.lon);
+                    
                 })
                 .catch( (err) => {
                     console.log("geocode didnt work");
