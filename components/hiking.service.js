@@ -27,7 +27,7 @@ function HikingService($http, $q) {
             })
                 .then((response) => {
                     console.log("getTrails service response");
-                    console.log(response.data.trails);
+                    console.log(response);
 
                     // service.globalLocation = response.data.hits;
 
