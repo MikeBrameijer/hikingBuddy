@@ -10,11 +10,11 @@ function HikingService($http, $q) {
             lat: locationLat,
             lon: localtionLon,
             //NOTE: distance refers to distance between trail and LAT&LONG point(miles)
-            maxDistance: 100,
-            maxResults: 3,
+            maxDistance: 1000,
+            // maxResults: 3,
             //NOTE: minLength refers to length of trail(miles)
-            minLength: 100,
-            minStars: 4,
+            // minLength: 100,
+            // minStars: 4,
             //NOTE: Need to find sortby values other than distance & quality
             sort: 'distance',
             key: service.key
@@ -27,7 +27,7 @@ function HikingService($http, $q) {
             })
                 .then((response) => {
                     console.log("getTrails service response");
-                    console.log(response.data.trails);
+                    console.log(response);
 
                     // service.globalLocation = response.data.hits;
 
