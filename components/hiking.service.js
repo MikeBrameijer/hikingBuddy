@@ -62,7 +62,7 @@ function HikingService($http, $q) {
 
     // }
 
-    service.getTrails = (locationLat, localtionLon) => {
+    service.getCamping = (locationLat, localtionLon) => {
         let url = 'https://www.hikingproject.com/data/get-campgrounds';
         let apiParam = {
             lat: locationLat,
@@ -78,8 +78,8 @@ function HikingService($http, $q) {
             })
                 .then((response) => {
                     console.log("getCampgrounds service response");
-                    console.log(response.data.trails);
-                    resolve(response.data.trails);
+                    console.log(response.data.campgrounds);
+                    resolve(response.data.campgrounds);
                 })
                 .catch((err) => {
                     console.log("Camping didn't work in the service");
@@ -114,7 +114,9 @@ function HikingService($http, $q) {
                     // service.getTrails(location.lat, location.lon).then( (resp) => {
                     //     resolve(resp);
                     // })
-                    resolve(service.getTrails(location.lat, location.lon));
+                    service.getTrails(location.lat, location.lon);
+                    service.getCamping(location.lat, location.lon);
+                    
                 })
                 .catch( (err) => {
                     console.log("geocode didnt work");
