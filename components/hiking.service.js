@@ -10,7 +10,7 @@ function HikingService($http, $q) {
             lat: locationLat,
             lon: localtionLon,
             //NOTE: distance refers to distance between trail and LAT&LONG point(miles)
-            maxDistance: 1000,
+            // maxDistance: 100,
             // maxResults: 3,
             //NOTE: minLength refers to length of trail(miles)
             // minLength: 100,
