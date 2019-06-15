@@ -20,6 +20,7 @@ function DifficultyCalcController() {
                 totalHikeTime = totalHikeTime/60;
                 console.log(`${totalHikeTime} hours`);
             } else {
+
                 return(`${totalHikeTime} minutes`);
             }
     }
@@ -40,7 +41,6 @@ function DifficultyCalcController() {
     // 8oz every 30 minutes
     // prehydtrate 2 hours before 20 oz
 
-    
 
 angular.module("HikingApp")
 .component("difficultyCalculator", {
