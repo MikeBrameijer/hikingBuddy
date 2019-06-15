@@ -38,8 +38,6 @@ function DifficultyCalcController() {
     }
     ctrl.calculateTime();
 }
-
-
     // 8oz every 30 minutes
     // prehydtrate 2 hours before 20 oz
 
@@ -47,6 +45,8 @@ function DifficultyCalcController() {
 angular.module("HikingApp")
 .component("difficultyCalculator", {
     template: `
+
+    
 
 
     

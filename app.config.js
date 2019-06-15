@@ -7,18 +7,12 @@ angular
     .when("/search", {
         template: "<search></search>"
     })
-    .when("/results", {
-        template: "<results></results>"
-    })
-    .when("/details", {
-        template: "<details></details>"
-    })
     .when("/saved", {
         template: "<saved></saved>"
     })
-    .when("/hiking-list", {
-        template: "<hiking-list></hiking-list>"
-    })    
+    .when("/about", {
+        template: "<about></about>"
+    })   
     .when("/difficuly-calc", {
         template: "<difficulty-calculator></difficulty-calculator>"
     })
