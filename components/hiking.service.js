@@ -60,6 +60,7 @@ function HikingService($http, $q) {
                         lon: response.data.results[0].geometry.location.lng
                     }
                     console.log("geoCode service response");
+                    console.log(response);
                     // console.log(response.data.results[0].geometry.location);
                     
                     // service.getTrails(location.lat, location.lon);
