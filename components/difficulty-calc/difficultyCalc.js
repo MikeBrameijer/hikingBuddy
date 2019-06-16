@@ -29,7 +29,14 @@ function DifficultyCalcController() {
         let totalWaterIntake = ((ctrl.calculateTime()/30) * 8);
             console.log(`${totalWaterIntake} ounces`);
     }
+    ctrl.calculateCalories = (weight) => {
+        // this is based on the MET,metabolic equivalent scores for hiking.
+        // easy trails have a MET of 3  harder trails have a MET of 6 to 7
+        let weightKgs = weight * .454;
+        let metValue = 6.5
+        ctrl.calcsPerHour = weightKgs * metValue;
 
+    }
 
     ctrl.calculateDifficulty = () => {
         if (ctrl.trails[0].difficulty === "green") {
