@@ -20,7 +20,7 @@ function DifficultyCalcController() {
     ctrl.$onInit = () => {
         
         ctrl.calculateTime();
-        ctrl.
+        // ctrl.
 
     }
 
@@ -58,7 +58,6 @@ angular.module("HikingApp")
     template: `
 
         <button ng-click="$ctrl.calculateTime()"> Calculate Time </button>
-        {{$ctrl.trail.stars}}
 
 
 

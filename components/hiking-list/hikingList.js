@@ -1,27 +1,80 @@
 function HikingListController(hikingService) {
     const ctrl = this;
 
-    ctrl.stars = [];
+    ctrl.showAssistant = false;
+
+    ctrl.show = () => {
+        ctrl.showAssistant = true;
+    }
+    ctrl.hide = () => {
+        ctrl.showAssistant = false;
+    }
+
+    ctrl.trailsArray = [];
+    ctrl.allTrailsRating = [];
 
     ctrl.getList = (location) => {
         console.log(location);
         hikingService.getTrails(location) 
             .then((results) => {
 
-                console.log("it worked in hikingList.js");
-                console.log(results);
-                ctrl.trailsArray = results;
+                results.forEach(function(value, key) {
+                    let trailsObj = {
+                        id: value.id,
+                        name: value.name,
+                        ascent: value.ascent,
+                        conditionStatus: value.conditionStatus,
+                        difficulty: value.difficulty,
+                        high: value.high,
+                        length: value.length,
+                        location: value.location,
+                        stars: value.stars,
+                        type: value.type,
+                        imgMedium: value.imgMedium
+                    }
 
-                ctrl.stars = results.stars;
+                    ctrl.trailsArray.push(trailsObj);
+                });
 
-                console.log(ctrl.stars);
 
 
+                ctrl.starRating();
             })
             .catch((err) => {
-                console.log("it didnt work in hikingList.js");
                 console.log(err);
             });
+    }
+
+    ctrl.starRating = () => {
+        let filledStar = 'assets/gold-star.svg';
+
+        ctrl.trailsArray.forEach( function(value, key)  {
+            let emptyStars = ["assets/hollow-star.svg", "assets/hollow-star.svg", "assets/hollow-star.svg", "assets/hollow-star.svg", "assets/hollow-star.svg"];
+
+            for (let i=0; i < Math.round(value.stars); i++) {
+                emptyStars.pop();
+                emptyStars.unshift(filledStar);
+            }
+
+            ctrl.allTrailsRating.push(emptyStars);
+            value.stars = emptyStars;
+        });
+
+        console.log(ctrl.trailsArray[0].stars);
+    }
+
+    ctrl.changeHeight = () => {
+        let count = 0;
+
+        if (count === 0) {
+            console.log('grow');
+            count = 1;
+            return 'grow';
+        } else {
+            console.log('shrink');
+            count = 0;
+            return 'shrink';
+        }
     }
 }
  
@@ -30,6 +83,18 @@ angular
     .module('HikingApp')
     .component('hikingList', {
         template: `
+            <p> this is the hiking list component </p>
+
+
+            <div ng-if="$ctrl.showAssistant" class="window"></div>
+            <div ng-if="$ctrl.showAssistant" class="show">
+            <hiking-assistant module-flag="$ctrl.showDetailModule"></hiking-assistant>
+            </div>
+            <button ng-click="$ctrl.show()">Show Assistant</button>
+            <button ng-click="$ctrl.hide()">Hide Assistant</button>
+
+
+
            
             <search-component search-rec="$ctrl.getList(que)"></search-component>
 
@@ -37,17 +102,29 @@ angular
 
                 <div class="container" ng-repeat="trail in $ctrl.trailsArray">
 
-                <div class="preview">
+                <div class="preview" ng-class="$ctrl.changeHeight()">
                     <div class="left">
-                    <img style ="color:gold;"src="assets/star.svg"/>
                         <p style="text-overflow: ellipsis; width:200px;  white-space: nowrap; 
                         overflow: hidden;">{{trail.name}}</p>
-                        <p>Rating: {{trail.stars}} stars </p>
+
+
+                        <div class="starRating" >
+                        <span ng-repeat="star in trail.stars track by $index">
+                        <img class="star" src="{{star}}"/>
+                        </span> 
+                        </div>
+
+
+
+                    <button ng-click="$ctrl.changeHeight()"> Show More </button>
+
                     </div>
+
                     <div class="right">
                         <p>length: {{trail.length}} miles</p>
                         <p>Difficulty: {{trail.difficulty}} </p>
                     </div>
+                    
                 </div>
 
                 <div class="fullview" style="display:none;">

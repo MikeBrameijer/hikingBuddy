@@ -34,16 +34,16 @@ function HikingService($http, $q) {
                 params: apiParam,
             })
                 .then((response) => {
-                    console.log("getTrails service response");
-                    console.log(response);
+                    // console.log("getTrails service response");
+                    // console.log(response);
 
                     service.globalLocation = response.data.trails;
 
                     resolve(response.data.trails);
                 })
                 .catch((err) => {
-                    console.log("it didnt work in the service");
-                    console.log(err);
+                    // console.log("it didnt work in the service");
+                    // console.log(err);
                     reject(error);
                 })
         })
@@ -65,13 +65,13 @@ function HikingService($http, $q) {
                 params: apiParam,
             })
                 .then((response) => {
-                    console.log("getCampgrounds service response");
-                    console.log(response.data.campgrounds);
+                    // console.log("getCampgrounds service response");
+                    // console.log(response.data.campgrounds);
                     resolve(response.data.campgrounds);
                 })
                 .catch((err) => {
-                    console.log("Camping didn't work in the service");
-                    console.log(err);
+                    // console.log("Camping didn't work in the service");
+                    // console.log(err);
                     reject(error);
                 })
         })
@@ -95,8 +95,8 @@ function HikingService($http, $q) {
                         lat:  response.data.results[0].geometry.location.lat,
                         lon: response.data.results[0].geometry.location.lng
                     }
-                    console.log("geoCode service response");
-                    console.log(response);
+                    // console.log("geoCode service response");
+                    // console.log(response);
                     // console.log(response.data.results[0].geometry.location);
                     
                     // service.getTrails(location.lat, location.lon);
@@ -108,8 +108,8 @@ function HikingService($http, $q) {
                     resolve(location);
                 })
                 .catch( (err) => {
-                    console.log("geocode didnt work");
-                    console.log(err);
+                    // console.log("geocode didnt work");
+                    // console.log(err);
                     reject(error);
                 })
         })
