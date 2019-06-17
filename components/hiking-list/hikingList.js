@@ -3,7 +3,7 @@ function HikingListController(hikingService) {
 
     ctrl.getList = (location) => {
         console.log(location);
-        hikingService.getGeocode(location) 
+        hikingService.getTrails(location) 
             .then((results) => {
 
                 console.log("it worked in hikingList.js");
@@ -49,6 +49,7 @@ angular
                         Summary: {{trail.summary}} </p>
                     
                     <br>
+                    <difficulty-calc trail="trail"></difficulty-calc>
                 </div>
                 
             </div>
