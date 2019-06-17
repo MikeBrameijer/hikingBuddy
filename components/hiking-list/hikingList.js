@@ -1,6 +1,8 @@
 function HikingListController(hikingService) {
     const ctrl = this;
 
+    ctrl.stars = [];
+
     ctrl.getList = (location) => {
         console.log(location);
         hikingService.getTrails(location) 
@@ -9,6 +11,11 @@ function HikingListController(hikingService) {
                 console.log("it worked in hikingList.js");
                 console.log(results);
                 ctrl.trailsArray = results;
+
+                ctrl.stars = results.stars;
+
+                console.log(ctrl.stars);
+
 
             })
             .catch((err) => {
@@ -27,12 +34,25 @@ angular
             <search-component search-rec="$ctrl.getList(que)"></search-component>
 
             <div class="mainContainer" id="searchResults">
+
                 <div class="container" ng-repeat="trail in $ctrl.trailsArray">
-                    <h2>{{trail.name}}</h2>
+
+                <div class="preview">
+                    <div class="left">
+                    <img style ="color:gold;"src="assets/star.svg"/>
+                        <p style="text-overflow: ellipsis; width:200px;  white-space: nowrap; 
+                        overflow: hidden;">{{trail.name}}</p>
+                        <p>Rating: {{trail.stars}} stars </p>
+                    </div>
+                    <div class="right">
+                        <p>length: {{trail.length}} miles</p>
+                        <p>Difficulty: {{trail.difficulty}} </p>
+                    </div>
+                </div>
+
+                <div class="fullview" style="display:none;">
                     <a ng-if="trail.imgSmallMed != ''" href="{{trail.url}}"><img src="{{trail.imgSmallMed}}"/></a>
-                    <p>Rating: {{trail.stars}} stars </p>
-                    <p>Difficulty: {{trail.difficulty}} </p>
-                    <p>length: {{trail.length}} miles</p>
+
                     <div class="subContainer">
                     Elevation
                     <br>
@@ -45,13 +65,15 @@ angular
                     Low: {{trail.low}} ft
                     <br>
                     </div> 
+
                     <p ng-if="trail.summary != 'Needs Summary' && trail.summary != 'Needs Adoption'">
                         Summary: {{trail.summary}} </p>
-                    
+                </div>
+
                     <br>
                     <difficulty-calc trail="trail"></difficulty-calc>
                 </div>
-                
+
             </div>
             
            
