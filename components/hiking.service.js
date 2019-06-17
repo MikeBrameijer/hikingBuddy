@@ -4,6 +4,8 @@ function HikingService($http, $q) {
     service.key = '200488347-7449e5616f0f75c446c24d3c0da3ba39';
     service.geoKey = 'AIzaSyAzWLrTiTrHUeTKCGNNpPkFLVrJ-ncycK0';
 
+
+
     service.getTrails = (locationLat, localtionLon) => {
         let url = 'https://www.hikingproject.com/data/get-trails';
         let apiParam = {
@@ -26,41 +28,20 @@ function HikingService($http, $q) {
                 params: apiParam,
             })
                 .then((response) => {
-                    console.log("getTrails service response");
-                    console.log(response);
+                    // console.log("getTrails service response");
+                    // console.log(response);
 
                     // service.globalLocation = response.data.hits;
 
                     resolve(response.data.trails);
                 })
                 .catch((err) => {
-                    console.log("it didnt work in the service");
-                    console.log(err);
+                    // console.log("it didnt work in the service");
+                    // console.log(err);
                     reject(error);
                 })
         })
     }
-
-    // service.getCampgrounds = () => {
-    //     let url = 'https://www.hikingproject.com/data/get-campgrounds';
-    //     let apiParam = {
-    //         lat: locationLat,
-    //         lon: localtionLon,
-    //         key = service.key
-    //     }
-    // return $q(function (resolve, reject) {
-    //     $http({
-    //         url: url,
-    //         method: 'GET',
-    //         params: apiParam,
-    //     })
-    //         .then((response) => {
-    //             console.log("getCampgrounds service response");
-    //             console.log(response.data.)
-    //         })
-    // }
-
-    // }
 
     service.getCamping = (locationLat, localtionLon) => {
         let url = 'https://www.hikingproject.com/data/get-campgrounds';
@@ -77,13 +58,13 @@ function HikingService($http, $q) {
                 params: apiParam,
             })
                 .then((response) => {
-                    console.log("getCampgrounds service response");
-                    console.log(response.data.campgrounds);
+                    // console.log("getCampgrounds service response");
+                    // console.log(response.data.campgrounds);
                     resolve(response.data.campgrounds);
                 })
                 .catch((err) => {
-                    console.log("Camping didn't work in the service");
-                    console.log(err);
+                    // console.log("Camping didn't work in the service");
+                    // console.log(err);
                     reject(error);
                 })
         })
@@ -107,21 +88,22 @@ function HikingService($http, $q) {
                         lat:  response.data.results[0].geometry.location.lat,
                         lon: response.data.results[0].geometry.location.lng
                     }
-                    console.log("geoCode service response");
-                    console.log(response);
+                    // console.log("geoCode service response");
+                    // console.log(response);
                     // console.log(response.data.results[0].geometry.location);
                     
                     // service.getTrails(location.lat, location.lon);
                     // service.getTrails(location.lat, location.lon).then( (resp) => {
                     //     resolve(resp);
                     // })
-                    service.getTrails(location.lat, location.lon);
-                    service.getCamping(location.lat, location.lon);
+                    resolve(service.getTrails(location.lat, location.lon));
+                    // resolve(location);
+                    // service.getCamping(location.lat, location.lon);
                     
                 })
                 .catch( (err) => {
-                    console.log("geocode didnt work");
-                    console.log(err);
+                    // console.log("geocode didnt work");
+                    // console.log(err);
                     reject(error);
                 })
         })
