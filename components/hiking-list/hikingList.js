@@ -14,7 +14,8 @@ function HikingListController(hikingService) {
     ctrl.allTrailsRating = [];
 
     ctrl.getList = (location) => {
-        hikingService.getGeocode(location) 
+        console.log(location);
+        hikingService.getTrails(location) 
             .then((results) => {
 
                 results.forEach(function(value, key) {
@@ -146,10 +147,9 @@ angular
                 </div>
 
                     <br>
+                    <difficulty-calc trail="trail"></difficulty-calc>
                 </div>
-                <!-- BEGIN Hiking Project
-<iframe style="width:100%; max-width:1200px; height:500px;" frameborder="0" scrolling="no" src="https://www.hikingproject.com/widget/map?favs=1&location=ip&x=-9534514&y=5306736&z=6.5&h=500"></iframe>
-END Hiking Project -->
+
             </div>
             
            
