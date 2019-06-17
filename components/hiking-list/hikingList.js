@@ -95,6 +95,7 @@ angular
 
 
 
+           
             <search-component search-rec="$ctrl.getList(que)"></search-component>
 
             <div class="mainContainer" id="searchResults">

@@ -18,8 +18,8 @@ angular
   .component("searchComponent", {
     template: `
 
-        <input type="text" ng-model="location" />
-        <button ng-click="$ctrl.getSearch(location)">Click</button>
+        <input class="searchInput" type="text" ng-model="location" />
+        <button class="searchButton" ng-click="$ctrl.getSearch(location)">Click</button>
     
     
     
