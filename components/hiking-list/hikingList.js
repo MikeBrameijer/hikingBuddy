@@ -23,7 +23,7 @@ angular
     .module('HikingApp')
     .component('hikingList', {
         template: `
-            <p> this is the hiking list component </p>
+           
             <search-component search-rec="$ctrl.getList(que)"></search-component>
 
             <div class="mainContainer" id="searchResults">
@@ -51,7 +51,7 @@ angular
                     <br>
                 </div>
                 <!-- BEGIN Hiking Project -->
-<iframe style="width:100%; max-width:1200px; height:500px;" frameborder="0" scrolling="no" src="https://www.hikingproject.com/widget/map?favs=1&location=ip&x=-9534514&y=5306736&z=6.5&h=500"></iframe>
+<!-- <iframe style="width:100%; max-width:1200px; height:500px;" frameborder="0" scrolling="no" src="https://www.hikingproject.com/widget/map?favs=1&location=ip&x=-9534514&y=5306736&z=6.5&h=500"></iframe> -->
 <!-- END Hiking Project -->
             </div>
             

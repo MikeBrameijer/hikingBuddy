@@ -41,27 +41,6 @@ function HikingService($http, $q) {
         })
     }
 
-    // service.getCampgrounds = () => {
-    //     let url = 'https://www.hikingproject.com/data/get-campgrounds';
-    //     let apiParam = {
-    //         lat: locationLat,
-    //         lon: localtionLon,
-    //         key = service.key
-    //     }
-    // return $q(function (resolve, reject) {
-    //     $http({
-    //         url: url,
-    //         method: 'GET',
-    //         params: apiParam,
-    //     })
-    //         .then((response) => {
-    //             console.log("getCampgrounds service response");
-    //             console.log(response.data.)
-    //         })
-    // }
-
-    // }
-
     service.getCamping = (locationLat, localtionLon) => {
         let url = 'https://www.hikingproject.com/data/get-campgrounds';
         let apiParam = {

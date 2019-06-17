@@ -14,7 +14,7 @@ angular
         template: "<about></about>"
     })   
     .when("/difficuly-calc", {
-        template: "<difficulty-calculator></difficulty-calculator>"
+        template: "<difficulty-calc></difficulty-calc>"
     })
     .otherwise({
         redirectTo: "/search"
