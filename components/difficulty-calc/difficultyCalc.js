@@ -1,20 +1,12 @@
 function DifficultyCalcController() {
     const ctrl = this;
+    // ctrl.trails = {distance : ctrl.trail.distance};
 
-    ctrl.trails = [
-        {
-        grade: "5%",
-        distance: 1,
-        difficulty: "green",
-        ascent: 1000,
-        peakAltitude: 1200
-        }
-    ];
-
-    console.log(ctrl.trails[0].distance);
 
     ctrl.calculateTime = () => {
-        let totalHikeTime = ((ctrl.trails[0].distance * 30) + ((ctrl.trails[0].ascent/1000) * 30));
+        
+        let totalHikeTime = ((ctrl.trail.length * 30) + ((ctrl.trail.ascent/1000) * 30));
+        console.log(totalHikeTime);
 
             if (totalHikeTime >= 60) {
                 totalHikeTime = totalHikeTime/60;
@@ -25,34 +17,55 @@ function DifficultyCalcController() {
             }
     }
 
+    ctrl.$onInit = () => {
+        
+        ctrl.calculateTime();
+        ctrl.
+
+    }
+
     ctrl.waterIntake = () => {
         let totalWaterIntake = ((ctrl.calculateTime()/30) * 8);
             console.log(`${totalWaterIntake} ounces`);
     }
+    ctrl.calculateCalories = (weight) => {
+        // this is based on the MET,metabolic equivalent scores for hiking.
+        // easy trails have a MET of 3  harder trails have a MET of 6 to 7
+        if(weight === ''){
+            weight = 170;
+            //if no weight is entered then set a defulat weight of 170 lbs
+        }
+        let weightKgs = weight * .454;
+        let metValue = 6.5
+        ctrl.calsPerHour = weightKgs * metValue;
+        ctrl.totalCalsBurn = ctrl.calsPerHour * ctrl.totalHikeTime;
+        return ctrl.totalCalsBurn;
 
+    }
 
     ctrl.calculateDifficulty = () => {
         if (ctrl.trails[0].difficulty === "green") {
             
         }
     }
-    ctrl.calculateTime();
 }
     // 8oz every 30 minutes
     // prehydtrate 2 hours before 20 oz
 
 
 angular.module("HikingApp")
-.component("difficultyCalculator", {
+.component("difficultyCalc", {
     template: `
 
-    
+        <button ng-click="$ctrl.calculateTime()"> Calculate Time </button>
+        {{$ctrl.trail.stars}}
+
 
 
     
     `,
     controller: DifficultyCalcController,
     bindings: {
-
+        trail: '<'
     }
 })
