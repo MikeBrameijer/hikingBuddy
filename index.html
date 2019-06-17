@@ -10,14 +10,37 @@
 </head>
 
 <body>
-        <a href="#!/details">Details</a>
-        <a href="#!/hiking-list">list</a>
-        <a href="#!/results">results</a>
-        <a href="#!/saved">saved</a>
-        <a href="#!/search">search</a>
 
+        <div class="text">
+                <img class="mountainImage" src="mountainscalling.png">
+                <h1 class="lasher">LASHer Trail Finder</h1>
+                <div class="fadingEffect"></div>
+             </div>
+
+        <!-- <h1 class="appName">LASHer Trail Finder</h1> -->
+
+<nav role="navigation">
+        <div id="menuToggle">
+      
+          <input class="routingInput" type="checkbox" />
+         
+          <span></span>
+          <span></span>
+          <span></span>
+          
+    
+            <ul id="menu">
+            <a href="#!/search"><li>Search</li></a>
+            <a href="#!/saved"><li>Saved</li></a>
+            <a href="#!/about"><li>About</li></a>
+            <a href="#!/difficuly-calc"><li>Calculator</li></a>
+            <a href="#!/hiking-list"><li>List</li></a>
+          </ul>
+        </div>
+      </nav>
+      
     <main>
-        <h1>Hiking Buddy</h1>
+        
 
 
         <hiking-list></hiking-list>

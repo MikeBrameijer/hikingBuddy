@@ -1,50 +1,217 @@
-.mainContainer {
+ body {
+   margin: 0;
+   padding: 0;
+   background: #363D4F;
+   color: #F8F9F4;
+   font-family: "Avenir Next", "Avenir", sans-serif;
+ }
+ 
+ a {
+   text-decoration: none;
+   color: #363D4F;
+   transition: color 0.3s ease;
+ }
+ 
+ #menuToggle {
+   display: block;
+   position: relative;
+   top: 20px;
+   left: 20px;
+   z-index: 1;
+   -webkit-user-select: none;
+   user-select: none;
+ 
+ }
+ 
+ #menuToggle .routingInput {
+   display: block;
+   width: 40px;
+   height: 32px;
+   position: absolute;
+   top: -7px;
+   left: -5px;
+   cursor: pointer;
+   opacity: 0; /* hide this */
+   z-index: 2; /* and place it over the hamburger */
+   -webkit-touch-callout: none;
+ }
+ 
+ /*
+  * Hamburger
+  */
+ #menuToggle span {
+   display: block;
+   width: 33px;
+   height: 4px;
+   margin-bottom: 5px;
+   position: relative;
+   background: #F8F9F4;
+   border-radius: 3px;
+   z-index: 1;
+   transform-origin: 4px 0px;
+   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+               background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+               opacity 0.55s ease;
+ }
+ 
+ #menuToggle span:first-child {
+   transform-origin: 0% 0%;
+ }
+ 
+ #menuToggle span:nth-last-child(2) {
+   transform-origin: 0% 100%;
+ }
+ 
+ /* 
+  * Transform all the slices of hamburger
+  * into a crossmark.
+  */
+ #menuToggle .routingInput:checked ~ span {
+   opacity: 1;
+   transform: rotate(45deg) translate(-2px, -1px);
+   background: #363D4F;
+ }
+ 
+ /*
+  * But let's hide the middle one.
+  */
+ #menuToggle .routingInput:checked ~ span:nth-last-child(3) {
+   opacity: 0;
+   transform: rotate(0deg) scale(0.2, 0.2);
+ }
+ 
+ /*
+  * the last one should go the other direction
+  */
+ #menuToggle .routingInput:checked ~ span:nth-last-child(2) {
+   transform: rotate(-45deg) translate(0, -1px);
+ }
+ 
+ /*
+  * Make this absolute positioned
+  * at the top left of the screen
+  */
+ #menu {
+   position: absolute;
+   width: 150px;
+   margin: -100px 0 0 -50px;
+   padding: 50px;
+   padding-top: 125px;
+   background: #F8F9F4;
+   list-style-type: none;
+   -webkit-font-smoothing: antialiased;
+   /* to stop flickering of text in safari */
+   transform-origin: 0% 0%;
+   transform: translate(-100%, 0);
+   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+ }
+ 
+ #menu li {
+   padding: 10px 0;
+   font-size: 22px;
+ }
+ 
+ /*
+  * And let's slide it in from the left
+  */
+ #menuToggle .routingInput:checked ~ ul {
+   transform: none;
+ }
+
+ .searchInput, .searchButton {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 0 auto;
+   
+   /* border: none;
+   background-color: #F8F9F4; */
+ }
+
+ .searchInput {
+   margin-bottom: 7px;
+   /* height: 36px;
+   width: 279px; */
+ }
+
+ .searchButton {
+   color: #363D4F;
+   /* width: 279px;
+   height: 36px; */
+   outline: none;
+  
+ }
+
+ .lasher {
+   font-size: 20px;
+ }
+
+ .mountainImage {
+   max-width: 25%;
+   height: auto;
+ }
+
+ .text {
+  position:relative;
+  line-height:2em;
+  overflow:hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.fadingEffect {
+  position:absolute;
+  top:0; bottom:0; right:0;
+  width:100%;
+  background: #363D4F;
+  -moz-animation: showHide 5s ease-in alternate infinite; /* Firefox */
+  -webkit-animation: showHide 5s ease-in alternate infinite; /* Safari and Chrome */
+  -ms-animation: showHide 5s ease-in alternate infinite; /* IE10 */
+  -o-animation: showHide 5s ease-in alternate infinite; /* Opera */
+  animation: showHide 5s ease-in alternate infinite;
+}
+@-webkit-keyframes showHide { /* Chrome, Safari */
+  0% {width:100%}
+  40% {width:0%}
+  60% {width:0%;}
+  100% {width:100%;}
+}
+@-moz-keyframes showHide { /* FF */
+  0% {width:100%}
+  40% {width:0%}
+  60% {width:0%;}
+  100% {width:100%;}
+}
+@-ms-keyframes showHide { /* IE10 */
+  0% {width:100%}
+  40% {width:0%}
+  60% {width:0%;}
+  100% {width:100%;}
+}
+@-o-keyframes showHide { /* Opera */
+  0% {width:100%}
+  40% {width:0%}
+  60% {width:0%;}
+  100% {width:100%;}
+}
+@keyframes showHide {
+  0% {width:100%}
+  40% {width:0%}
+  60% {width:0%;}
+  100% {width:100%;}
+}
+
+
+/* .mainContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     /* flex-direction: column;
     align-items: center;
     justify-content: center; */
-}
+/* } */
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
-    width: 95vw;
-    height: auto;
-    margin: 10px;
-
-    background-color: white;
-    opacity: .9;
-    /* border: 2px solid lightgrey; */
-    border-radius: 15px;
-    box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.2);
-}
-
-.preview {
-    display: flex;
-    padding: 15px;
-    justify-content: space-around;
-    width: inherit;
-}
-
-.left {
-    display: flex;
-    flex-direction: column;
-    align-content: space-between;
-}
-
-.right {
-    display: flex;
-    flex-direction: column;
-    align-content: space-between;
-}
-
-.subContainer {
-    border: 2px solid black;
-}
 
 
 
