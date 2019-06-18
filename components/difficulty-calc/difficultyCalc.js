@@ -1,52 +1,54 @@
 function DifficultyCalcController() {
     const ctrl = this;
-    // ctrl.trails = {distance : ctrl.trail.distance};
 
+    ctrl.showAssistant = false;
 
-    ctrl.calculateTime = () => {
-        
-        let totalHikeTime = ((ctrl.trail.length * 30) + ((ctrl.trail.ascent/1000) * 30));
-        console.log(totalHikeTime);
-
-            if (totalHikeTime >= 60) {
-                totalHikeTime = totalHikeTime/60;
-                console.log(`${totalHikeTime} hours`);
-            } else {
-
-                return(`${totalHikeTime} minutes`);
-            }
+    ctrl.show = () => {
+        ctrl.showAssistant = true;
+    }
+    ctrl.hide = () => {
+        ctrl.showAssistant = false;
     }
 
     ctrl.$onInit = () => {
-        
         ctrl.calculateTime();
-        // ctrl.
+        ctrl.waterIntake();
+        ctrl.calculateCalories(170);
 
+    }
+ 
+    ctrl.calculateTime = () => {        
+        ctrl.totalHikeTime = ((ctrl.trail.length * 30) + ((ctrl.trail.ascent/1000) * 30));
+        if (ctrl.totalHikeTime >= 60) {
+            ctrl.totalHikeTimeFormat = (ctrl.totalHikeTime/60) +' hours';
+        } else {
+            ctrl.totalHikeTimeFormat =(ctrl.totalHikeTime) + ' minutes';
+        }
+
+        return ctrl.totalHikeTimeFormat;
     }
 
     ctrl.waterIntake = () => {
-        let totalWaterIntake = ((ctrl.calculateTime()/30) * 8);
-            console.log(`${totalWaterIntake} ounces`);
+        ctrl.totalWaterIntake = ((ctrl.totalHikeTime/30) * 8);
+        ctrl.totalWaterIntakeFormat = ctrl.totalWaterIntake + ' ounces';
+        return ctrl.totalWaterIntakeFormat;
     }
     ctrl.calculateCalories = (weight) => {
         // this is based on the MET,metabolic equivalent scores for hiking.
         // easy trails have a MET of 3  harder trails have a MET of 6 to 7
-        if(weight === ''){
-            weight = 170;
-            //if no weight is entered then set a defulat weight of 170 lbs
-        }
-        let weightKgs = weight * .454;
-        let metValue = 6.5
+        // if(weight === ''){
+        //     weight = 170;
+        //     //if no weight is entered then set a defulat weight of 170 lbs
+        // }
+        let weightKgs = weight * 0.454;
+        let metValue = 6.5;
         ctrl.calsPerHour = weightKgs * metValue;
-        ctrl.totalCalsBurn = ctrl.calsPerHour * ctrl.totalHikeTime;
-        return ctrl.totalCalsBurn;
-
+        ctrl.totalCalsBurnFormat = (ctrl.calsPerHour * (ctrl.totalHikeTime / 60)) + ' calories';
+        return ctrl.totalCalsBurnFormat;
     }
 
     ctrl.calculateDifficulty = () => {
-        if (ctrl.trails[0].difficulty === "green") {
-            
-        }
+        
     }
 }
     // 8oz every 30 minutes
@@ -57,7 +59,23 @@ angular.module("HikingApp")
 .component("difficultyCalc", {
     template: `
 
-        <button ng-click="$ctrl.calculateTime()"> Calculate Time </button>
+    <div ng-if="$ctrl.showAssistant" class="window"></div>
+    <div ng-if="$ctrl.showAssistant" class="show">
+        <h2>Hiking Buddy</h2>
+        <h3>{{$ctrl.trail.name}}</h3>
+        Awesome I love this trail!
+        <br>
+        This {{$ctrl.trail.length}} mile trail should take you about {{$ctrl.totalHikeTimeFormat}}.
+        <br>
+        I would recommend that you take {{$ctrl.totalWaterIntakeFormat}} of water.
+        <br>
+        You will probaly burn about {{$ctrl.totalCalsBurnFormat}} so bring some trail mix.
+        <br>
+
+    
+    </div>
+    <button ng-click="$ctrl.show()">Show Assistant</button>
+    <button ng-click="$ctrl.hide()">Hide Assistant</button>
 
 
 

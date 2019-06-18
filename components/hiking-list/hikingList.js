@@ -1,15 +1,6 @@
 function HikingListController(hikingService) {
     const ctrl = this;
 
-    ctrl.showAssistant = false;
-
-    ctrl.show = () => {
-        ctrl.showAssistant = true;
-    }
-    ctrl.hide = () => {
-        ctrl.showAssistant = false;
-    }
-
     ctrl.trailsArray = [];
     ctrl.allTrailsRating = [];
 
@@ -86,12 +77,7 @@ angular
             <p> this is the hiking list component </p>
 
 
-            <div ng-if="$ctrl.showAssistant" class="window"></div>
-            <div ng-if="$ctrl.showAssistant" class="show">
-            <hiking-assistant module-flag="$ctrl.showDetailModule"></hiking-assistant>
-            </div>
-            <button ng-click="$ctrl.show()">Show Assistant</button>
-            <button ng-click="$ctrl.hide()">Hide Assistant</button>
+            
 
 
 
