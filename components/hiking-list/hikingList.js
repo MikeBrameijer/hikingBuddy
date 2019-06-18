@@ -1,6 +1,9 @@
 function HikingListController(hikingService) {
     const ctrl = this;
 
+    // ctrl.expandContainer = false;
+
+
     ctrl.trailsArray = [];
     ctrl.allTrailsRating = [];
 
@@ -23,7 +26,8 @@ function HikingListController(hikingService) {
                         location: value.location,
                         stars: value.stars,
                         type: value.type,
-                        imgMedium: value.imgMedium
+                        imgMedium: value.imgMedium,
+                        showDetails: false
                     }
 
                     ctrl.trailsArray.push(trailsObj);
@@ -56,18 +60,8 @@ function HikingListController(hikingService) {
         console.log(ctrl.trailsArray[0].stars);
     }
 
-    ctrl.changeHeight = () => {
-        let count = 0;
-
-        if (count === 0) {
-            console.log('grow');
-            count = 1;
-            return 'grow';
-        } else {
-            console.log('shrink');
-            count = 0;
-            return 'shrink';
-        }
+    ctrl.changeHeight = (flag, index) => {
+        ctrl.trailsArray[index].showDetails = flag;
     }
 }
  
@@ -90,7 +84,7 @@ angular
 
                 <div class="container" ng-repeat="trail in $ctrl.trailsArray">
 
-                <div class="preview" ng-class="$ctrl.changeHeight()">
+                <div class="preview">
                     <div class="left">
                         <p style="text-overflow: ellipsis; width:200px;  white-space: nowrap; 
                         overflow: hidden;">{{trail.name}}</p>
@@ -102,8 +96,7 @@ angular
                         </span> 
                         </div>
 
-
-                    <button ng-click="$ctrl.changeHeight()"> Show More </button>
+                    <button ng-click="$ctrl.changeHeight(true, $index)"> Show More </button>
 
                     </div>
 
@@ -114,7 +107,11 @@ angular
                     
                 </div>
 
-                <div class="fullview" style="display:none;">
+                <div ng-if="trail.showDetails" class="fullview" >
+
+
+
+
                     <a ng-if="trail.imgSmallMed != ''" href="{{trail.url}}"><img src="{{trail.imgSmallMed}}"/></a>
 
                     <div class="subContainer">
@@ -132,6 +129,9 @@ angular
 
                     <p ng-if="trail.summary != 'Needs Summary' && trail.summary != 'Needs Adoption'">
                         Summary: {{trail.summary}} </p>
+
+                        <button ng-click="$ctrl.changeHeight(false, $index)"> Show Less </button>
+
                 </div>
 
                     <br>
