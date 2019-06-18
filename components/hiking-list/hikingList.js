@@ -21,6 +21,8 @@ function HikingListController(hikingService) {
                 results.forEach(function(value, key) {
                     let trailsObj = {
                         id: value.id,
+                        lat: value.latitude,
+                        lon: value.longitude,
                         name: value.name,
                         ascent: value.ascent,
                         conditionStatus: value.conditionStatus,
@@ -113,7 +115,6 @@ angular
                         <img class="star" src="{{star}}"/>
                         </span> 
                         </div>
-
 
 
                     <button ng-click="$ctrl.changeHeight()"> Show More </button>
