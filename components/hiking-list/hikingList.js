@@ -15,6 +15,8 @@ function HikingListController(hikingService) {
                 results.forEach(function(value, key) {
                     let trailsObj = {
                         id: value.id,
+                        lat: value.latitude,
+                        lon: value.longitude,
                         name: value.name,
                         ascent: value.ascent,
                         conditionStatus: value.conditionStatus,
@@ -71,12 +73,7 @@ angular
             <p> this is the hiking list component </p>
 
 
-            <div ng-if="$ctrl.showAssistant" class="window"></div>
-            <div ng-if="$ctrl.showAssistant" class="show">
-            <hiking-assistant module-flag="$ctrl.showDetailModule"></hiking-assistant>
-            </div>
-            <button ng-click="$ctrl.show()">Show Assistant</button>
-            <button ng-click="$ctrl.hide()">Hide Assistant</button>
+            
 
 
 

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Anton|Open+Sans+Condensed:300&display=swap');
+ 
  body {
    margin: 0;
    padding: 0;
@@ -147,65 +150,98 @@
   
  }
 
- .lasher {
+ /* .lasher {
    font-size: 20px;
+   margin: 0 auto;
+ } */
+
+ .heading {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 30%;
+   margin: 0 auto;
+   flex-wrap: wrap;
+ }
+
+ .lasher {
+   margin-top: -20px;
+   margin-bottom: 0px;
+   font-family: 'Anton', sans-serif;
+   font-weight: 100;
+   font-size: 40px;
+ }
+
+ .trailFinder {
+   margin-top: -15px;
+   font-family: 'Open Sans Condensed', sans-serif;
+   font-weight: 100;
+   font-size: 20px;
+  
  }
 
  .mountainImage {
-   max-width: 25%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   max-width: 40%;
    height: auto;
+   margin: 0 auto;
+   margin-top: -20px;
  }
 
  .text {
-  position:relative;
+  /* position:relative;
   line-height:2em;
-  overflow:hidden;
-  display: flex;
+  overflow:hidden; */
+  /* display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+   */
 }
 
-.fadingEffect {
+/* .fadingEffect {
   position:absolute;
   top:0; bottom:0; right:0;
   width:100%;
   background: #363D4F;
   -moz-animation: showHide 5s ease-in alternate infinite; /* Firefox */
-  -webkit-animation: showHide 5s ease-in alternate infinite; /* Safari and Chrome */
-  -ms-animation: showHide 5s ease-in alternate infinite; /* IE10 */
-  -o-animation: showHide 5s ease-in alternate infinite; /* Opera */
-  animation: showHide 5s ease-in alternate infinite;
-}
-@-webkit-keyframes showHide { /* Chrome, Safari */
+  /* -webkit-animation: showHide 5s ease-in alternate infinite; /* Safari and Chrome */
+  /* -ms-animation: showHide 5s ease-in alternate infinite; IE10 */
+  /* -o-animation: showHide 5s ease-in alternate infinite; Opera */
+  /* animation: showHide 5s ease-in alternate infinite;
+} */
+/* @-webkit-keyframes showHide { Chrome, Safari */
+  /* 0% {width:100%}
+  40% {width:0%}
+  60% {width:0%;}
+  100% {width:100%;}
+} */
+/* @-moz-keyframes showHide { FF */
+  /* 0% {width:100%}
+  40% {width:0%}
+  60% {width:0%;}
+  100% {width:100%;}
+} */
+/* @-ms-keyframes showHide { IE10 */
+  /* 0% {width:100%}
+  40% {width:0%}
+  60% {width:0%;}
+  100% {width:100%;}
+} */
+/* @-o-keyframes showHide { Opera */
+  /* 0% {width:100%}
+  40% {width:0%}
+  60% {width:0%;}
+  100% {width:100%;}
+} */
+/* @keyframes showHide {
   0% {width:100%}
   40% {width:0%}
   60% {width:0%;}
   100% {width:100%;}
-}
-@-moz-keyframes showHide { /* FF */
-  0% {width:100%}
-  40% {width:0%}
-  60% {width:0%;}
-  100% {width:100%;}
-}
-@-ms-keyframes showHide { /* IE10 */
-  0% {width:100%}
-  40% {width:0%}
-  60% {width:0%;}
-  100% {width:100%;}
-}
-@-o-keyframes showHide { /* Opera */
-  0% {width:100%}
-  40% {width:0%}
-  60% {width:0%;}
-  100% {width:100%;}
-}
-@keyframes showHide {
-  0% {width:100%}
-  40% {width:0%}
-  60% {width:0%;}
-  100% {width:100%;}
-}
+} */
 
 
 /* .mainContainer {
@@ -239,8 +275,11 @@
     color: black;
     background-color: white;
     opacity: .65;
+  
     border-radius: 5px;
     box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.2);
+   
+
 } */
 
 .preview {
@@ -295,6 +334,10 @@
         background-repeat: no-repeat;
         background-size: cover;
         } */
+        .trailFinder {
+          margin-bottom: -14px;
+        }
+
 
 
 }
@@ -302,6 +345,32 @@
 
 @media only screen and (min-width: 1281px) {
 
+    .text {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+    }
+    .heading {
+      display: flex;
+      margin: 0px;
+      align-items: baseline;
+      width: 40%;
+    }
 
+    .mountainImage {
+      margin: 0px;
+
+    }
+
+    .lasher {
+      display: flex;
+      font-size: 100px;
+      margin-left: 10px;
+    }
+
+    .trailFinder {
+      display: flex;
+      font-size: 45px;
+    }
 
 }
