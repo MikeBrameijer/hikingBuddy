@@ -14,10 +14,11 @@ function DifficultyCalcController() {
         ctrl.calculateTime();
         ctrl.waterIntake();
         ctrl.calculateCalories(170);
+        ctrl.responseToTrail(ctrl.trail.stars);
 
     }
  
-    ctrl.calculateTime = () => {        
+    ctrl.calculateTime = () => {    
         ctrl.totalHikeTime = ((ctrl.trail.length * 30) + ((ctrl.trail.ascent/1000) * 30));
         if (ctrl.totalHikeTime >= 60) {
             ctrl.totalHikeTimeFormat = (ctrl.totalHikeTime/60) +' hours';
@@ -50,6 +51,25 @@ function DifficultyCalcController() {
     ctrl.calculateDifficulty = () => {
         
     }
+
+    ctrl.responseToTrail = (stars) => {
+        ctrl.roundedStars = Math.round(stars);
+        ctrl.trailResponse = "Default Text";
+        if (ctrl.roundedStars == 5) {
+            ctrl.trailResponse = "This trail is really popular!"
+        } else if (ctrl.roundedStars == 4) {
+            ctrl.trailResponse = "Most hikers enjoy this trail quite a bit."
+        } else if (ctrl.roundedStars == 3) {
+            ctrl.trailResponse = "This is a pretty average trail, you might enjoy it."
+        } else if (ctrl.roundedStars == 2) {
+            ctrl.trailResponse == "Be careful, a lot of hikers didn't enjoy this hike."
+        } else if (ctrl.roundedStars == 1) {
+            ctrl.trailResponse = "Beware, This trail might have a lot of issues."
+        } else {
+            ctrl.trailResponse = "This trail needs to be reviewed! Maybe you can help? :)"
+        }
+        return ctrl.trailResponse;
+    }
 }
     // 8oz every 30 minutes
     // prehydtrate 2 hours before 20 oz
@@ -63,7 +83,7 @@ angular.module("HikingApp")
     <div ng-if="$ctrl.showAssistant" class="show">
         <h2>Hiking Buddy</h2>
         <h3>{{$ctrl.trail.name}}</h3>
-        Awesome I love this trail!
+        {{ $ctrl.trailResponse }}
         <br>
         This {{$ctrl.trail.length}} mile trail should take you about {{$ctrl.totalHikeTimeFormat}}.
         <br>
