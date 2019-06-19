@@ -8,9 +8,7 @@ function SearchController() {
         });
       }
 
-    // ctrl.search = (location) => {
-    //     hikingService.getGeocode(location) 
-    // }
+
 
 }
 angular

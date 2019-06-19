@@ -42,6 +42,33 @@ function HikingListController(hikingService) {
             });
     }
 
+    
+    // ctrl.campgroundArray = [];
+    // ctrl.allCampgoundsRating = [];
+
+    // ctrl.getListofC = (location) => {
+    //     console.log(location);
+    //     hikingService.getCamping(location) 
+    //         .then((results) => {
+
+    //             results.forEach(function(value, key) {
+    //                 let campgroundsObj = {
+    //                     id: value.id,
+    //                     lat: value.latitude,
+    //                     lon: value.longitude,
+    //                     name: value.name,
+    //                     location: value.location,
+    //                     showDetails: false
+    //                 }
+
+    //                 ctrl.campgroundArray.push(campgroundsObj);
+    //             });
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         });
+    // }
+
     ctrl.starRating = () => {
         let filledStar = 'assets/gold-star.svg';
 
@@ -139,6 +166,8 @@ angular
                 </div>
 
             </div>
+
+       
             
            
     `, 

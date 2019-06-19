@@ -50,6 +50,41 @@ function HikingService($http, $q) {
     })
     }
 
+    // service.getCamping = (campingSearch) => {
+    //     return $q(function (resolve, reject) {
+    //         service.getGeocode(campingSearch)
+    //         .then((results) => {
+    //             service.campingLat = results.campLat;
+    //             service.campingLon = results.campLon;
+
+    //     let url = 'https://www.hikingproject.com/data/get-campgrounds';
+    //     let apiParam = {
+    //         lat: service.campLat,
+    //         lon: service.campLon,
+    //         sort: 'distance',
+    //         key: service.key
+    //     }
+       
+    //         $http({
+    //             url: url,
+    //             method: 'GET',
+    //             params: apiParam,
+    //         })
+    //             .then((response) => {
+    //                 // console.log("getCampgrounds service response");
+    //                 // console.log(response.data.campgrounds);
+    //                 service.globalLocation = response.data.campgrounds;
+
+    //                 resolve(response.data.campgrounds);
+    //             })
+    //             .catch((err) => {
+    //                 // console.log("Camping didn't work in the service");
+    //                 // console.log(err);
+    //                 reject(error);
+    //             })
+    //     })
+    // }
+
     service.getCamping = (locationLat, localtionLon) => {
         let url = 'https://www.hikingproject.com/data/get-campgrounds';
         let apiParam = {
@@ -76,6 +111,7 @@ function HikingService($http, $q) {
                 })
         })
     }
+
 
     service.getGeocode = (search) => {
         let url = 'https://maps.googleapis.com/maps/api/geocode/json';
