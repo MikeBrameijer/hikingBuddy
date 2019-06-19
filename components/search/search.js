@@ -16,8 +16,8 @@ angular
   .component("searchComponent", {
     template: `
 
-        <input class="searchInput" type="text" ng-model="location" />
-        <button class="searchButton" ng-click="$ctrl.getSearch(location)">Click</button>
+        <input class="searchInput" type="text" ng-model="location" placeholder="Enter a location..."/>
+        <button class="searchButton" ng-click="$ctrl.getSearch(location)">Search</button>
     
     
     

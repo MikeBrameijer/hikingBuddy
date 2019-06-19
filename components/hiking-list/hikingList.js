@@ -8,9 +8,13 @@ function HikingListController(hikingService) {
     ctrl.allTrailsRating = [];
 
     ctrl.getList = (location) => {
+        ctrl.trailsArray = [];
+
         console.log(location);
         hikingService.getTrails(location) 
             .then((results) => {
+
+                console.log(results);
 
                 results.forEach(function(value, key) {
                     let trailsObj = {
@@ -19,12 +23,16 @@ function HikingListController(hikingService) {
                         lon: value.longitude,
                         name: value.name,
                         ascent: value.ascent,
+                        descent: value.descent,
+                        summary: value.summary,
+                        conditionDate: value.conditionDate,
                         conditionStatus: value.conditionStatus,
                         difficulty: value.difficulty,
                         high: value.high,
                         length: value.length,
                         location: value.location,
                         stars: value.stars,
+                        starsImg: null,
                         type: value.type,
                         imgMedium: value.imgMedium,
                         showDetails: false
@@ -81,10 +89,9 @@ function HikingListController(hikingService) {
             }
 
             ctrl.allTrailsRating.push(emptyStars);
-            value.stars = emptyStars;
+            value.starsImg = emptyStars;
         });
 
-        console.log(ctrl.trailsArray[0].stars);
     }
 
     ctrl.changeHeight = (flag, index) => {
@@ -97,19 +104,12 @@ angular
     .module('HikingApp')
     .component('hikingList', {
         template: `
-            <p> this is the hiking list component </p>
 
-
-            
-
-
-
-           
             <search-component search-rec="$ctrl.getList(que)"></search-component>
 
             <div class="mainContainer" id="searchResults">
 
-                <div class="container" ng-repeat="trail in $ctrl.trailsArray">
+                <div class="container" ng-repeat="trail in $ctrl.trailsArray" ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
 
                 <div class="preview">
                     <div class="left">
@@ -118,12 +118,14 @@ angular
 
 
                         <div class="starRating" >
-                        <span ng-repeat="star in trail.stars track by $index">
+                        <span ng-repeat="star in trail.starsImg track by $index">
                         <img class="star" src="{{star}}"/>
                         </span> 
                         </div>
 
-                    <button ng-click="$ctrl.changeHeight(true, $index)"> Show More </button>
+                    <button ng-click="$ctrl.changeHeight(true, $index)" ng-if="!trail.showDetails"> Show More </button>
+                    <button ng-click="$ctrl.changeHeight(false, $index)" ng-if="trail.showDetails"> Show Less </button>
+
 
                     </div>
 
@@ -134,35 +136,36 @@ angular
                     
                 </div>
 
-                <div ng-if="trail.showDetails" class="fullview" >
+                <div ng-class="{true: 'show', false: 'hide'}[trail.showDetails == true]">
 
 
-
-
-                    <a ng-if="trail.imgSmallMed != ''" href="{{trail.url}}"><img src="{{trail.imgSmallMed}}"/></a>
-
-                    <div class="subContainer">
-                    Elevation
-                    <br>
-                    Ascent: {{trail.ascent}} ft
-                    <br>
-                    Descent: {{trail.descent}} ft
-                    <br>
-                    High: {{trail.high}} ft
-                    <br>
-                    Low: {{trail.low}} ft
-                    <br>
-                    </div> 
-
-                    <p ng-if="trail.summary != 'Needs Summary' && trail.summary != 'Needs Adoption'">
-                        Summary: {{trail.summary}} </p>
-
-                        <button ng-click="$ctrl.changeHeight(false, $index)"> Show Less </button>
-
+                <div class="trail-details details-1>
+                <p style="font-weight:bold">Trail</p>
+                <p>Location: {{trail.location}}</p>
+                    <p>Peak: {{trail.high}}ft</p>
+                    <p>Type: {{trail.type}}</p>
                 </div>
 
-                    <br>
-                    <difficulty-calc trail="trail"></difficulty-calc>
+                <div class="trail-details details-2">
+                    <p style="font-weight:bold">Condition</p>
+                    <p>Condition Date: {{trail.conditionDate}}</p>
+                    <p> Condition Status: {{trail.conditionStatus}}</p>
+                    <p>Difficulty: {{trail.difficulty}}
+                </div>
+
+                <div class="trail-details details-3">
+                    <p style="font-weight:bold"> Summary</p>
+                
+                <!--    <a ng-if="trail.imgSmallMed != ''" href="{{trail.url}}"><img src="{{trail.imgSmallMed}}"/></a> -->
+
+                <!--<p ng-if="trail.summary != 'Needs Summary' && trail.summary != 'Needs Adoption'">
+                {{trail.summary}} </p>-->
+                <p>{{trail.summary}}</p>
+                <difficulty-calc trail="trail"></difficulty-calc>
+
+
+                </div>
+                </div>
                 </div>
 
             </div>
