@@ -13,6 +13,7 @@ function HikingListController(hikingService) {
         console.log(location);
         hikingService.getTrails(location) 
             .then((results) => {
+
                 console.log(results);
 
                 results.forEach(function(value, key) {
@@ -76,6 +77,7 @@ angular
     .module('HikingApp')
     .component('hikingList', {
         template: `
+
             <search-component search-rec="$ctrl.getList(que)"></search-component>
 
             <div class="mainContainer" id="searchResults">

@@ -14,7 +14,12 @@ function DifficultyCalcController() {
         ctrl.calculateTime();
         ctrl.waterIntake();
         ctrl.calculateCalories(170);
+
+        ctrl.calculateDifficulty("Novice");
+        ctrl.trailDifficultyConv(); 
+
         ctrl.responseToTrail(ctrl.trail.stars);
+
 
     }
  
@@ -48,9 +53,53 @@ function DifficultyCalcController() {
         return ctrl.totalCalsBurnFormat;
     }
 
-    ctrl.calculateDifficulty = () => {
-        
+    ctrl.trailDifficultyConv = () => {
+        if(ctrl.trail.difficulty === "green"){
+            ctrl.difficultyConv = "No obstacles. Flat."
+        }
+        if(ctrl.trail.difficulty === "greenBlue"){
+            ctrl.difficultyConv = "Some sections of uneven terrain. Mostly flat."
+        }
+        if(ctrl.trail.difficulty === "blue"){
+            ctrl.difficultyConv = "Uneven terrain. Small inclines (max 10% grade)."
+        }
+        if(ctrl.trail.difficulty === "blueBlack"){
+            ctrl.difficultyConv = "Some obstacles such as rocks or roots present. Moderate inclines."
+        }
+        if(ctrl.trail.difficulty === "black"){
+            ctrl.difficultyConv = "Tricky terrain. Steep. Not for beginners (max 15% grade)."
+        }
+        if(ctrl.trail.difficulty === "dblack"){
+            ctrl.difficultyConv = "Potentially hazardous terrain. Very steep. Experts only."
+        }
+        return ctrl.difficultyConv;
     }
+
+    ctrl.calculateDifficulty = (expLvl) => {
+        // formula from https://www.hikingincolorado.org/hikecalc.html
+        // Rating (Novice) = ( 0.002 x elevation gain [ in feet ] ) + round trip distance [ in miles ]
+        // Rating (Expert) = ( 0.0005 x elevation gain [ in feet ] ) + round trip distance / 2 [ in miles ]
+        ctrl.hikerExpLvl = expLvl;
+        
+        if(ctrl.hikerExpLvl === "Novice"){
+            ctrl.difficultyRating = (.002 * ctrl.trail.ascent) + ctrl.trail.length;
+        }
+        if(ctrl.hikerExpLvl === "Expert"){
+            ctrl.difficultyRating = (.0005 * ctrl.trail.ascent) + (ctrl.trail.length / 2);
+        }
+        console.log("difficultyRating " + ctrl.difficultyRating);
+        
+        if(ctrl.difficultyRating <= 5){
+            ctrl.difficultySuggestion = "an easy";
+        }else if(ctrl.difficultyRating <= 9){
+            ctrl.difficultySuggestion = "a moderate";
+        }else if(ctrl.difficultyRating <= 9){
+            ctrl.difficultySuggestion = "a Strenuous or Difficult";
+        }
+        console.log("difficultySuggestion " + ctrl.difficultySuggestion);
+        return ctrl.difficultySuggestion;
+    }
+
 
     ctrl.responseToTrail = (stars) => {
         ctrl.roundedStars = Math.round(stars);
@@ -70,6 +119,7 @@ function DifficultyCalcController() {
         }
         return ctrl.trailResponse;
     }
+
 }
     // 8oz every 30 minutes
     // prehydtrate 2 hours before 20 oz
@@ -90,6 +140,13 @@ angular.module("HikingApp")
         <br>
         You will probaly burn about {{$ctrl.totalCalsBurnFormat}} so bring some trail mix.
         <br>
+
+        This trail has a {{$ctrl.trail.difficulty}} meaning {{$ctrl.difficultyConv}}.
+        <br>
+        Personally I think that if you are a Novice hiker this will be {{$ctrl.difficultySuggestion}} hike.
+
+
+
     
     </div>
     <button ng-click="$ctrl.show()">Show Assistant</button>
