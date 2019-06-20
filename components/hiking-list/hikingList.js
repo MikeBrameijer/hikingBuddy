@@ -82,7 +82,14 @@ angular
 
             <div class="mainContainer" id="searchResults">
 
-                <div class="container" ng-repeat="trail in $ctrl.trailsArray" ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
+
+                <select ng-model="sorting">
+                    <option selected="selected" value="stars">Stars- Low to High</option>
+                    <option value="-stars">Stars- High to Low</option>
+                </select>
+
+
+                <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting " ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
 
                 <div class="preview">
                     <div class="left">

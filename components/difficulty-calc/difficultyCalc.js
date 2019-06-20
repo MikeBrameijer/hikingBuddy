@@ -20,18 +20,21 @@ function DifficultyCalcController() {
 
         ctrl.responseToTrail(ctrl.trail.stars);
 
-
     }
  
     ctrl.calculateTime = () => {        
-        ctrl.totalHikeTime = Math.round(parseInt((ctrl.trail.length * 30) + ((ctrl.trail.ascent/1000) * 30)));
+        ctrl.totalHikeTime = ((ctrl.trail.length * 30) + ((ctrl.trail.ascent/1000) * 30));
+        
         if (ctrl.totalHikeTime >= 60) {
             ctrl.totalHikeTimeFormat = (ctrl.totalHikeTime/60) +' hours';
+            ctrl.formatTime = ctrl.totalHikeTimeFormat.fixed(2);
         } else {
             ctrl.totalHikeTimeFormat = (ctrl.totalHikeTime) + ' minutes';
+            ctrl.formatTime = ctrl.totalHikeTimeFormat.fixed(2);
+
         }
 
-        return ctrl.totalHikeTimeFormat;
+        return ctrl.formatTime;
     }
 
     ctrl.waterIntake = () => {
@@ -87,7 +90,7 @@ function DifficultyCalcController() {
         if(ctrl.hikerExpLvl === "Expert"){
             ctrl.difficultyRating = (.0005 * ctrl.trail.ascent) + (ctrl.trail.length / 2);
         }
-        console.log("difficultyRating " + ctrl.difficultyRating);
+        // console.log("difficultyRating " + ctrl.difficultyRating);
         
         if(ctrl.difficultyRating <= 5){
             ctrl.difficultySuggestion = "an easy";
@@ -96,7 +99,7 @@ function DifficultyCalcController() {
         }else if(ctrl.difficultyRating <= 9){
             ctrl.difficultySuggestion = "a Strenuous or Difficult";
         }
-        console.log("difficultySuggestion " + ctrl.difficultySuggestion);
+        // console.log("difficultySuggestion " + ctrl.difficultySuggestion);
         return ctrl.difficultySuggestion;
     }
 
