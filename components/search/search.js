@@ -2,9 +2,12 @@
 function SearchController() {  
     const ctrl = this;
 
-    ctrl.getSearch = (search) => {
+    ctrl.getSearch = (search, distance, length, stars) => {
         ctrl.searchRec({
-          que: search
+          que: search,
+          maxDistance: distance,
+          minLength: length,
+          minStars: stars,
         });
       }
 
@@ -19,7 +22,10 @@ angular
     template: `
 
         <input class="searchInput" type="text" ng-model="location" placeholder="Enter a location..."/>
-        <button class="searchButton" ng-click="$ctrl.getSearch(location)">Search</button>
+        <input class="searchInput" type="text" ng-model="distance" placeholder="Max distance..."/>
+        <input class="searchInput" type="text" ng-model="length" placeholder="Min length..."/>
+        <input class="searchInput" type="text" ng-model="stars" placeholder="Min stars..."/>
+        <button class="searchButton" ng-click="$ctrl.getSearch(location, distance, length, stars)">Search</button>
     
     
     

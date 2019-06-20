@@ -7,11 +7,11 @@ function HikingListController(hikingService) {
     ctrl.trailsArray = [];
     ctrl.allTrailsRating = [];
 
-    ctrl.getList = (location) => {
+    ctrl.getList = (location, distance, length, stars) => {
         ctrl.trailsArray = [];
 
         console.log(location);
-        hikingService.getTrails(location) 
+        hikingService.getTrails(location, distance, length, stars) 
             .then((results) => {
 
                 console.log(results);
@@ -71,6 +71,7 @@ function HikingListController(hikingService) {
         ctrl.trailsArray[index].showDetails = flag;
     }
 }
+
  
 
 angular
@@ -78,7 +79,7 @@ angular
     .component('hikingList', {
         template: `
 
-            <search-component search-rec="$ctrl.getList(que)"></search-component>
+            <search-component search-rec="$ctrl.getList(que, maxDistance, minLength, minStars)"></search-component>
 
             <div class="mainContainer" id="searchResults">
 
