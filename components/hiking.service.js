@@ -4,7 +4,7 @@ function HikingService($http, $q) {
     service.key = '200488347-7449e5616f0f75c446c24d3c0da3ba39';
     service.geoKey = 'AIzaSyAzWLrTiTrHUeTKCGNNpPkFLVrJ-ncycK0';
 
-    service.getTrails = (search) => {
+    service.getTrails = (search, distance, length, stars) => {
         return $q(function (resolve, reject) {
 
         service.getGeocode(search)
@@ -18,11 +18,11 @@ function HikingService($http, $q) {
                 lat: service.trailLat,
                 lon: service.trailLon,
                 //NOTE: distance refers to distance between trail and LAT&LONG point(miles)
-                // maxDistance: 100,
+                maxDistance: distance,
                 // maxResults: 3,
                 //NOTE: minLength refers to length of trail(miles)
-                // minLength: 100,
-                // minStars: 4,
+                minLength: length,
+                minStars: stars,
                 //NOTE: Need to find sortby values other than distance & quality
                 sort: 'distance',
                 key: service.key

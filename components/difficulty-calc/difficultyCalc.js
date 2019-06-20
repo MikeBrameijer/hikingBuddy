@@ -141,7 +141,7 @@ angular.module("HikingApp")
         You will probaly burn about {{$ctrl.totalCalsBurnFormat}} so bring some trail mix.
         <br>
 
-        This trail has a {{$ctrl.trail.difficulty}} meaning {{$ctrl.difficultyConv}}.
+        This trail has a {{$ctrl.trail.difficulty}} rating, meaning {{$ctrl.difficultyConv}}.
         <br>
         Personally I think that if you are a Novice hiker this will be {{$ctrl.difficultySuggestion}} hike.
 
