@@ -83,7 +83,7 @@ angular
 
             <div class="mainContainer" id="searchResults">
 
-                <select class="sort-trail" ng-model="sorting">
+                <select class="sort-trail" ng-if="$ctrl.formatLocation != null" ng-model="sorting">
                     <option selected="selected" value="stars">Stars- Low to High</option>
                     <option value="-stars">Stars- High to Low</option>
                     <option value="-caloriesBurned">Calories- High to Low </option>
@@ -92,7 +92,7 @@ angular
 
                 <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id" ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
 
-   
+                <difficulty-calc class="buddyPopUp" trail="trail"></difficulty-calc>
                 
 
                 {{trail.caloriesBurned}}
@@ -148,7 +148,7 @@ angular
                 <!--<p ng-if="trail.summary != 'Needs Summary' && trail.summary != 'Needs Adoption'">
                 {{trail.summary}} </p>-->
                 <p>{{trail.summary}}</p>
-                <difficulty-calc trail="trail"></difficulty-calc>
+                
 
 
                 </div>

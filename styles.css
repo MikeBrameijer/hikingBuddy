@@ -40,6 +40,9 @@
  .formatLocation{
    background: #F8F9F4
  }
+ .buddyPopUp{
+   display: absolute;
+ }
 
  #menuToggle {
    display: block;
