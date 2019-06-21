@@ -193,7 +193,6 @@
    font-family: 'Open Sans Condensed', sans-serif;
    font-weight: 100;
    font-size: 20px;
-  
  }
 
  .mountainImage {
@@ -335,7 +334,6 @@
     border: 2px solid black;
 }
 
-
 .starRating {
     display: flex;
     width: auto;
@@ -344,13 +342,10 @@
 .star {
     height:30px;
     width: 30px;
-
 }
 
 .fullView {
     height: auto;
-    
-
     /* -webkit-transition: 1s;
     transition: 1s; */
     /* background-color: red; */
@@ -383,6 +378,17 @@
     margin: 24px;
 }
 
+.sort-trail {
+    margin: 25px auto;
+    border-radius: 5px;
+    background-color: white;
+    opacity: .9;
+    display: flex;
+    border: none;
+    padding:10px 25px 10px 25px;
+
+}
+
 
 
 @media only screen and (min-width: 768px) {
@@ -401,11 +407,6 @@
         .trailFinder {
           margin-bottom: -14px;
         }
-
-
-
-
-
 }
 
 
