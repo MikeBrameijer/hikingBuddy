@@ -32,6 +32,7 @@ function HikingListController(hikingService) {
                         showDetails: false
                     }
                     ctrl.trailsArray.push(trailsObj);
+                    ctrl.formatLocation =  hikingService.formatLocation;
                 });
 
                 console.log(ctrl.trailsArray);
@@ -67,6 +68,8 @@ function HikingListController(hikingService) {
             }
         });
     }
+
+    console.log(ctrl.formatLocation);
 }
 
 angular
@@ -75,6 +78,8 @@ angular
         template: `
 
             <search-component search-rec="$ctrl.getList(que, maxDistance, minLength, minStars)"></search-component>
+
+            <h2 class="formatLocation" ng-if="$ctrl.formatLocation != null">Showing results for {{$ctrl.formatLocation}}</h2>
 
             <div class="mainContainer" id="searchResults">
 
@@ -87,7 +92,11 @@ angular
 
                 <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id" ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
 
+   
+                
+
                 {{trail.caloriesBurned}}
+
 
                 <div class="preview">
                     <div class="left">

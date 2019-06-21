@@ -12,6 +12,7 @@ function HikingService($http, $q) {
             
             service.trailLat = results.lat;
             service.trailLon = results.lon;
+            service.formatLocation = results.formatLocation;
         
             let url = 'https://www.hikingproject.com/data/get-trails';
             let apiParam = {
@@ -91,7 +92,9 @@ function HikingService($http, $q) {
                 params: apiParam,
             })
                 .then((response) => {
+                    console.log(response);
                     let location = {
+                        formatLocation: response.data.results[0].formatted_address,
                         lat:  response.data.results[0].geometry.location.lat,
                         lon: response.data.results[0].geometry.location.lng
                     }

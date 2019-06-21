@@ -155,6 +155,7 @@ angular.module("HikingApp")
 
     
     </div>
+    <button class="buddyIconRepeat"><img class="buddyIconRepeat" src="assets/buddyIcon.png"></button>
     <button ng-click="$ctrl.show()">Show Assistant</button>
     <button ng-click="$ctrl.hide()">Hide Assistant</button>
     
