@@ -52,8 +52,11 @@ function DifficultyCalcController() {
         let weightKgs = weight * 0.454;
         let metValue = 6.5;
         ctrl.calsPerHour = weightKgs * metValue;
-        ctrl.totalCalsBurnFormat = Math.round(ctrl.calsPerHour * (ctrl.totalHikeTime / 60)) + ' calories';
-        return ctrl.totalCalsBurnFormat;
+        ctrl.totalCalsBurnFormat = Math.round(ctrl.calsPerHour * (ctrl.totalHikeTime / 60));
+
+
+        ctrl.trail.caloriesBurned = ctrl.totalCalsBurnFormat;
+        // return ctrl.totalCalsBurnFormat;
     }
 
     ctrl.trailDifficultyConv = () => {
@@ -144,7 +147,7 @@ angular.module("HikingApp")
         You will probaly burn about {{$ctrl.totalCalsBurnFormat}} so bring some trail mix.
         <br>
 
-        This trail has a {{$ctrl.trail.difficulty}} rating, meaning {{$ctrl.difficultyConv}}.
+        This trail has a {{$ctrl.trail.difficulty}} meaning {{$ctrl.difficultyConv}}.
         <br>
         Personally I think that if you are a Novice hiker this will be {{$ctrl.difficultySuggestion}} hike.
 

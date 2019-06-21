@@ -1,9 +1,5 @@
 function HikingListController(hikingService) {
     const ctrl = this;
-
-    // ctrl.expandContainer = false;
-
-
     ctrl.trailsArray = [];
     ctrl.allTrailsRating = [];
 
@@ -13,12 +9,10 @@ function HikingListController(hikingService) {
         console.log(location);
         hikingService.getTrails(location, distance, length, stars) 
             .then((results) => {
-
-                console.log(results);
-
                 results.forEach(function(value, key) {
                     let trailsObj = {
                         id: value.id,
+                        caloriesBurned: null,
                         lat: value.latitude,
                         lon: value.longitude,
                         name: value.name,
@@ -37,13 +31,11 @@ function HikingListController(hikingService) {
                         imgMedium: value.imgMedium,
                         showDetails: false
                     }
-
                     ctrl.trailsArray.push(trailsObj);
                     ctrl.formatLocation =  hikingService.formatLocation;
                 });
 
-
-
+                console.log(ctrl.trailsArray);
                 ctrl.starRating();
             })
             .catch((err) => {
@@ -68,14 +60,17 @@ function HikingListController(hikingService) {
 
     }
 
-    ctrl.changeHeight = (flag, index) => {
-        ctrl.trailsArray[index].showDetails = flag;
+    ctrl.changeHeight = (flag, theId) => {
+        ctrl.trailsArray.forEach( (value, index) => {
+            console.log(value)
+            if (theId === value.id) {
+                value.showDetails = flag;
+            }
+        });
     }
 
     console.log(ctrl.formatLocation);
 }
-
- 
 
 angular
     .module('HikingApp')
@@ -88,15 +83,21 @@ angular
 
             <div class="mainContainer" id="searchResults">
 
-
-                <select ng-model="sorting">
+                <select class="sort-trail" ng-model="sorting">
                     <option selected="selected" value="stars">Stars- Low to High</option>
                     <option value="-stars">Stars- High to Low</option>
+                    <option value="-caloriesBurned">Calories- High to Low </option>
+                    <option value="caloriesBurned">Calories- Low to High </option>
                 </select>
 
+                <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id" ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
 
-                <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting " ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
+   
                 
+
+                {{trail.caloriesBurned}}
+
+
                 <div class="preview">
                     <div class="left">
                         <p style="text-overflow: ellipsis; width:200px;  white-space: nowrap; 
@@ -109,8 +110,8 @@ angular
                         </span> 
                         </div>
 
-                    <button ng-click="$ctrl.changeHeight(true, $index)" ng-if="!trail.showDetails"> Show More </button>
-                    <button ng-click="$ctrl.changeHeight(false, $index)" ng-if="trail.showDetails"> Show Less </button>
+                    <button ng-click="$ctrl.changeHeight(true, trail.id)" ng-if="!trail.showDetails"> Show More </button>
+                    <button ng-click="$ctrl.changeHeight(false, trail.id)" ng-if="trail.showDetails"> Show Less </button>
 
 
                     </div>
