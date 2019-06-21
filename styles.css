@@ -26,7 +26,21 @@
    color: #363D4F;
    transition: color 0.3s ease;
  }
- 
+
+ .buddyIconFront{
+    width: 50px;
+    height: 50px;
+    outline: none;
+ }
+ .buddyIconRepeat{
+    width: 25px;
+    height: 25px;
+    outline: none;
+ }
+ .formatLocation{
+   background: #F8F9F4
+ }
+
  #menuToggle {
    display: block;
    position: relative;
@@ -131,6 +145,20 @@
   */
  #menuToggle .routingInput:checked ~ ul {
    transform: none;
+ }
+
+ .buddyIconFront, .buddyIconRepeat {
+  display: flex;
+  border: none;
+  /* padding:10px 25px 10px 25px; */
+  text-align: center;
+  background-color: white;
+  opacity: .9;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+  margin: 25px auto;
+  border-radius: 5px;
  }
 
  .searchInput, .searchButton {
