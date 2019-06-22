@@ -78,17 +78,21 @@ angular
         template: `
 
             <search-component search-rec="$ctrl.getList(que, maxDistance, minLength, minStars)"></search-component>
-
+            
+            <div class="locationAndSort">
             <h2 class="formatLocation" ng-if="$ctrl.formatLocation != null">Showing results for {{$ctrl.formatLocation}}</h2>
-
-            <div class="mainContainer" id="searchResults">
-
-                <select class="sort-trail" ng-if="$ctrl.formatLocation != null" ng-model="sorting">
+           
+                <select class="sort-trail" ng-show="$ctrl.formatLocation" ng-model="sorting">
                     <option selected="selected" value="stars">Stars- Low to High</option>
                     <option value="-stars">Stars- High to Low</option>
                     <option value="-caloriesBurned">Calories- High to Low </option>
                     <option value="caloriesBurned">Calories- Low to High </option>
                 </select>
+            </div>
+
+            <div class="mainContainer" id="searchResults">
+
+                
 
                 <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id" ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
 

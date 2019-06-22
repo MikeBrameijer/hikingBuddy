@@ -24,8 +24,8 @@ angular
         <input class="searchInput" type="text" ng-model="location" placeholder="Enter a location..."/>
         <input class="searchInput" type="text" ng-model="distance" placeholder="Max distance..."/>
         <input class="searchInput" type="text" ng-model="length" placeholder="Min length..."/>
-        <select class="searchInput" ng-model="stars" placeholder="Min stars...">
-          <option value="">Min stars</option>
+        <select class="searchInput" ng-model="stars">
+          <option value="">Min stars...</option>
           <option value="0">Zero</option>
           <option value="1">One</option>
           <option value="2">Two</option>

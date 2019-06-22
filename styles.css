@@ -43,6 +43,10 @@
  .buddyPopUp{
    display: absolute;
  }
+ .locationAndSort{
+   display: flex;
+   flex-direction: row;
+ }
 
  #menuToggle {
    display: block;
