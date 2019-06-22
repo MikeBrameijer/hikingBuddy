@@ -78,26 +78,30 @@ angular
     .component('hikingList', {
         template: `
 
-        <search-component search-rec="$ctrl.getList(que, maxDistance, minLength, minStars)">           
-        </search-component>
 
-
+            <search-component search-rec="$ctrl.getList(que, maxDistance, minLength, minStars)"></search-component>
+            
+            <div class="locationAndSort">
             <h2 class="formatLocation" ng-if="$ctrl.formatLocation != null">Showing results for {{$ctrl.formatLocation}}</h2>
+           
+                <select class="sort-trail" ng-show="$ctrl.formatLocation" ng-model="sorting">
+                  <option value=" ">Filter By:</option>
+                  <option value="-hikingTime">Hike Time- High to Low</option>
+                  <option value="hikingTime">Hike Time- Low to High</option>
+                    <option value="-caloriesBurned">Calories- High to Low </option>
+                    <option value="caloriesBurned">Calories- Low to High </option>
+
+                </select>
+            </div>
 
             <div class="mainContainer" id="searchResults">
 
-                <select ng-model="sorting">
-                <option value=" ">Filter By:</option>
-                <option value="-hikingTime">Hike Time- High to Low</option>
-                <option value="hikingTime">Hike Time- Low to High</option>
-                <option value="-caloriesBurned">Calories- High to Low </option>
-                <option value="caloriesBurned">Calories- Low to High </option>
-                </select>
+                
 
             
                 <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id" ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
 
-   
+                <difficulty-calc class="buddyPopUp" trail="trail"></difficulty-calc>
                 
 
                 {{trail.caloriesBurned}}
@@ -153,7 +157,7 @@ angular
                 <!--<p ng-if="trail.summary != 'Needs Summary' && trail.summary != 'Needs Adoption'">
                 {{trail.summary}} </p>-->
                 <p>{{trail.summary}}</p>
-                <difficulty-calc trail="trail"></difficulty-calc>
+                
 
 
                 </div>

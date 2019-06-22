@@ -40,6 +40,13 @@
  .formatLocation{
    background: #F8F9F4
  }
+ .buddyPopUp{
+   display: absolute;
+ }
+ .locationAndSort{
+   display: flex;
+   flex-direction: row;
+ }
 
  #menuToggle {
    display: block;
