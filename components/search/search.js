@@ -20,15 +20,20 @@ angular
   .module("HikingApp")
   .component("searchComponent", {
     template: `
+        
+    <div class="search-container">
 
-        <input class="searchInput" type="text" ng-model="location" placeholder="Enter a location..."/>
-        <input class="searchInput" type="text" ng-model="distance" placeholder="Max distance..."/>
-        <input class="searchInput" type="text" ng-model="length" placeholder="Min length..."/>
-        <input class="searchInput" type="text" ng-model="stars" placeholder="Min stars..."/>
+       <input class="searchInput location-search" type="text" ng-model="location" placeholder="Enter a location..."/>
+        
+        <div class="extra-search-params">
+        <input class="searchInput secondary-search-param" type="text" ng-model="distance" placeholder="Max distance..."/>
+        <input class="searchInput secondary-search-param" type="text" ng-model="length" placeholder="Min length..."/>
+        <input class="searchInput secondary-search-param" type="text" ng-model="stars" placeholder="Min stars..."/>
+        </div>
+
         <button class="searchButton" ng-click="$ctrl.getSearch(location, distance, length, stars)">Search</button>
-    
-    
-    
+
+        </div>
     `,  
     controller: SearchController,
     bindings: {
