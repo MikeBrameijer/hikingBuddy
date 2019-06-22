@@ -13,6 +13,7 @@ function HikingListController(hikingService) {
                     let trailsObj = {
                         id: value.id,
                         caloriesBurned: null,
+                        hikingTime: null,
                         lat: value.latitude,
                         lon: value.longitude,
                         name: value.name,
@@ -77,16 +78,19 @@ angular
     .component('hikingList', {
         template: `
 
+
             <search-component search-rec="$ctrl.getList(que, maxDistance, minLength, minStars)"></search-component>
             
             <div class="locationAndSort">
             <h2 class="formatLocation" ng-if="$ctrl.formatLocation != null">Showing results for {{$ctrl.formatLocation}}</h2>
            
                 <select class="sort-trail" ng-show="$ctrl.formatLocation" ng-model="sorting">
-                    <option selected="selected" value="stars">Stars- Low to High</option>
-                    <option value="-stars">Stars- High to Low</option>
+                  <option value=" ">Filter By:</option>
+                  <option value="-hikingTime">Hike Time- High to Low</option>
+                  <option value="hikingTime">Hike Time- Low to High</option>
                     <option value="-caloriesBurned">Calories- High to Low </option>
                     <option value="caloriesBurned">Calories- Low to High </option>
+
                 </select>
             </div>
 
@@ -94,6 +98,7 @@ angular
 
                 
 
+            
                 <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id" ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
 
                 <difficulty-calc class="buddyPopUp" trail="trail"></difficulty-calc>

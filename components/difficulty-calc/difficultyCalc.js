@@ -34,6 +34,7 @@ function DifficultyCalcController() {
 
         }
 
+        ctrl.trail.hikingTime = ctrl.totalHikeTime; 
         return ctrl.formatTime;
     }
 
