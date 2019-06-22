@@ -134,16 +134,16 @@
  }
 
  .searchInput, .searchButton {
-   display: flex;
+   /* display: flex; */
    border: none;
    padding:10px 25px 10px 25px;
    text-align: center;
    background-color: white;
    opacity: .9;
    font-size: 12px;
-   justify-content: center;
-   align-items: center;
-   margin: 25px auto;
+   /* justify-content: center; */
+   /* align-items: center; */
+   /* margin: 25px auto; */
    border-radius: 5px;
    
    /* border: none;
@@ -152,8 +152,8 @@
 
  .searchInput {
    margin-bottom: 7px;
-   /* height: 36px;
-   width: 279px; */
+   width: 100px;
+   margin: 6px;
  }
 
  .searchButton {
@@ -161,6 +161,7 @@
    /* width: 279px;
    height: 36px; */
    outline: none;
+   width: inherit;
   
  }
 
@@ -385,10 +386,50 @@
     opacity: .9;
     display: flex;
     border: none;
+    height: 30px;
     padding:10px 25px 10px 25px;
+}
+
+
+/* .collapsible-search {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+} */
+.search-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85vw;
+    margin: 0 auto;
+    
+}
+
+.seach-components {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.extra-search-params {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 7px;
 
 }
 
+.location-search {
+    width: inherit;
+}
+
+.secondary-search-param {
+    width: 75px;
+}
+/* .added-search-params {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    justify-content: center;
+} */
 
 
 @media only screen and (min-width: 768px) {
@@ -406,6 +447,10 @@
 
         .trailFinder {
           margin-bottom: -14px;
+        }
+
+        .search-container {
+            width: 27.5vw;
         }
 }
 
@@ -439,5 +484,7 @@
       display: flex;
       font-size: 45px;
     }
+
+
 
 }
