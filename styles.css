@@ -40,8 +40,10 @@
  .formatLocation{
    background: #F8F9F4
  }
- .buddyPopUp{
-   display: absolute;
+ .buddy-popup {
+     border: solid 1px black;
+     margin: 12px;
+     padding: 12px;
  }
  .locationAndSort{
    display: flex;
@@ -347,6 +349,8 @@
 
 .preview {
     display: flex;
+    position: relative;
+    z-index: 1;
     padding: 15px;
     justify-content: space-around;
     width: inherit;
@@ -394,9 +398,9 @@
 }
 
 .show {
- 
+    position: relative;
+    z-index: 10;
     visibility: visible;
-    
     /* -webkit-transition: visibility 1s;
     transition: visibility 1s; */
 }
@@ -465,7 +469,18 @@
     width: 400px;
     justify-content: center;
 } */
+.hiking-buddy-list {
+    list-style-type: none;
+}
 
+.hiking-buddy-list > li {
+    margin-bottom: 10px;
+}
+
+.buddy-description-icons {
+    width: 25px;
+    height: 25px;
+}
 
 @media only screen and (min-width: 768px) {
 

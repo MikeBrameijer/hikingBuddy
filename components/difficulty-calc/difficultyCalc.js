@@ -135,30 +135,36 @@ function DifficultyCalcController() {
 angular.module("HikingApp")
 .component("difficultyCalc", {
     template: `
-    <div ng-if="$ctrl.showAssistant" class="window"></div>
-    <div ng-if="$ctrl.showAssistant" class="show">
+   <!-- <div ng-if="$ctrl.showAssistant" class="window"></div> 
+    <div ng-if="$ctrl.showAssistant" class="show"> -->
+
+    <div class="buddy-popup">
         <h2>Hiking Buddy</h2>
         <h3>{{$ctrl.trail.name}}</h3>
-        {{ $ctrl.trailResponse }}
-        <br>
-        This {{$ctrl.trail.length}} mile trail should take you about {{$ctrl.totalHikeTimeFormat}}.
-        <br>
-        I would recommend that you take {{$ctrl.totalWaterIntakeFormat}} of water.
-        <br>
-        You will probaly burn about {{$ctrl.totalCalsBurnFormat}} so bring some trail mix.
-        <br>
 
-        This trail has a {{$ctrl.trail.difficulty}} meaning {{$ctrl.difficultyConv}}.
-        <br>
-        Personally I think that if you are a Novice hiker this will be {{$ctrl.difficultySuggestion}} hike.
+        <ul class="hiking-buddy-list">
+        <li><span><img class="buddy-description-icons" src="assets/gold-star.svg"></span> <span>{{ $ctrl.trailResponse }}</span></li>
+
+        <li><span><img class="buddy-description-icons" src="assets/clock.svg"></span> <span>This {{$ctrl.trail.length}} mile trail should take you about {{$ctrl.totalHikeTimeFormat}}.</span></li>
+        
+        <li><span><img class="buddy-description-icons" src="assets/filled-water.svg"/></span> <span>I would recommend that you take {{$ctrl.totalWaterIntakeFormat}} of water.</span></li>
+        
+        <li><span><img class="buddy-description-icons" src="assets/red-fire.svg"/></span> <span>On Average, hikers burn {{$ctrl.totalCalsBurnFormat}} calories on this trail.</span></li>
+        
+
+        <li><span><img class="buddy-description-icons" src="assets/blue-square.svg"/></span> <span>Difficulty: {{$ctrl.trail.difficulty}}.  {{$ctrl.difficultyConv}}.</span></li>
+
+        <li><span><img class="buddy-description-icons" src="assets/info.svg"></span> <span>Personally I think that if you are a Novice hiker this will be {{$ctrl.difficultySuggestion}} hike.</span></li>
+        </ul>
 
 
 
     
     </div>
-    <button class="buddyIconRepeat"><img class="buddyIconRepeat" src="assets/buddyIcon.png"></button>
-    <button ng-click="$ctrl.show()">Show Assistant</button>
-    <button ng-click="$ctrl.hide()">Hide Assistant</button>
+    <!--<button class="buddyIconRepeat"><img class="buddyIconRepeat" src="assets/buddyIcon.png"></button>-->
+   
+   <!-- <button ng-click="$ctrl.show()">Show Assistant</button>
+    <button ng-click="$ctrl.hide()">Hide Assistant</button> -->
     
     `,
     controller: DifficultyCalcController,
