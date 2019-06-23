@@ -42,6 +42,7 @@
  }
  .buddy-popup {
      border: solid 1px black;
+     background-color: #363D4F;
      margin: 12px;
      padding: 12px;
  }

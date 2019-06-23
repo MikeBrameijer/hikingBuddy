@@ -78,7 +78,6 @@ angular
     .component('hikingList', {
         template: `
 
-
             <search-component search-rec="$ctrl.getList(que, maxDistance, minLength, minStars)"></search-component>
             
             <div class="locationAndSort">
@@ -101,17 +100,14 @@ angular
             
                 <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id" ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
 
-
                 
-
                 
 
                 {{trail.caloriesBurned}}
 
 
                 <div class="preview">
-                
-
+               <difficulty-calc class="buddy-popup" trail="trail"></difficulty-calc>
                     <div class="left">
                         <p style="text-overflow: ellipsis; width:200px;  white-space: nowrap; 
                         overflow: hidden;">{{trail.name}}</p>
@@ -167,7 +163,7 @@ angular
 
 
                 </div>
-                <difficulty-calc trail="trail"></difficulty-calc>
+                <!--<difficulty-calc trail="trail"></difficulty-calc>-->
                 </div>
 
                 </div>
