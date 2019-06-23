@@ -3,11 +3,6 @@ function HikingListController(hikingService) {
     ctrl.trailsArray = [];
     ctrl.allTrailsRating = [];
 
-    ctrl.addFavorite = (favoriteParam) => {
-        hikingSerive.setFavorites(favoriteParam);
-        console.log("saved clicked");
-        }
-
     ctrl.getList = (location, distance, length, stars) => {
         ctrl.trailsArray = [];
 
@@ -85,7 +80,6 @@ angular
             <search-component search-rec="$ctrl.getList(que, maxDistance, minLength, minStars)"></search-component>
             
             <div class="locationAndSort">
-
             <h2 class="formatLocation" ng-if="$ctrl.formatLocation != null">Showing results for {{$ctrl.formatLocation}}</h2>
            
                 <select class="sort-trail" ng-show="$ctrl.formatLocation" ng-model="sorting">
@@ -102,8 +96,6 @@ angular
                 
                 
                 {{trail.caloriesBurned}}
-
-                
                 <div class="preview">
                <difficulty-calc class="buddy-popup" trail="trail"></difficulty-calc>
                     <div class="left">
@@ -159,13 +151,3 @@ angular
         //   onUpdate: '&'
         // }
     });
-
-    
-  
- 
-
-
-
-
-
-

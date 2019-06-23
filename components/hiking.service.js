@@ -4,7 +4,7 @@ function HikingService($http, $q) {
     service.key = '200488347-7449e5616f0f75c446c24d3c0da3ba39';
     service.geoKey = 'AIzaSyAzWLrTiTrHUeTKCGNNpPkFLVrJ-ncycK0';
 
-    service.getTrails = (search) => {
+    service.getTrails = (search, distance, length, stars) => {
         return $q(function (resolve, reject) {
 
         service.getGeocode(search)
@@ -12,17 +12,18 @@ function HikingService($http, $q) {
             
             service.trailLat = results.lat;
             service.trailLon = results.lon;
+            service.formatLocation = results.formatLocation;
         
             let url = 'https://www.hikingproject.com/data/get-trails';
             let apiParam = {
                 lat: service.trailLat,
                 lon: service.trailLon,
                 //NOTE: distance refers to distance between trail and LAT&LONG point(miles)
-                // maxDistance: 100,
+                maxDistance: distance,
                 // maxResults: 3,
                 //NOTE: minLength refers to length of trail(miles)
-                // minLength: 100,
-                // minStars: 4,
+                minLength: length,
+                minStars: stars,
                 //NOTE: Need to find sortby values other than distance & quality
                 sort: 'distance',
                 key: service.key
@@ -50,47 +51,32 @@ function HikingService($http, $q) {
     })
     }
 
- 
-
-    // service.getCamping = (campingSearch) => {
-    //     return $q(function (resolve, reject) {
-
-    //     service.getGeocode(campingSearch)
-    //         .then((results) => {
-
-    //             service.campLat = results.lat;
-    //             service.campLon = results.lon;
-
-    //     let url = 'https://www.hikingproject.com/data/get-campgrounds';
-    //     let apiParam = {
-    //         lat: service.campLat,
-    //         lon: service.campLon,
-    //         sort: 'distance',
-    //         key: service.key
-    //     }
-       
-    //         $http({
-    //             url: url,
-    //             method: 'GET',
-    //             params: apiParam,
-    //         })
-    //             .then((response) => {
-
-    //                 console.log("getCampgrounds service response");
-    //                 console.log(response.data.campgrounds);
-
-    //                 service.globalLocation = response.data.campgrounds;
-
-    //                 resolve(response.data.campgrounds);
-    //             })
-    //             .catch((err) => {
-    //                 console.log("Camping didn't work in the service");
-    //                 console.log(err);
-    //                 reject(error);
-    //             })
-    //     })
-    // })
-    // }
+    service.getCamping = (locationLat, localtionLon) => {
+        let url = 'https://www.hikingproject.com/data/get-campgrounds';
+        let apiParam = {
+            lat: locationLat,
+            lon: localtionLon,
+            sort: 'distance',
+            key: service.key
+        }
+        return $q(function (resolve, reject) {
+            $http({
+                url: url,
+                method: 'GET',
+                params: apiParam,
+            })
+                .then((response) => {
+                    // console.log("getCampgrounds service response");
+                    // console.log(response.data.campgrounds);
+                    resolve(response.data.campgrounds);
+                })
+                .catch((err) => {
+                    // console.log("Camping didn't work in the service");
+                    // console.log(err);
+                    reject(error);
+                })
+        })
+    }
 
     service.getGeocode = (search) => {
         let url = 'https://maps.googleapis.com/maps/api/geocode/json';
@@ -106,7 +92,9 @@ function HikingService($http, $q) {
                 params: apiParam,
             })
                 .then((response) => {
+                    console.log(response);
                     let location = {
+                        formatLocation: response.data.results[0].formatted_address,
                         lat:  response.data.results[0].geometry.location.lat,
                         lon: response.data.results[0].geometry.location.lng
                     }
@@ -128,19 +116,11 @@ function HikingService($http, $q) {
                     reject(error);
                 })
         })
-    
+    }
 
-
-    }
-    service.setFavorites = (favoriteParam) => {
-        service.favoriteArray.push(favoriteParam);
-    }
-    service.setRemoveFavorites = (removeParam) => {
-        service.favoriteArray.splice(service.favoriteArray.indexOf(removeParam), 1);
-    }
-}
    
- 
+ }
+
 angular
     .module('HikingApp')
     .service('hikingService', HikingService);

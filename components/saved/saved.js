@@ -1,58 +1,45 @@
-"use strict";
-function SavedController(hikingService) {  
-    const ctrl = this;
+// "use strict";
+// function SavedController(hikingService) {  
+//     const ctrl = this;
+//     ctrl.search = "";
+//     ctrl.favs = null;
 
-    ctrl.favoriteArray = hikingService.favoriteArray;
-        console.log(favoriteArray);
+//     ctrl.favs = HikingService.getFavorites();
+//     console.log(`favs:`)
 
-    ctrl.setRemoveFavorites = (removeParam) => {
-        hikingService.setRemoveFavorites(removeParam)
-        console.log("it's gone from the fave. list");
-    }
-}
-
-angular
-  .module("HikingApp")
-  .component("savedComponent", {
-    template: `
-
-    <section id="saved-component">
-
-    <div class="contentContainer">
-    <div class="cardContainer">
-        <div ng-repeat="trail in $ctrl.favoriteArray" class="fullTrail"
-            <div class="favorite" ng-click="$ctrl.setRemoveFavorites(trail)">
-            <i class="material-icons favoriteIcon whiteIcon">remove_circle</i>
-            <i class="material-icons favoriteIcon redIcon">remove_circle_outline</i>
-              
-          </div>
+//     ctrl.removeTrail = function (key, value) {
+//         ctrl.favs.splice(key, 1)
+//     }
 
 
+// };
+
+// angular
+//   .module("HikingApp")
+//   .component("savedComponent", {
+//     template: `
+
+//     <section id="saved-component">
+
+//     <div ng-repeat="trail in $ctrl.favs" class="card mb-4">
+//     <div class="card-deck text-center">
+//     <div ng-class="row">
+//     <p>{{trail.location}}</p>
+
+
+//     <button class="btn btn-primary" ng-click="$ctrl.removeTrail($index, trail)">Remove from Favorites</button>
+ 
 
 
 
-
-
-    <h1>this is the saved page</h1>
+//     <h1>this is the saved page</h1>
 
   
-      </section>
+//       </section>
   
     
-    `,  
-    controller: SavedController,
+//     `,  
+//     controller: SavedController,
 
-});
+// });
 
-{/* <div class = "savedTrail" ng-repeat = "trail in $ctrl.saveArray">
-<div class = "trailContainer">
-<h1 class = "trailName" ng-click = "show=!show">{{trail.name}}</h1>
-
-<div class="mountainContainer">
-    <i class="material-icons star" ng-hide = "trail.starred" ng-click = "$ctrl.setRemovedSaved(trail)">star_border</i>
-
-    <i class = "material-icons star" ng-show = "trail.starred" ng-click = "$ctrl.setRemovedSaved(trail)">star</i>
-
-</div>
-</div>
-</div> */}

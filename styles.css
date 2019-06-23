@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Anton|Open+Sans+Condensed:300&display=swap');
  
@@ -26,7 +27,31 @@
    color: #363D4F;
    transition: color 0.3s ease;
  }
- 
+
+ .buddyIconFront{
+    width: 50px;
+    height: 50px;
+    outline: none;
+ }
+ .buddyIconRepeat{
+    width: 25px;
+    height: 25px;
+    outline: none;
+ }
+ .formatLocation{
+   background: #F8F9F4
+ }
+ .buddy-popup {
+     border: solid 1px black;
+     background-color: #363D4F;
+     margin: 12px;
+     padding: 12px;
+ }
+ .locationAndSort{
+   display: flex;
+   flex-direction: row;
+ }
+
  #menuToggle {
    display: block;
    position: relative;
@@ -133,17 +158,31 @@
    transform: none;
  }
 
+ .buddyIconFront, .buddyIconRepeat {
+  display: flex;
+  border: none;
+  /* padding:10px 25px 10px 25px; */
+  text-align: center;
+  background-color: white;
+  opacity: .9;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+  margin: 25px auto;
+  border-radius: 5px;
+ }
+
  .searchInput, .searchButton {
-   display: flex;
+   /* display: flex; */
    border: none;
    padding:10px 25px 10px 25px;
    text-align: center;
    background-color: white;
    opacity: .9;
    font-size: 12px;
-   justify-content: center;
-   align-items: center;
-   margin: 25px auto;
+   /* justify-content: center; */
+   /* align-items: center; */
+   /* margin: 25px auto; */
    border-radius: 5px;
    
    /* border: none;
@@ -152,8 +191,8 @@
 
  .searchInput {
    margin-bottom: 7px;
-   /* height: 36px;
-   width: 279px; */
+   width: 100px;
+   margin: 6px;
  }
 
  .searchButton {
@@ -161,6 +200,7 @@
    /* width: 279px;
    height: 36px; */
    outline: none;
+   width: inherit;
   
  }
 
@@ -193,7 +233,6 @@
    font-family: 'Open Sans Condensed', sans-serif;
    font-weight: 100;
    font-size: 20px;
-  
  }
 
  .mountainImage {
@@ -287,7 +326,6 @@
     width: 95vw;
     height: 120px;
     margin: 10px;
-
     color: black;
     background-color: white;
     opacity: .65;
@@ -295,7 +333,6 @@
     border-radius: 5px;
     box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.2);
    
-
 } */
 
 .container {
@@ -312,6 +349,8 @@
 
 .preview {
     display: flex;
+    position: relative;
+    z-index: 1;
     padding: 15px;
     justify-content: space-around;
     width: inherit;
@@ -335,7 +374,6 @@
     border: 2px solid black;
 }
 
-
 .starRating {
     display: flex;
     width: auto;
@@ -344,16 +382,13 @@
 .star {
     height:30px;
     width: 30px;
-
 }
 
 .fullView {
     height: auto;
-    
-
     /* -webkit-transition: 1s;
-    transition: 1s;
-    background-color: red;
+    transition: 1s; */
+    /* background-color: red; */
 }
 
 .partialView {
@@ -363,9 +398,9 @@
 }
 
 .show {
- 
+    position: relative;
+    z-index: 10;
     visibility: visible;
-    
     /* -webkit-transition: visibility 1s;
     transition: visibility 1s; */
 }
@@ -383,7 +418,69 @@
     margin: 24px;
 }
 
+.sort-trail {
+    margin: 25px auto;
+    border-radius: 5px;
+    background-color: white;
+    opacity: .9;
+    display: flex;
+    border: none;
+    height: 30px;
+    padding:10px 25px 10px 25px;
+}
 
+
+/* .collapsible-search {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+} */
+.search-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85vw;
+    margin: 0 auto;
+    
+}
+
+.seach-components {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.extra-search-params {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 7px;
+
+}
+
+.location-search {
+    width: inherit;
+}
+
+.secondary-search-param {
+    width: 75px;
+}
+/* .added-search-params {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    justify-content: center;
+} */
+.hiking-buddy-list {
+    list-style-type: none;
+}
+
+.hiking-buddy-list > li {
+    margin-bottom: 10px;
+}
+
+.buddy-description-icons {
+    width: 25px;
+    height: 25px;
+}
 
 @media only screen and (min-width: 768px) {
 
@@ -402,10 +499,9 @@
           margin-bottom: -14px;
         }
 
-
-
-
-
+        .search-container {
+            width: 27.5vw;
+        }
 }
 
 
@@ -438,5 +534,7 @@
       display: flex;
       font-size: 45px;
     }
+
+
 
 }

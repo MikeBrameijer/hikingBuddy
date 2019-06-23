@@ -1,4 +1,3 @@
-
 function expandComponent() {
     const ctrl = this;
 
