@@ -101,13 +101,14 @@ angular
             
                 <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id" ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
 
-                <difficulty-calc class="buddyPopUp" trail="trail"></difficulty-calc>
+                
                 
 
                 {{trail.caloriesBurned}}
 
 
                 <div class="preview">
+                <difficulty-calc class="buddyPopUp" trail="trail"></difficulty-calc>
                     <div class="left">
                         <p style="text-overflow: ellipsis; width:200px;  white-space: nowrap; 
                         overflow: hidden;">{{trail.name}}</p>
