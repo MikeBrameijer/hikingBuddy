@@ -51,7 +51,7 @@ function DifficultyCalcController() {
         //     //if no weight is entered then set a defulat weight of 170 lbs
         // }
         let weightKgs = weight * 0.454;
-        let metValue = 6.5;
+        let metValue = 6;
         ctrl.calsPerHour = weightKgs * metValue;
         ctrl.totalCalsBurnFormat = Math.round(ctrl.calsPerHour * (ctrl.totalHikeTime / 60));
 
@@ -85,13 +85,13 @@ function DifficultyCalcController() {
     ctrl.calculateDifficulty = (expLvl) => {
         // formula from https://www.hikingincolorado.org/hikecalc.html
         // Rating (Novice) = ( 0.002 x elevation gain [ in feet ] ) + round trip distance [ in miles ]
-        // Rating (Expert) = ( 0.0005 x elevation gain [ in feet ] ) + round trip distance / 2 [ in miles ]
+        // Rating (Experienced) = ( 0.0005 x elevation gain [ in feet ] ) + round trip distance / 2 [ in miles ]
         ctrl.hikerExpLvl = expLvl;
         
         if(ctrl.hikerExpLvl === "Novice"){
             ctrl.difficultyRating = (.002 * ctrl.trail.ascent) + ctrl.trail.length;
         }
-        if(ctrl.hikerExpLvl === "Expert"){
+        if(ctrl.hikerExpLvl === "Experienced"){
             ctrl.difficultyRating = (.0005 * ctrl.trail.ascent) + (ctrl.trail.length / 2);
         }
         // console.log("difficultyRating " + ctrl.difficultyRating);
@@ -145,13 +145,20 @@ angular.module("HikingApp")
         <br>
         I would recommend that you take {{$ctrl.totalWaterIntakeFormat}} of water.
         <br>
-        You will probaly burn about {{$ctrl.totalCalsBurnFormat}} so bring some trail mix.
+        You will probaly burn about {{$ctrl.totalCalsBurnFormat}} if you weigh 
+        <input  type="number" ng-model="hikerWeight" ng-init="hikerWeight = 170" ng-change="$ctrl.calculateCalories(hikerWeight)">
+         so bring some trail mix.
         <br>
 
         This trail has a {{$ctrl.trail.difficulty}} meaning {{$ctrl.difficultyConv}}.
         <br>
-        Personally I think that if you are a Novice hiker this will be {{$ctrl.difficultySuggestion}} hike.
-
+        Personally I think that if you are a 
+        <select ng-model="expLevel" ng-init="expLevel = 'Novice'" ng-change="$ctrl.calculateDifficulty(expLevel)">
+          <option value="Novice" selected >Novice</option>
+          <option value="Experienced">Experienced</option>
+        </select>
+         hiker this will be {{$ctrl.difficultySuggestion}} hike.
+        
 
 
     
