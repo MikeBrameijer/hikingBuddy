@@ -135,37 +135,43 @@ function DifficultyCalcController() {
 angular.module("HikingApp")
 .component("difficultyCalc", {
     template: `
-    <div ng-if="$ctrl.showAssistant" class="window"></div>
-    <div ng-if="$ctrl.showAssistant" class="show">
+   <!-- <div ng-if="$ctrl.showAssistant" class="window"></div> 
+    <div ng-if="$ctrl.showAssistant" class="show"> -->
+
+    <div class="buddy-popup">
         <h2>Hiking Buddy</h2>
         <h3>{{$ctrl.trail.name}}</h3>
-        {{ $ctrl.trailResponse }}
-        <br>
-        This {{$ctrl.trail.length}} mile trail should take you about {{$ctrl.totalHikeTimeFormat}}.
-        <br>
-        I would recommend that you take {{$ctrl.totalWaterIntakeFormat}} of water.
-        <br>
-        You will probaly burn about {{$ctrl.totalCalsBurnFormat}} if you weigh 
-        <input  type="number" ng-model="hikerWeight" ng-init="hikerWeight = 170" ng-change="$ctrl.calculateCalories(hikerWeight)">
-         so bring some trail mix.
-        <br>
 
-        This trail has a {{$ctrl.trail.difficulty}} meaning {{$ctrl.difficultyConv}}.
-        <br>
-        Personally I think that if you are a 
+        <ul class="hiking-buddy-list">
+        <li><span><img class="buddy-description-icons" src="assets/gold-star.svg"></span> <span>{{ $ctrl.trailResponse }}</span></li>
+
+        <li><span><img class="buddy-description-icons" src="assets/clock.svg"></span> <span>This {{$ctrl.trail.length}} mile trail should take you about {{$ctrl.totalHikeTimeFormat}}.</span></li>
+        
+        <li><span><img class="buddy-description-icons" src="assets/filled-water.svg"/></span> <span>I would recommend that you take {{$ctrl.totalWaterIntakeFormat}} of water.</span></li>
+        
+        <li><span><img class="buddy-description-icons" src="assets/red-fire.svg"/></span> <span>You will probaly burn about {{$ctrl.totalCalsBurnFormat}} if you weigh 
+        <input  type="number" ng-model="hikerWeight" ng-init="hikerWeight = 170" ng-change="$ctrl.calculateCalories(hikerWeight)"></span></li>
+        
+
+        <li><span><img class="buddy-description-icons" src="assets/blue-square.svg"/></span> <span>Difficulty: {{$ctrl.trail.difficulty}}.  {{$ctrl.difficultyConv}}.</span></li>
+
+        <li><span><img class="buddy-description-icons" src="assets/info.svg"></span> <span>Personally I think that if you are a 
         <select ng-model="expLevel" ng-init="expLevel = 'Novice'" ng-change="$ctrl.calculateDifficulty(expLevel)">
           <option value="Novice" selected >Novice</option>
           <option value="Experienced">Experienced</option>
         </select>
-         hiker this will be {{$ctrl.difficultySuggestion}} hike.
-        
+         hiker this will be {{$ctrl.difficultySuggestion}} hike.</span></li>
+        </ul>
+
+
 
 
     
     </div>
-    <button class="buddyIconRepeat"><img class="buddyIconRepeat" src="assets/buddyIcon.png"></button>
-    <button ng-click="$ctrl.show()">Show Assistant</button>
-    <button ng-click="$ctrl.hide()">Hide Assistant</button>
+    <!--<button class="buddyIconRepeat"><img class="buddyIconRepeat" src="assets/buddyIcon.png"></button>-->
+   
+   <!-- <button ng-click="$ctrl.show()">Show Assistant</button>
+    <button ng-click="$ctrl.hide()">Hide Assistant</button> -->
     
     `,
     controller: DifficultyCalcController,
