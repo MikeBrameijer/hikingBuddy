@@ -50,12 +50,16 @@ function HikingService($http, $q) {
     })
     }
 
+ 
+
     // service.getCamping = (campingSearch) => {
     //     return $q(function (resolve, reject) {
-    //         service.getGeocode(campingSearch)
+
+    //     service.getGeocode(campingSearch)
     //         .then((results) => {
-    //             service.campingLat = results.campLat;
-    //             service.campingLon = results.campLon;
+
+    //             service.campLat = results.lat;
+    //             service.campLon = results.lon;
 
     //     let url = 'https://www.hikingproject.com/data/get-campgrounds';
     //     let apiParam = {
@@ -71,47 +75,22 @@ function HikingService($http, $q) {
     //             params: apiParam,
     //         })
     //             .then((response) => {
-    //                 // console.log("getCampgrounds service response");
-    //                 // console.log(response.data.campgrounds);
+
+    //                 console.log("getCampgrounds service response");
+    //                 console.log(response.data.campgrounds);
+
     //                 service.globalLocation = response.data.campgrounds;
 
     //                 resolve(response.data.campgrounds);
     //             })
     //             .catch((err) => {
-    //                 // console.log("Camping didn't work in the service");
-    //                 // console.log(err);
+    //                 console.log("Camping didn't work in the service");
+    //                 console.log(err);
     //                 reject(error);
     //             })
     //     })
+    // })
     // }
-
-    service.getCamping = (locationLat, localtionLon) => {
-        let url = 'https://www.hikingproject.com/data/get-campgrounds';
-        let apiParam = {
-            lat: locationLat,
-            lon: localtionLon,
-            sort: 'distance',
-            key: service.key
-        }
-        return $q(function (resolve, reject) {
-            $http({
-                url: url,
-                method: 'GET',
-                params: apiParam,
-            })
-                .then((response) => {
-                    // console.log("getCampgrounds service response");
-                    // console.log(response.data.campgrounds);
-                    resolve(response.data.campgrounds);
-                })
-                .catch((err) => {
-                    // console.log("Camping didn't work in the service");
-                    // console.log(err);
-                    reject(error);
-                })
-        })
-    }
-
 
     service.getGeocode = (search) => {
         let url = 'https://maps.googleapis.com/maps/api/geocode/json';
@@ -149,11 +128,19 @@ function HikingService($http, $q) {
                     reject(error);
                 })
         })
+    
+
+
     }
-
+    service.setFavorites = (favoriteParam) => {
+        service.favoriteArray.push(favoriteParam);
+    }
+    service.setRemoveFavorites = (removeParam) => {
+        service.favoriteArray.splice(service.favoriteArray.indexOf(removeParam), 1);
+    }
+}
    
- }
-
+ 
 angular
     .module('HikingApp')
     .service('hikingService', HikingService);

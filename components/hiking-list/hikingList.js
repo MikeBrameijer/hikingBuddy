@@ -1,24 +1,24 @@
 function HikingListController(hikingService) {
     const ctrl = this;
-
-    // ctrl.expandContainer = false;
-
-
     ctrl.trailsArray = [];
     ctrl.allTrailsRating = [];
 
-    ctrl.getList = (location) => {
+    ctrl.addFavorite = (favoriteParam) => {
+        hikingSerive.setFavorites(favoriteParam);
+        console.log("saved clicked");
+        }
+
+    ctrl.getList = (location, distance, length, stars) => {
         ctrl.trailsArray = [];
 
         console.log(location);
-        hikingService.getTrails(location) 
+        hikingService.getTrails(location, distance, length, stars) 
             .then((results) => {
-
-                console.log(results);
-
                 results.forEach(function(value, key) {
                     let trailsObj = {
                         id: value.id,
+                        caloriesBurned: null,
+                        hikingTime: null,
                         lat: value.latitude,
                         lon: value.longitude,
                         name: value.name,
@@ -37,45 +37,17 @@ function HikingListController(hikingService) {
                         imgMedium: value.imgMedium,
                         showDetails: false
                     }
-
                     ctrl.trailsArray.push(trailsObj);
+                    ctrl.formatLocation =  hikingService.formatLocation;
                 });
 
-
-
+                console.log(ctrl.trailsArray);
                 ctrl.starRating();
             })
             .catch((err) => {
                 console.log(err);
             });
     }
-
-    
-    // ctrl.campgroundArray = [];
-    // ctrl.allCampgoundsRating = [];
-
-    // ctrl.getListofC = (location) => {
-    //     console.log(location);
-    //     hikingService.getCamping(location) 
-    //         .then((results) => {
-
-    //             results.forEach(function(value, key) {
-    //                 let campgroundsObj = {
-    //                     id: value.id,
-    //                     lat: value.latitude,
-    //                     lon: value.longitude,
-    //                     name: value.name,
-    //                     location: value.location,
-    //                     showDetails: false
-    //                 }
-
-    //                 ctrl.campgroundArray.push(campgroundsObj);
-    //             });
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    // }
 
     ctrl.starRating = () => {
         let filledStar = 'assets/gold-star.svg';
@@ -94,83 +66,89 @@ function HikingListController(hikingService) {
 
     }
 
-    ctrl.changeHeight = (flag, index) => {
-        ctrl.trailsArray[index].showDetails = flag;
+    ctrl.changeHeight = (flag, theId) => {
+        ctrl.trailsArray.forEach( (value, index) => {
+            console.log(value)
+            if (theId === value.id) {
+                value.showDetails = flag;
+            }
+        });
     }
+
+    console.log(ctrl.formatLocation);
 }
- 
 
 angular
     .module('HikingApp')
     .component('hikingList', {
         template: `
+            <search-component search-rec="$ctrl.getList(que, maxDistance, minLength, minStars)"></search-component>
+            
+            <div class="locationAndSort">
 
-            <search-component search-rec="$ctrl.getList(que)"></search-component>
-
+            <h2 class="formatLocation" ng-if="$ctrl.formatLocation != null">Showing results for {{$ctrl.formatLocation}}</h2>
+           
+                <select class="sort-trail" ng-show="$ctrl.formatLocation" ng-model="sorting">
+                  <option value=" ">Filter By:</option>
+                  <option value="-hikingTime">Hike Time- High to Low</option>
+                  <option value="hikingTime">Hike Time- Low to High</option>
+                    <option value="-caloriesBurned">Calories- High to Low </option>
+                    <option value="caloriesBurned">Calories- Low to High </option>
+                </select>
+            </div>
             <div class="mainContainer" id="searchResults">
+            
+                <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id" ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
+                
+                
+                {{trail.caloriesBurned}}
 
-                <div class="container" ng-repeat="trail in $ctrl.trailsArray" ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
-
+                
                 <div class="preview">
+               <difficulty-calc class="buddy-popup" trail="trail"></difficulty-calc>
                     <div class="left">
                         <p style="text-overflow: ellipsis; width:200px;  white-space: nowrap; 
                         overflow: hidden;">{{trail.name}}</p>
-
-
                         <div class="starRating" >
                         <span ng-repeat="star in trail.starsImg track by $index">
                         <img class="star" src="{{star}}"/>
                         </span> 
                         </div>
-
-                    <button ng-click="$ctrl.changeHeight(true, $index)" ng-if="!trail.showDetails"> Show More </button>
-                    <button ng-click="$ctrl.changeHeight(false, $index)" ng-if="trail.showDetails"> Show Less </button>
-
-
+                    <button ng-click="$ctrl.changeHeight(true, trail.id)" ng-if="!trail.showDetails"> Show More </button>
+                    <button ng-click="$ctrl.changeHeight(false, trail.id)" ng-if="trail.showDetails"> Show Less </button>
                     </div>
-
                     <div class="right">
                         <p>length: {{trail.length}} miles</p>
                         <p>Difficulty: {{trail.difficulty}} </p>
                     </div>
                     
                 </div>
-
                 <div ng-class="{true: 'show', false: 'hide'}[trail.showDetails == true]">
-
-
                 <div class="trail-details details-1>
                 <p style="font-weight:bold">Trail</p>
                 <p>Location: {{trail.location}}</p>
                     <p>Peak: {{trail.high}}ft</p>
                     <p>Type: {{trail.type}}</p>
                 </div>
-
                 <div class="trail-details details-2">
                     <p style="font-weight:bold">Condition</p>
                     <p>Condition Date: {{trail.conditionDate}}</p>
                     <p> Condition Status: {{trail.conditionStatus}}</p>
                     <p>Difficulty: {{trail.difficulty}}
                 </div>
-
                 <div class="trail-details details-3">
                     <p style="font-weight:bold"> Summary</p>
                 
                 <!--    <a ng-if="trail.imgSmallMed != ''" href="{{trail.url}}"><img src="{{trail.imgSmallMed}}"/></a> -->
-
                 <!--<p ng-if="trail.summary != 'Needs Summary' && trail.summary != 'Needs Adoption'">
                 {{trail.summary}} </p>-->
                 <p>{{trail.summary}}</p>
-                <difficulty-calc trail="trail"></difficulty-calc>
-
-
+                
+                </div>
+                <!--<difficulty-calc trail="trail"></difficulty-calc>-->
                 </div>
                 </div>
-                </div>
-
             </div>
-
-       
             
            
     `, 
@@ -182,5 +160,12 @@ angular
         // }
     });
 
-
     
+  
+ 
+
+
+
+
+
+

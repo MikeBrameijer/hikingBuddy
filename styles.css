@@ -352,8 +352,8 @@
     
 
     /* -webkit-transition: 1s;
-    transition: 1s; */
-    /* background-color: red; */
+    transition: 1s;
+    background-color: red;
 }
 
 .partialView {

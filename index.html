@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> Hiking Buddy </title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -26,12 +27,13 @@
           
     
             <ul id="menu">
-            <a href="#!/search"><li>Search</li></a>
-            <a href="#!/saved"><li>Saved</li></a>
-            <a href="#!/about"><li>About</li></a>
-            <a href="#!/difficuly-calc"><li>Calculator</li></a>
-            <a href="#!/hiking-list"><li>List</li></a>
+                
+              <li><a href="#!/search">Search</a></li>
+              <li><a href="#!/saved-component">Saved</a></li>
+              <li><a href="#!/hiking-list">List</a></li>
           </ul>
+
+
         </div>
         <div class="text">
             <img class="mountainImage" src="mountainscalling.png">
@@ -44,11 +46,11 @@
          </div>
       </nav>
       
-    <main>
+    <main ng-view>
         
 
-
-        <hiking-list></hiking-list>
+      <!-- <saved></saved>
+      <hiking-list></hiking-list>  -->
         <!-- <difficulty-calculator></difficulty-calculator> -->
 
 
@@ -59,18 +61,19 @@
     <script src="https://code.angularjs.org/1.7.8/angular.js"></script>
     <script src="https://code.angularjs.org/1.7.8/angular-route.js"></script>
     <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
     <script src="components/hiking.service.js"></script>
     <script src="components/details/details.js"></script>
     <script src="components/hiking-list/hikingList.js"></script>
     <script src="components/difficulty-calc/difficultyCalc.js"></script>
-    <script src="components/about/about.js"></script>
-    <script src="components/results/results.js"></script>
+    <!-- <script src="components/about/about.js"></script>
+    <script src="components/results/results.js"></script> -->
     <script src="components/saved/saved.js"></script>
     <script src="components/search/search.js"></script>
     <!-- <script src="components/camping-search/campingSearch.js"></script> -->
     <script src="components/hiking-assistant/hikingAssistant.js"></script>
     <script src="components/expand-directive/expandDirective.js"></script>
-    <script src="app.config.js"></script>
+  
 
 
 </body>
