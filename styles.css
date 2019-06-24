@@ -229,6 +229,22 @@ button {
    margin: 6px;
  }
 
+ .buddyInput {
+  margin-bottom: 7px;
+  width: auto;
+  margin: 6px;
+  border: none;
+  /* padding:10px 25px 10px 25px; */
+  text-align: center;
+  background-color: white;
+  opacity: .9;
+  font-size: 12px;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* margin: 25px auto; */
+  border-radius: 5px;
+}
+
  .searchButton {
    color: #363D4F;
    /* width: 279px;

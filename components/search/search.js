@@ -21,8 +21,9 @@ angular
   .component("searchComponent", {
     template: `
         
-    <div class="search-container">
-
+    <div>
+    
+    <form  class="search-container" ng-submit="$ctrl.getSearch(location, distance, length, stars)">
        <input class="searchInput location-search" type="text" ng-model="location" placeholder="Enter a location..."/>
         
         <div class="extra-search-params">
@@ -38,10 +39,11 @@ angular
           <option value="5">Five</option>
         </select>
         </div>
+        
 
 
         <button class="searchButton" ng-click="$ctrl.getSearch(location, distance, length, stars)">Search</button>
-
+        </form>
         </div>
     `,  
     controller: SearchController,

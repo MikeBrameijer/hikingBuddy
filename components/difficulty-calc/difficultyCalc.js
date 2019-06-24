@@ -159,14 +159,14 @@ angular.module("HikingApp")
         
         <li><span><img class="buddy-description-icons" src="assets/filled-water.svg"/></span> <span>I would recommend that you take {{$ctrl.totalWaterIntakeFormat}} of water.</span></li>
         
-        <li><span><img class="buddy-description-icons" src="assets/red-fire.svg"/></span> <span>You will probaly burn about {{$ctrl.totalCalsBurnFormat}} if you weigh 
-        <input  type="number" ng-model="hikerWeight" ng-init="hikerWeight = 170" ng-change="$ctrl.calculateCalories(hikerWeight)"></span></li>
+        <li><span><img class="buddy-description-icons" src="assets/red-fire.svg"/></span> <span>You will probaly burn about {{$ctrl.totalCalsBurnFormat}} Calories if you weigh 
+        <input class="buddyInput"  type="number" ng-model="hikerWeight" ng-init="hikerWeight = 170" ng-change="$ctrl.calculateCalories(hikerWeight)"></span></li> lbs.
         
 
         <li><span><img class="buddy-description-icons" src="assets/blue-square.svg"/></span> <span>Difficulty: {{$ctrl.trail.difficulty}}.  {{$ctrl.difficultyConv}}.</span></li>
 
         <li><span><img class="buddy-description-icons" src="assets/info.svg"></span> <span>Personally I think that if you are a 
-        <select ng-model="expLevel" ng-init="expLevel = 'Novice'" ng-change="$ctrl.calculateDifficulty(expLevel)">
+        <select class="buddyInput" ng-model="expLevel" ng-init="expLevel = 'Novice'" ng-change="$ctrl.calculateDifficulty(expLevel)">
           <option value="Novice" selected >Novice</option>
           <option value="Experienced">Experienced</option>
         </select>
