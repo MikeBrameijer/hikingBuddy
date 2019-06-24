@@ -80,14 +80,14 @@ angular
             <search-component search-rec="$ctrl.getList(que, maxDistance, minLength, minStars)"></search-component>
             
             <div class="locationAndSort">
-            <h2 class="formatLocation" ng-if="$ctrl.formatLocation != null">Showing results for {{$ctrl.formatLocation}}</h2>
-           
-                <select class="sort-trail" ng-show="$ctrl.formatLocation" ng-model="sorting">
-                  <option value=" ">Filter By:</option>
-                  <option value="-hikingTime">Hike Time- High to Low</option>
-                  <option value="hikingTime">Hike Time- Low to High</option>
-                    <option value="-caloriesBurned">Calories- High to Low </option>
-                    <option value="caloriesBurned">Calories- Low to High </option>
+            <h2 class="formatLocation" ng-if="$ctrl.formatLocation != null">Showing results for: {{$ctrl.formatLocation}}</h2>
+                
+                <select placeholder="Filter By:" class="sort-trail" ng-show="$ctrl.formatLocation" ng-model="sorting">
+                  <option value="">Filter By:</option>
+                  <option value="1">Hike Time- High to Low</option>
+                  <option value="2">Hike Time- Low to High</option>
+                    <option value="3"">Calories- High to Low </option>
+                    <option value="4">Calories- Low to High </option>
                 </select>
             </div>
             <div class="mainContainer" id="searchResults">
@@ -95,23 +95,24 @@ angular
                 <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id" ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
                 
                 
+                
                 {{trail.caloriesBurned}}
                 <div class="preview">
                <difficulty-calc class="buddy-popup" trail="trail"></difficulty-calc>
                     <div class="left">
-                        <p style="text-overflow: ellipsis; width:200px;  white-space: nowrap; 
+                        <p class="trailName" style="text-overflow: ellipsis; width:200px;  white-space: nowrap; 
                         overflow: hidden;">{{trail.name}}</p>
                         <div class="starRating" >
                         <span ng-repeat="star in trail.starsImg track by $index">
                         <img class="star" src="{{star}}"/>
                         </span> 
                         </div>
-                    <button ng-click="$ctrl.changeHeight(true, trail.id)" ng-if="!trail.showDetails"> Show More </button>
+                    <button class="showMore" ng-click="$ctrl.changeHeight(true, trail.id)" ng-if="!trail.showDetails"> Show More </button>
                     <button ng-click="$ctrl.changeHeight(false, trail.id)" ng-if="trail.showDetails"> Show Less </button>
                     </div>
                     <div class="right">
-                        <p>length: {{trail.length}} miles</p>
-                        <p>Difficulty: {{trail.difficulty}} </p>
+                        <p class="lengthTrail">Length:<br>{{trail.length}} miles</br></p>
+                        <p class="diffTrail">Difficulty: {{trail.difficulty}} </p>
                     </div>
                     
                 </div>
@@ -137,7 +138,7 @@ angular
                 <p>{{trail.summary}}</p>
                 
                 </div>
-                <!--<difficulty-calc trail="trail"></difficulty-calc>-->
+             
                 </div>
                 </div>
             </div>
@@ -151,3 +152,6 @@ angular
         //   onUpdate: '&'
         // }
     });
+
+
+    // <difficulty-calc trail="trail"></difficulty-calc> 

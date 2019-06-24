@@ -22,26 +22,33 @@ angular
     template: `
         
     <div class="search-container">
-       <input class="searchInput location-search" type="text" ng-model="location" placeholder="Enter a location..."/>
+       <input class="searchInput location-search" type="text" ng-model="location" placeholder="Where Would You Like To"/>
         
-        <div class="extra-search-params">
-        <input class="searchInput secondary-search-param" type="text" ng-model="distance" placeholder="Max distance..."/>
-        <input class="searchInput secondary-search-param" type="text" ng-model="length" placeholder="Min length..."/>
-        <select class="searchInput secondary-search-param" ng-model="stars">
-          <option value="">Min stars...</option>
-          <option value="0">Zero</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-          <option value="4">Four</option>
-          <option value="5">Five</option>
-        </select>
+     
+          <input class="searchInput secondary-search-param" type="text" ng-model="distance" placeholder="Max distance"/>
+          <input class="searchInput secondary-search-param" type="text" ng-model="length" placeholder="Min length"/>
+          <div class="select">
+            <select class="searchInput secondary-search-param dropDown" ng-model="stars">
+              <option value="">Min Star Rating</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            </div>
+          
+         
+        <div class="searchButtonClass">  
+          <button class="searchButton" ng-click="$ctrl.getSearch(location, distance, length, stars)">Search</button>
         </div>
-        <button class="searchButton" ng-click="$ctrl.getSearch(location, distance, length, stars)">Search</button>
-        </div>
+    </div>
     `,  
     controller: SearchController,
     bindings: {
         searchRec: '&'
       }
 });
+
+/* <div class="extra-search-params"> */
