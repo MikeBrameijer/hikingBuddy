@@ -1,7 +1,8 @@
-function DifficultyCalcController() {
+function DifficultyCalcController(hikingService) {
     const ctrl = this;
 
     ctrl.showAssistant = false;
+    ctrl.trail = hikingService.getHikingBuddy();
 
     ctrl.show = () => {
         ctrl.showAssistant = true;
@@ -127,6 +128,11 @@ function DifficultyCalcController() {
         return ctrl.trailResponse;
     }
 
+    ctrl.closeBuddy = (status) => {
+         ctrl.displayBuddy = false;
+         return ctrl.displayBuddy;
+    }
+
 }
     // 8oz every 30 minutes
     // prehydtrate 2 hours before 20 oz
@@ -139,8 +145,12 @@ angular.module("HikingApp")
     <div ng-if="$ctrl.showAssistant" class="show"> -->
 
     <div class="buddy-popup">
-        <h2>Hiking Buddy</h2>
+    <button class="close-button" ng-click="$ctrl.closeBuddy()"><img style="width:25px;height:25px;" src="assets/close.svg"/></button>
+
+    <div class="hiking-buddy-left">
+        <h2>LASHer Assistant</h2>
         <h3>{{$ctrl.trail.name}}</h3>
+    </div>
 
         <ul class="hiking-buddy-list">
         <li><span><img class="buddy-description-icons" src="assets/gold-star.svg"></span> <span>{{ $ctrl.trailResponse }}</span></li>
@@ -176,6 +186,7 @@ angular.module("HikingApp")
     `,
     controller: DifficultyCalcController,
     bindings: {
-        trail: '<'
+        // trail: '<'
+        displayBuddy: "="
     }
 })

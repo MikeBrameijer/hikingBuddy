@@ -1,6 +1,7 @@
 function HikingService($http, $q) {
     const service = this;
     service.favoriteArray = [];
+    service.hikingBuddy = null;
     service.key = '200488347-7449e5616f0f75c446c24d3c0da3ba39';
     service.geoKey = 'AIzaSyAzWLrTiTrHUeTKCGNNpPkFLVrJ-ncycK0';
 
@@ -116,6 +117,14 @@ function HikingService($http, $q) {
                     reject(error);
                 })
         })
+    }
+
+    service.setHikingBuddy = (data) => {
+        service.hikingBuddy = data;
+    }
+
+    service.getHikingBuddy = () => {
+        return service.hikingBuddy;
     }
 
    
