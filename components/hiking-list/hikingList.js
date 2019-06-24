@@ -13,8 +13,8 @@ function HikingListController(hikingService) {
                 results.forEach(function(value, key) {
                     let trailsObj = {
                         id: value.id,
-                        caloriesBurned: null,
-                        hikingTime: null,
+                        caloriesBurned: (((170*.454)*6)*(((value.length * 30) + ((value.ascent/1000) * 30))/60)),
+                        hikingTime: ((value.length * 30) + ((value.ascent/1000) * 30)),
                         lat: value.latitude,
                         lon: value.longitude,
                         name: value.name,
@@ -97,7 +97,7 @@ angular
  
            
                 <select class="sort-trail" ng-show="$ctrl.formatLocation" ng-model="sorting">
-                  <option value=" ">Filter By:</option>
+                  <option value="">Filter By:</option>
                   <option value="-hikingTime">Hike Time- High to Low</option>
                   <option value="hikingTime">Hike Time- Low to High</option>
                     <option value="-caloriesBurned">Calories- High to Low </option>
@@ -112,7 +112,7 @@ angular
 
 
             
-                <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id" ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
+                <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting " ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
 
               
              <div ng-style=" trail.imgMedium != '' && {'background':'url({{trail.imgMedium}})', 'background-repeat':'no-repeat', 'background-size':'cover'} || trail.imgMedium === '' && {'background':'url(assets/trail-bg.jpg)', 'background-repeat':'no-repeat', 'background-size':'cover'}" class="trail-card">
