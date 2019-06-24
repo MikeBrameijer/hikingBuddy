@@ -1,11 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Anton|Open+Sans+Condensed:300&display=swap');
  
+button {
+    background: none;
+    border: none;
+}
+
  body {
    font-family: 'Open Sans Condensed', sans-serif;
    margin: 0;
    padding: 0;
-   background: url('assets/trail2-bg.jpg');
+   background: #51544d;
+
+   background: url('assets/rock-bg.jpg');
    background-attachment: fixed;
    background-repeat: no-repeat;
    background-size: cover;
@@ -39,26 +46,48 @@
     height: 25px;
     outline: none;
  }
- .formatLocation{
-   color: white;
-  font-size: 18px;
-  width: 185px;
-  margin: 0 auto;
-  margin-right: 10px;
+ .format-location{
+   background: white;
+   opacity: .8;
+   padding: 10px;
+   border-radius: 5px;
+
  }
- /* .buddy-popup {
-     border: solid 1px black;
-     background-color: #363D4F;
+ .buddy-popup {
+     /* border: solid 1px black; */
+     display: flex;
+     position: relative;
+     justify-content: center;
+     background-color: white;
+     opacity: .9;
+     box-shadow: 0px 0px 0px 0px;
      margin: 12px;
      padding: 12px;
- } */
- .locationAndSort{
+     position: fixed;
+     z-index: 10;
+     top: 5vh;
+     left: calc(80% - 80vw);
+     width: 80vw;
+     overflow-y:scroll;
+    }
+
+    .close-button {
+        position: absolute;
+        top:5px;
+        left:5px;
+    }
+
+    .hiking-buddy-left {
+        display: flex;
+        flex-direction: column;
+    }
+
+ .location-and-sort{
    display: flex;
-   height: 60px;
-   width: 85vw;
    margin: 0 auto;
-   align-content: center; 
-  
+   flex-direction: column;
+   width: 200px;
+   justify-content: space-around;
  }
 
  #menuToggle {
@@ -182,8 +211,52 @@
   border-radius: 5px;
  }
 
- .text {
-   height: 225px;
+ .searchInput, .searchButton {
+   /* display: flex; */
+   border: none;
+   padding:10px 25px 10px 25px;
+   text-align: center;
+   background-color: white;
+   opacity: .9;
+   font-size: 12px;
+   /* justify-content: center; */
+   /* align-items: center; */
+   /* margin: 25px auto; */
+   border-radius: 5px;
+   
+   /* border: none;
+   background-color: #F8F9F4; */
+ }
+
+ .searchInput {
+   margin-bottom: 7px;
+   width: 100px;
+   margin: 6px;
+ }
+
+ .buddyInput {
+  margin-bottom: 7px;
+  width: auto;
+  margin: 6px;
+  border: none;
+  /* padding:10px 25px 10px 25px; */
+  text-align: center;
+  background-color: white;
+  opacity: .9;
+  font-size: 12px;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* margin: 25px auto; */
+  border-radius: 5px;
+}
+
+ .searchButton {
+   color: #363D4F;
+   /* width: 279px;
+   height: 36px; */
+   outline: none;
+   width: inherit;
+  
  }
 
  /* .lasher {
@@ -239,38 +312,76 @@
 }
 
 .container {
-    margin: 8px;
-    padding-top: 7%;
-    padding-left: 2%;
-    padding-right: 2%;
-    color: black;
-    opacity: 0.9;
-    border-radius: 5px;
-    opacity: .9;
-    height: 120px;
-    width: 85vw;
-    display: flex;
-    background-color: white;
-    opacity: 0.7;
+    height: 300px;
+    width: 300px;
+    margin-bottom: 10px;
+    /* border: solid 1px blue; */
+    /* margin: 24px;
+    padding: 12px; */
+    /* background-color: white; */
+    color:black;
+    /* border-radius: 5px; */
+    /* opacity: .9; */
+
+    /* background-repeat: no-repeat;
+    background-size: contain; */
 }
 
-.preview {
-    color: white;
+.trail-card {
     display: flex;
-    padding: 15px;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px;
+    width: 300px;
+    position: relative;
+    z-index: 1;
+    /* padding: 15px; */
+    width: inherit;
+}
+
+.trail-card-info {
+    display: flex;
+    width: inherit;
+    height: 50px;
     justify-content: space-around;
-    margin: 0;
-    padding: 0;
- 
+    background-color: white;
+    /* border: solid 1px white; */
+    opacity: .8;
 }
 
-.trailName {
-  font-weight: bolder;
-  margin: 0 auto;
-  padding-top: 5%;
-  font-size: 22px;
-  color: black;
+.trail-details-button {
+    display: flex;
+    justify-content: center;
+    /* background-color: white;
+    opacity: .8;
+    padding: 12px; */
+}
 
+.more-less-button {
+    width:30px;
+    height:30px;
+    background: black;
+    opacity: .8;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.trail-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 75px;
+
+}
+
+.hiking-buddy-icon {
+    height: 30px;
+    width: 30px;
+    background: black;
+    opacity: .8;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .left {
@@ -334,7 +445,7 @@
 
 .star {
     height:30px;
-    width: 30px;
+    width: 18px;
 }
 
 .fullView {
@@ -345,7 +456,7 @@
 }
 
 .partialView {
-    height: 120px;
+    /* height: 120px; */
     /* -webkit-transition: 1s;
     transition: 1s; */
 }
@@ -354,6 +465,8 @@
     position: relative;
     z-index: 10;
     visibility: visible;
+    background: white;
+    opacity: .9;
     /* -webkit-transition: visibility 1s;
     transition: visibility 1s; */
 }
@@ -366,14 +479,13 @@
 }
 
 .trail-details {
-    border: solid 1px black;
+    border-bottom: solid 1px #e0dcdc;
     padding: 12px;
-    margin: 24px;
+    /* margin: 24px; */
 }
 
 .sort-trail {
-    display: flex;
-    margin-top: 12.5px;
+    margin-top: 20px;
     border-radius: 5px;
     background-color: white;
     opacity: .9;
@@ -463,19 +575,47 @@
     height: 25px;
 }
 
+.bounce {
+    animation-name: bounce;
+    animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+
+/* .box {
+    align-self: flex-end;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    background-color: #F44336;
+    height: 200px;
+    margin: 0 auto 0 auto;
+    transform-origin: bottom;
+    width: 200px;
+} */
+
+@keyframes bounce {
+    0%   { transform: scale(1,1)      translateY(0); }
+    10%  { transform: scale(1.1,.9)   translateY(0); }
+    30%  { transform: scale(.9,1.1)   translateY(-10px); }
+    50%  { transform: scale(1.05,.95) translateY(0); }
+    57%  { transform: scale(1,1)      translateY(-7px); }
+    64%  { transform: scale(1,1)      translateY(0); }
+    100% { transform: scale(1,1)      translateY(0); }
+}
+
+
 @media only screen and (min-width: 768px) {
 
   
 
         .mainContainer {
-            flex-direction: row;
+            flex-direction: row-reverse;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .container {
-            width: 35vw;
-            padding: 20px;
+            /* width: 35vw; */
+            /* padding: 25px; */
+            margin: 5px;
         }
 
         .trailFinder {
@@ -563,27 +703,22 @@
           margin-top: 10%;
         }
 
-        .left {
-          margin: 0;
-          padding-top: 1%;
+        .buddy-popup {
+            left: calc(85.5% - 80vw);
         }
 
-        .trailName {
-          padding: 0;
-          font-size: 20px;
-          padding-top: 7%;
+        .trail-details-button {
+            /* width: 80%;
+            margin: 5px auto; */
         }
 
-.starRating {
-  padding-top: 3%;
-  padding-bottom: 10%;
+        .star {
+          height:30px;
+          width: 30px;
+        }
 }
 
-.star {
-  height:30px;
-  width: 30px;
-}
-}
+
 
 
 @media only screen and (min-width: 1250px) {
@@ -617,9 +752,13 @@
       font-size: 45px;
     }
 
-    .searchInput {
-      width: 40vw;
-      margin: 9px;
+    .buddy-popup {
+        left: calc(87.4% - 80vw);
+    }
+
+    .hiking-buddy-icon:hover {
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
     }
 
     .selectDropDown {
