@@ -99,12 +99,12 @@ function DifficultyCalcController(hikingService) {
         
         if(ctrl.difficultyRating <= 5){
             ctrl.difficultySuggestion = "an easy";
-        }else if(ctrl.difficultyRating <= 9){
+        }else if(ctrl.difficultyRating < 9){
             ctrl.difficultySuggestion = "a moderate";
-        }else if(ctrl.difficultyRating <= 9){
+        }else{
             ctrl.difficultySuggestion = "a Strenuous or Difficult";
         }
-        // console.log("difficultySuggestion " + ctrl.difficultySuggestion);
+        // cosnsole.log("difficultySuggestion " + ctrl.difficultySuggestion);
         return ctrl.difficultySuggestion;
     }
 

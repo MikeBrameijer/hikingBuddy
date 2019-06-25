@@ -91,9 +91,23 @@ angular
 
 
 
-        <search-component search-rec="$ctrl.getList(que, maxDistance, minLength, minStars)"></search-component>
-        
-        <div class="location-and-sort">
+            <search-component search-rec="$ctrl.getList(que, maxDistance, minLength, minStars)"></search-component>
+            
+            <div class="location-and-sort">
+ 
+           
+                <select class="sort-trail" ng-show="$ctrl.formatLocation" ng-model="sorting">
+                  <option value="">Filter By:</option>
+                  <option value="-stars">Star Rating- High to Low</option>
+                  <option value="stars">Star Rating- Low to High</option>
+                  <option value="-hikingTime">Hike Time- High to Low</option>
+                  <option value="hikingTime">Hike Time- Low to High</option>
+                  <option value="-caloriesBurned">Calories- High to Low </option>
+                  <option value="caloriesBurned">Calories- Low to High </option>
+                </select>
+
+                <h2 class="format-location" ng-if="$ctrl.formatLocation != null">Showing results for {{$ctrl.formatLocation}}</h2>
+            </div>
 
        
             <select class="sort-trail" ng-show="$ctrl.formatLocation" ng-model="sorting">

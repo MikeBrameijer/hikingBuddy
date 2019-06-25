@@ -42,7 +42,7 @@ angular
         
 
 
-        <button class="searchButton" ng-click="$ctrl.getSearch(location, distance, length, stars)">Search</button>
+        <button class="searchButton" >Search</button>
         </form>
         </div>
     `,  

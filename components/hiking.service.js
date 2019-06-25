@@ -40,7 +40,7 @@ function HikingService($http, $q) {
                     // console.log(response);
 
                     service.globalLocation = response.data.trails;
-
+                    console.log(response);
                     resolve(response.data.trails);
                 })
                 .catch((err) => {
