@@ -31,7 +31,8 @@ function HikingListController(hikingService) {
                         starsImg: null,
                         type: value.type,
                         imgMedium: value.imgMedium,
-                        showDetails: false
+                        showDetails: false,
+                        mapLocation: "https://www.google.com/maps/search/?api=1&query=" + value.name
                     }
                     ctrl.trailsArray.push(trailsObj);
                     ctrl.formatLocation =  hikingService.formatLocation;
@@ -179,17 +180,20 @@ angular
             <div ng-class="{true: 'show', false: 'hide'}[trail.showDetails == true]">
 
 
-            <div class="trail-details details-1>
+            <div class="trail-details details-1">
+            
             <p style="font-weight:bold">Trail</p>
             <p>Location: {{trail.location}}</p>
+                <p>length: {{trail.length}} miles</p>
                 <p>Peak: {{trail.high}}ft</p>
                 <p>Type: {{trail.type}}</p>
+                <a href="{{trail.mapLocation}}" target="_blank">click for directions</a>
             </div>
 
             <div class="trail-details details-2">
                 <p style="font-weight:bold">Condition</p>
-                <p>Condition Date: {{trail.conditionDate}}</p>
-                <p> Condition Status: {{trail.conditionStatus}}</p>
+                <p>Condition Status: {{trail.conditionStatus}}</p>
+                <p ng-if !="trail.conditionStatus = 'Unknown">Condition Date: {{trail.conditionDate}}</p>
                 <p>Difficulty: {{trail.difficulty}}
             </div>
 
@@ -210,7 +214,6 @@ angular
 
         </div>
         
-           
     `, 
         controller: HikingListController,
         // bindings: {
