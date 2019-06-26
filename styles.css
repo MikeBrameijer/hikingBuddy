@@ -43,12 +43,44 @@ button {
     outline: none;
  }
  .format-location{
-   background: white;
-   opacity: .8;
-   padding: 10px;
-   border-radius: 5px;
-
+   /* background: rgba(255,255,255,0.5); */
+   color: white;
+   /* opacity: .8; */
+   /* padding: 10px; */
+   /* border-radius: 5px; */
+   width: 40%;
+   height: 90%;
+   margin: 0;
+   font-size: 14px;
+   /* padding-top: 7%; */
+   font-weight: bold;
  }
+
+.sort-trail {
+  border-radius: 5px;
+  display: flex;
+  border: none;
+  /* height: 30px; */
+  /* padding:10px 25px 10px 25px; */
+  width: 40%;
+  padding: 5px 5px 5px 5px;
+  height: 5vh;
+  
+}
+
+.location-and-sort{
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 3%;
+  flex-direction: row;
+  width: 90vw;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  height: 7vh;
+  align-items: flex-end;
+ 
+}
+
  .buddy-popup {
      /* border: solid 1px black; */
      display: flex;
@@ -78,14 +110,6 @@ button {
         flex-direction: column;
     }
 
- .location-and-sort{
-   display: flex;
-   margin: 0 auto;
-   flex-direction: column;
-   width: 200px;
-   justify-content: space-around;
- }
-
  #menuToggle {
    display: block;
    position: relative;
@@ -94,7 +118,8 @@ button {
    z-index: 1;
    -webkit-user-select: none;
    user-select: none;
- 
+  overflow: hidden;
+  width: 90vw;
  }
  
  #menuToggle .routingInput {
@@ -206,7 +231,7 @@ button {
   border-radius: 5px;
  }
 
- .searchInput, .searchButton {
+.searchButton {
    /* display: flex; */
    border: none;
    padding:10px 25px 10px 25px;
@@ -218,20 +243,43 @@ button {
    /* align-items: center; */
    /* margin: 25px auto; */
    border-radius: 5px;
-   
-   /* border: none;
-   background-color: #F8F9F4; */
  }
 
  .searchInput {
-   margin-bottom: 7px;
-   width: 100px;
-   margin: 6px;
+  background-color: white;
+  opacity: .9;
+  padding:10px 25px 10px 25px;
+   border: none;
+   background-color: white;
+   font-size: 12px;
+   border-radius: 5px;
+   display: flex;
+ }
+
+ .location-search {
+  margin-bottom: 3%;
+}
+
+ .selectStars {
+   margin: 0;
+   margin-bottom: 3%;
+ }
+
+ .distanceSearch {
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 3%;
+ }
+
+ .distances {
+   display: flex;
+  width: 30%;
+   margin: 0;
  }
 
  .buddyInput {
   margin-bottom: 7px;
-  width: auto;
+  width: 100%;
   margin: 6px;
   border: none;
   /* padding:10px 25px 10px 25px; */
@@ -250,7 +298,7 @@ button {
    /* width: 279px;
    height: 36px; */
    outline: none;
-   width: inherit;
+   width: 100%;
   
  }
 
@@ -361,6 +409,8 @@ button {
 /*************************************************/
 
 .mainContainer {
+    width: 90vw;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -409,29 +459,26 @@ button {
     flex-direction: column;
     justify-content: space-between;
     height: 300px;
-    width: 300px;
+    width: 90vw;
     position: relative;
-    z-index: 1;
-    /* padding: 15px; */
     width: inherit;
+    margin: 0 auto;
+    background-color: white;
+    opacity: 0.8;
 }
 
 .trail-card-info {
     display: flex;
-    width: inherit;
     height: 50px;
     justify-content: space-around;
     background-color: white;
-    /* border: solid 1px white; */
-    opacity: .8;
+    align-items: center;
+    font-weight: bolder;
 }
 
 .trail-details-button {
     display: flex;
     justify-content: center;
-    /* background-color: white;
-    opacity: .8;
-    padding: 12px; */
 }
 
 .more-less-button {
@@ -481,6 +528,7 @@ button {
 .starRating {
     display: flex;
     width: auto;
+    align-items: flex-end;
 }
 
 .star {
@@ -524,30 +572,17 @@ button {
     /* margin: 24px; */
 }
 
-.sort-trail {
-    margin-top: 20px;
-    border-radius: 5px;
-    background-color: white;
-    opacity: .9;
-    display: flex;
-    border: none;
-    height: 30px;
-    padding:10px 25px 10px 25px;
-}
-
-
-/* .collapsible-search {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+/* .searchForm {
+  width: 90vw;
+  margin: 0 auto;
+  margin-bottom: vh;
 } */
 .search-container{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 85vw;
+    width: 90vw;
     margin: 0 auto;
-    
+    margin-top: 5%;
 }
 
 .seach-components {
@@ -562,13 +597,9 @@ button {
 
 }
 
-.location-search {
-    width: inherit;
-}
-
-.secondary-search-param {
-    width: 75px;
-}
+/* .secondary-search-param {
+    width: 50%;
+} */
 /* .added-search-params {
     display: flex;
     flex-wrap: wrap;
@@ -620,7 +651,7 @@ button {
         .mainContainer {
             flex-direction: row;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: space-between;
         }
 
         .container {
@@ -634,7 +665,7 @@ button {
         }
 
         .search-container {
-            width: 27.5vw;
+            width: 90vw;
         }
 
         .buddy-popup {
@@ -645,10 +676,31 @@ button {
             /* width: 80%;
             margin: 5px auto; */
         }
+
+        .searchInput, .searchButton {
+          padding: 15px 30px 15px 30px;
+          font-size: 18px;
+        }
+
+        .distances {
+         width: 37%;
+        }
+
+        .format-location {
+          font-size: 28px;
+        }
+
+        .sort-trail {
+          font-size: 18px;
+        }
+
+        .location-and-sort {
+          margin-bottom: 1%;
+        }
 }
 
 
-@media only screen and (min-width: 1281px) {
+@media only screen and (min-width: 1200px) {
 
     .text {
       display: flex;
@@ -686,6 +738,11 @@ button {
         animation-duration: 2s;
         animation-iteration-count: infinite;
     }
+
+    .location-and-sort {
+      margin-block: 10%;
+    }
+
 
 
 }
