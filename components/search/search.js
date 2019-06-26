@@ -21,16 +21,18 @@ angular
   .component("searchComponent", {
     template: `
         
-    <div>
+    
     
     <form  class="search-container" ng-submit="$ctrl.getSearch(location, distance, length, stars)">
-       <input class="searchInput location-search" type="text" ng-model="location" placeholder="Enter a location..."/>
+       <input class="searchInput location-search" type="text" ng-model="location" placeholder="Enter Location" style="text-align:left;"/>
         
-        <div class="extra-search-params">
-        <input class="searchInput secondary-search-param" type="text" ng-model="distance" placeholder="Max distance..."/>
-        <input class="searchInput secondary-search-param" type="text" ng-model="length" placeholder="Min length..."/>
-        <select class="searchInput secondary-search-param" ng-model="stars">
-          <option value="">Min stars...</option>
+        
+        <div class="distanceSearch">
+        <input class="searchInput secondary-search-param distances" type="text" ng-model="distance" placeholder="Max Distance" style="text-align:left;"/>
+        <input class="searchInput secondary-search-param distances" type="text" ng-model="length" placeholder="Min Length" style="text-align:left;"/>
+        </div>
+        <select class="searchInput secondary-search-param selectStars" ng-model="stars">
+          <option value="">Min Stars</option>
           <option value="0">Zero</option>
           <option value="1">One</option>
           <option value="2">Two</option>
@@ -38,16 +40,19 @@ angular
           <option value="4">Four</option>
           <option value="5">Five</option>
         </select>
-        </div>
+      
         
 
 
         <button class="searchButton" >Search</button>
         </form>
-        </div>
+     
     `,  
     controller: SearchController,
     bindings: {
         searchRec: '&'
       }
 });
+
+/* <div class="extra-search-params"></div>  </div> */
+/* <div class="searchForm"></div>   </div> */
