@@ -85,7 +85,7 @@ angular
         template: `
 
             <div ng-if="$ctrl.displayBuddy">
-            <div style="position:fixed;height:100%;width:100%;z-index:9;background:black;opacity:.75;top:0;"></div>
+            <div style="position:fixed;height:100%;width:100%;z-index:11;background:black;opacity:.75;top:0;"></div>
             <difficulty-calc display-buddy="$ctrl.displayBuddy"></difficulty-calc>
             </div>
 
@@ -136,8 +136,8 @@ angular
 
 
                     <div class="trail-details-button">
-                    <button ng-click="$ctrl.changeHeight(true, trail.id)" ng-if="!trail.showDetails"> <img class="more-less-button" src="assets/plus.svg"/> </button>
-                    <button ng-click="$ctrl.changeHeight(false, trail.id)" ng-if="trail.showDetails"> <img class="more-less-button" src="assets/minus.svg"/> </button>
+                    <button ng-click="$ctrl.changeHeight(true, trail.id)" ng-if="!trail.showDetails"> <img class="more-less-button bounce" src="assets/plus.svg"/> </button>
+                    <button ng-click="$ctrl.changeHeight(false, trail.id)" ng-if="trail.showDetails"> <img class="more-less-button bounce" src="assets/minus.svg"/> </button>
                     </div>
 
                 </div>
