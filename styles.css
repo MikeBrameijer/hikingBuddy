@@ -53,14 +53,14 @@ button {
      /* border: solid 1px black; */
      display: flex;
      position: relative;
-     justify-content: center;
+     justify-content: space-evenly;
      background-color: white;
      opacity: .9;
      box-shadow: 0px 0px 0px 0px;
      margin: 12px;
      padding: 12px;
      position: fixed;
-     z-index: 10;
+     z-index: 12;
      top: 5vh;
      left: calc(80% - 80vw);
      width: 80vw;
@@ -458,6 +458,8 @@ button {
     opacity: .8;
     border-radius: 5px;
     padding: 5px;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
 }
 
 .left {
@@ -580,15 +582,17 @@ button {
 }
 
 .hiking-buddy-list > li {
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+    display:flex;
+    justify-content: space-between;
 }
 
 .buddy-description-icons {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
 }
 
-.bounce {
+.bounce:hover {
     animation-name: bounce;
     animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
 }
@@ -682,10 +686,10 @@ button {
         left: calc(87.4% - 80vw);
     }
 
-    .hiking-buddy-icon:hover {
+    /* .hiking-buddy-icon:hover {
         animation-duration: 2s;
         animation-iteration-count: infinite;
-    }
+    } */
 
 
 }
