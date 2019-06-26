@@ -20,6 +20,7 @@ function DifficultyCalcController(hikingService) {
         ctrl.trailDifficultyConv(); 
 
         ctrl.responseToTrail(ctrl.trail.stars);
+        ctrl.setDifficultyIcon();
 
     }
  
@@ -41,7 +42,8 @@ function DifficultyCalcController(hikingService) {
 
     ctrl.waterIntake = () => {
         ctrl.totalWaterIntake = Math.ceil((ctrl.totalHikeTime/30) * 8);
-        ctrl.totalWaterIntakeFormat = ctrl.totalWaterIntake + ' ounces';
+        ctrl.totalWaterIntakeFormat = ctrl.totalWaterIntake;
+        ctrl.setWaterIcon(ctrl.totalWaterIntakeFormat);
         return ctrl.totalWaterIntakeFormat;
     }
     ctrl.calculateCalories = (weight) => {
@@ -59,6 +61,8 @@ function DifficultyCalcController(hikingService) {
 
         ctrl.trail.caloriesBurned = ctrl.totalCalsBurnFormat;
         // return ctrl.totalCalsBurnFormat;
+        ctrl.setCalorieIcon(ctrl.trail.caloriesBurned);
+
     }
 
     ctrl.trailDifficultyConv = () => {
@@ -133,6 +137,37 @@ function DifficultyCalcController(hikingService) {
          return ctrl.displayBuddy;
     }
 
+    ctrl.setDifficultyIcon = () => {
+        if (ctrl.trail.difficulty === 'green' || ctrl.trail.difficulty === 'greenBlue') {
+             ctrl.difficultyIcon = 'assets/green-circle.svg';
+        }
+        else if (ctrl.trail.difficulty === 'blue' || ctrl.trail.difficulty === 'blueBlack') {
+             ctrl.difficultyIcon = 'assets/blue-square.svg';
+        } else {
+             ctrl.difficultyIcon = 'assets/black-diamond.svg';
+        }
+    }
+
+    ctrl.setCalorieIcon = (calories) => {
+        if (calories <= 400) {
+            ctrl.calorieIcons = [`assets/red-fire.svg`];
+        } else if (calories <= 800) {
+            ctrl.calorieIcons = [`assets/red-fire.svg`, `assets/red-fire.svg` ];
+        } else {
+            ctrl.calorieIcons = [`assets/red-fire.svg`, `assets/red-fire.svg`, `assets/red-fire-plus.svg`];
+        }
+    }
+
+    ctrl.setWaterIcon = (water) => {
+        if (water <= 24) {
+            ctrl.waterIcons = [`assets/filled-water.svg`];
+        } else if (water <= 48) {
+            ctrl.waterIcons = [`assets/filled-water.svg`, `assets/filled-water.svg` ];
+        } else {
+            ctrl.waterIcons = [`assets/filled-water.svg`, `assets/filled-water.svg`, `assets/filled-water-plus.svg`];
+        }
+    }
+
 }
     // 8oz every 30 minutes
     // prehydtrate 2 hours before 20 oz
@@ -153,24 +188,51 @@ angular.module("HikingApp")
     </div>
 
         <ul class="hiking-buddy-list">
-        <li><span><img class="buddy-description-icons" src="assets/gold-star.svg"></span> <span>{{ $ctrl.trailResponse }}</span></li>
+        <li>
+        <div>{{ $ctrl.trailResponse }}</div>
+        <div><img class="buddy-description-icons" src="assets/gold-star.svg"></div>
+        </li>
 
-        <li><span><img class="buddy-description-icons" src="assets/clock.svg"></span> <span>This {{$ctrl.trail.length}} mile trail should take you about {{$ctrl.totalHikeTimeFormat}}.</span></li>
+        <li>
+        <div>This {{$ctrl.trail.length}} mile trail should take you about {{$ctrl.totalHikeTimeFormat}}.</div>
+        <div><img class="buddy-description-icons" src="assets/clock.svg"></div>
+        </li>
+
         
-        <li><span><img class="buddy-description-icons" src="assets/filled-water.svg"/></span> <span>I would recommend that you take {{$ctrl.totalWaterIntakeFormat}} of water.</span></li>
+        <li> 
+        <div>I would recommend that you take {{$ctrl.totalWaterIntakeFormat}}oz. of water.</div>
         
-        <li><span><img class="buddy-description-icons" src="assets/red-fire.svg"/></span> <span>You will probaly burn about {{$ctrl.totalCalsBurnFormat}} Calories if you weigh 
-        <input class="buddyInput"  type="number" ng-model="hikerWeight" ng-init="hikerWeight = 170" ng-change="$ctrl.calculateCalories(hikerWeight)"></span></li> lbs.
+        <div style="display:flex; justify-content:flex-end;">
+            <div ng-repeat="icon in $ctrl.waterIcons track by $index">
+            <img class="buddy-description-icons" src="{{icon}}"/>
+            </div>
+        </div>
+        </li>
+        
+        <li> 
+        <div>You will probaly burn about {{$ctrl.totalCalsBurnFormat}} Calories if you weigh 
+        <input class="buddyInput"  type="number" ng-model="hikerWeight" ng-init="hikerWeight = 170" ng-change="$ctrl.calculateCalories(hikerWeight)"> lbs.
+        </div>
+        <div ng-repeat="icon in $ctrl.calorieIcons track by $index">
+        <img class="buddy-description-icons" src="{{icon}}"/>
+        </div>
+        </li>
         
 
-        <li><span><img class="buddy-description-icons" src="assets/blue-square.svg"/></span> <span>Difficulty: {{$ctrl.trail.difficulty}}.  {{$ctrl.difficultyConv}}.</span></li>
+        <li>
+        <div>Difficulty: {{$ctrl.trail.difficulty}}.  {{$ctrl.difficultyConv}}.</div>
+        <div><img class="buddy-description-icons" src="{{$ctrl.difficultyIcon}}"/></div> 
+        </li>
 
-        <li><span><img class="buddy-description-icons" src="assets/info.svg"></span> <span>Personally I think that if you are a 
+        <li>
+        <div>Personally I think that if you are a 
         <select class="buddyInput" ng-model="expLevel" ng-init="expLevel = 'Novice'" ng-change="$ctrl.calculateDifficulty(expLevel)">
           <option value="Novice" selected >Novice</option>
           <option value="Experienced">Experienced</option>
         </select>
-         hiker this will be {{$ctrl.difficultySuggestion}} hike.</span></li>
+         hiker this will be {{$ctrl.difficultySuggestion}} hike.</div>
+         <div><img class="buddy-description-icons" src="assets/info.svg"></div> 
+         </li>
         </ul>
 
 
