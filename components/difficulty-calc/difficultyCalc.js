@@ -21,7 +21,6 @@ function DifficultyCalcController(hikingService) {
 
         ctrl.responseToTrail(ctrl.trail.stars);
         ctrl.setDifficultyIcon();
-
     }
  
     ctrl.calculateTime = () => {        
