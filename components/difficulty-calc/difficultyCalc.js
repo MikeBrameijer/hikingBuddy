@@ -211,7 +211,7 @@ angular.module("HikingApp")
         
         <li> 
         <div>You will probaly burn about {{$ctrl.totalCalsBurnFormat}} Calories if you weigh 
-        <input class="buddyInput"  type="number" ng-model="hikerWeight" ng-init="hikerWeight = 170" ng-change="$ctrl.calculateCalories(hikerWeight)"> lbs.
+        <input class="buddyInputLbs"  type="number" ng-model="hikerWeight" ng-init="hikerWeight = 170" ng-change="$ctrl.calculateCalories(hikerWeight)"> lbs.
         </div>
         <div ng-repeat="icon in $ctrl.calorieIcons track by $index">
         <img class="buddy-description-icons" src="{{icon}}"/>
@@ -226,7 +226,7 @@ angular.module("HikingApp")
 
         <li>
         <div>Personally I think that if you are a 
-        <select class="buddyInput" ng-model="expLevel" ng-init="expLevel = 'Novice'" ng-change="$ctrl.calculateDifficulty(expLevel)">
+        <select class="buddyInputExp" ng-model="expLevel" ng-init="expLevel = 'Novice'" ng-change="$ctrl.calculateDifficulty(expLevel)">
           <option value="Novice" selected >Novice</option>
           <option value="Experienced">Experienced</option>
         </select>

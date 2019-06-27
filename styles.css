@@ -278,26 +278,23 @@ button {
    width: 28%;
  }
 
- /* .distances {
-   display: flex;
-   width: 20%;
-   margin: 0;
-  
- } */
- /*mikes messed up buddy icons*/
- .buddyInput {
-  margin-bottom: 7px;
-  width: 100%;
-  margin: 6px;
-  border: none;
-  /* padding:10px 25px 10px 25px; */
+ 
+ .buddyInputLbs {
+  margin: 0;
+  width: 45px;
   text-align: center;
   background-color: white;
   opacity: .9;
   font-size: 12px;
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* margin: 25px auto; */
+  border-radius: 5px;
+}
+.buddyInputExp {
+  margin: 0;
+  width: fit-content;
+  text-align: center;
+  background-color: white;
+  opacity: .9;
+  font-size: 12px;
   border-radius: 5px;
 }
 
