@@ -23,7 +23,7 @@ angular
         
     
     
-    <form  class="search-container" ng-submit="$ctrl.getSearch(location, distance, length, stars)">
+    <form  class="search-container" ng-submit="$ctrl.getSearch(location, distance, length, stars)" <a href="#firstResult">>
        <input class="searchInput location-search" type="text" ng-model="location" placeholder="Enter Location" style="text-align:left;"/>
         
         <div class="distanceAndStar">
