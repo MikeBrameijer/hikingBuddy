@@ -7,17 +7,16 @@ angular
     .when("/search", {
         template: "<search></search>"
     })
-    .when("/saved", {
-        template: "<saved></saved>"
+    .when("/saved-component", {
+        template: "<saved-component></saved-component>"
     })
     .when("/about", {
         template: "<about></about>"
-    })   
-    .when("/difficuly-calc", {
-        template: "<difficulty-calc></difficulty-calc>"
+    })
+    .when("/hiking-list", {
+        template: "<hiking-list></hiking-list>"
     })
     .otherwise({
-        redirectTo: "/search"
+        redirectTo: "/hiking-list"
     })
 }]);
-
