@@ -463,7 +463,7 @@ button {
     width: inherit;
     margin: 0 auto;
     background-color: white;
-    opacity: 0.8;
+    /* opacity: 0.8; */
 }
 
 .trail-card-info {
@@ -538,11 +538,25 @@ button {
 }
 
 .fullView {
+    /* display:flex; */
     height: auto;
+    /* width:inherit; */
     /* -webkit-transition: 1s;
     transition: 1s; */
     /* background-color: red; */
 }
+
+.fullview-trail-card {
+    /* flex-basis: 25%; */
+    height:300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* .fullview-trail-container {
+    display:flex;
+} */
 
 .partialView {
     /* height: 120px; */
@@ -556,6 +570,9 @@ button {
     visibility: visible;
     background: white;
     opacity: .9;
+    display: flex;
+    flex-direction: column;
+    /* flex-basis: 75%; */
     /* -webkit-transition: visibility 1s;
     transition: visibility 1s; */
 }
@@ -654,10 +671,12 @@ button {
         .mainContainer {
             flex-direction: row;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: space-around;
         }
 
         .container {
+            display:flex;
+            width:inherit;
             /* width: 35vw; */
             /* padding: 25px; */
             margin: 5px;
@@ -699,6 +718,40 @@ button {
 
         .location-and-sort {
           margin-bottom: 1%;
+        }
+
+        .fullView {
+            display:flex;
+            width:inherit;
+
+            /* height: auto; */
+            /* flex: 1; */
+            /* -webkit-transition: 1s;
+            transition: 1s; */
+            /* background-color: red; */
+        }
+
+        .partialView {
+         /* flex-shrink: 1; */
+        }
+        
+        .trail-card {
+            flex-basis: 25%;
+        }
+
+        .hide {
+            position: relative;
+            z-index: 10;
+            visibility: visible;
+            background: white;
+            opacity: .9;
+            display: flex;
+            flex-basis: 75%;
+            justify-content: center;
+        }
+
+        .hide-me {
+            display: none;
         }
 }
 
