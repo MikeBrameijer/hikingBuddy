@@ -21,7 +21,6 @@ function DifficultyCalcController(hikingService) {
 
         ctrl.responseToTrail(ctrl.trail.stars);
         ctrl.setDifficultyIcon();
-
     }
  
     ctrl.calculateTime = () => {        
@@ -213,9 +212,13 @@ angular.module("HikingApp")
         <div>You will probaly burn about {{$ctrl.totalCalsBurnFormat}} Calories if you weigh 
         <input class="buddyInputLbs"  type="number" ng-model="hikerWeight" ng-init="hikerWeight = 170" ng-change="$ctrl.calculateCalories(hikerWeight)"> lbs.
         </div>
-        <div ng-repeat="icon in $ctrl.calorieIcons track by $index">
-        <img class="buddy-description-icons" src="{{icon}}"/>
+
+        <div style="display:flex;justify-content:flex-end;">
+            <div ng-repeat="icon in $ctrl.calorieIcons track by $index">
+            <img class="buddy-description-icons" src="{{icon}}"/>
+            </div>
         </div>
+
         </li>
         
 

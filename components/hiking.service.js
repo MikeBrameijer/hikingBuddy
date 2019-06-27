@@ -4,12 +4,15 @@ function HikingService($http, $q) {
     service.hikingBuddy = null;
     service.key = '200488347-7449e5616f0f75c446c24d3c0da3ba39';
     service.geoKey = 'AIzaSyAzWLrTiTrHUeTKCGNNpPkFLVrJ-ncycK0';
+    service.weatherKey = 'd3b1d3b9eac060080c71477c330b65e0';
 
     service.getTrails = (search, distance, length, stars) => {
         return $q(function (resolve, reject) {
 
         service.getGeocode(search)
         .then((results) => {
+            //testing sending lat&lon to weather api-stretch goal
+            // service.getWeather(results);
             
             service.trailLat = results.lat;
             service.trailLon = results.lon;
@@ -118,6 +121,35 @@ function HikingService($http, $q) {
                 })
         })
     }
+
+        /**  **************************************************************
+         * STRETCH GOAL
+        service.getWeather = (search) => {
+            return $q(function (resolve, reject) {
+                $http({
+                    url: `https://api.openweathermap.org/data/2.5/forecast`,
+                    method: `GET`,
+                    params: {
+                        lat: search.lat,
+                        lon: search.lon,
+                        units: 'imperial',
+                        appid: service.weatherKey
+                    }
+                })
+                    .then((response) => {
+                        //data.list[""0""].dt
+                        let d = new Date(response.data.list[0].dt);
+                        // console.log(response);
+                        console.log(d);
+                    })
+                    .catch((error) => {
+                        // reject(error);
+                    })
+            })
+        }
+        ************************************************************* **/
+
+    
 
     service.setHikingBuddy = (data) => {
         service.hikingBuddy = data;

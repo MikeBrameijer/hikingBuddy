@@ -15,6 +15,9 @@ button {
    background-attachment: fixed;
    background-repeat: no-repeat;
    background-size: cover;
+   position: absolute;
+   width:100%;
+   height:100%;
 
  }
  
@@ -514,6 +517,7 @@ i:hover {
     background-color: white;
     align-items: center;
     font-weight: bolder;
+    opacity: .9;
 }
 
 .trail-details-button {
@@ -579,11 +583,25 @@ i:hover {
 }
 
 .fullView {
+    /* display:flex; */
     height: auto;
+    /* width:inherit; */
     /* -webkit-transition: 1s;
     transition: 1s; */
     /* background-color: red; */
 }
+
+.fullview-trail-card {
+    /* flex-basis: 25%; */
+    height:300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* .fullview-trail-container {
+    display:flex;
+} */
 
 .partialView {
     /* height: 120px; */
@@ -597,6 +615,9 @@ i:hover {
     visibility: visible;
     background: white;
     opacity: .9;
+    display: flex;
+    flex-direction: column;
+    /* flex-basis: 75%; */
     /* -webkit-transition: visibility 1s;
     transition: visibility 1s; */
 }
@@ -695,10 +716,12 @@ i:hover {
         .mainContainer {
             flex-direction: row;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: space-around;
         }
 
         .container {
+            display:flex;
+            width:inherit;
             /* width: 35vw; */
             /* padding: 25px; */
             margin: 5px;
@@ -744,12 +767,13 @@ i:hover {
 
         .distances {
          width: 35%;
-         height: 
+         /* height:  */
         }
 
         .selectStars {
           width: 35%;
           margin-left: 2.5%;
+          height: 50px;
          
         }
 
@@ -765,7 +789,39 @@ i:hover {
           margin-bottom: 1%;
         }
 
-       
+        .fullView {
+            display:flex;
+            width:inherit;
+
+            /* height: auto; */
+            /* flex: 1; */
+            /* -webkit-transition: 1s;
+            transition: 1s; */
+            /* background-color: red; */
+        }
+
+        .partialView {
+         /* flex-shrink: 1; */
+        }
+        
+        .trail-card {
+            flex-basis: 25%;
+        }
+
+        .hide {
+            position: relative;
+            z-index: 10;
+            visibility: visible;
+            background: white;
+            opacity: .9;
+            display: flex;
+            flex-basis: 75%;
+            justify-content: center;
+        }
+
+        .hide-me {
+            display: none;
+        }
 }
 
 
