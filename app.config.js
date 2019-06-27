@@ -4,19 +4,16 @@ angular
 .module("HikingApp")
 .config(["$routeProvider", ($routeProvider) => {
     $routeProvider
-    .when("/search", {
-        template: "<search></search>"
-    })
-    .when("/saved-component", {
-        template: "<saved-component></saved-component>"
+      .when("/saved", {
+        template: "<saved></saved>"
     })
     .when("/about", {
         template: "<about></about>"
     })
-    .when("/hiking-list", {
+    .when("/home", {
         template: "<hiking-list></hiking-list>"
     })
     .otherwise({
-        redirectTo: "/hiking-list"
+        redirectTo: "/home"
     })
 }]);

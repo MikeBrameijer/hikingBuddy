@@ -127,6 +127,13 @@ function HikingService($http, $q) {
         return service.hikingBuddy;
     }
 
+    service.setFavorites = (favoriteParam) => {
+        service.favoriteArray.push(favoriteParam);
+    }
+    service.setRemoveFavorites = (removeParam) =>{
+        service.favoriteArray.splice(service.favoriteArray.indexOf(removeParam), 1);
+    }
+
    
  }
 

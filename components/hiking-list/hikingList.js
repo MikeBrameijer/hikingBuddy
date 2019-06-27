@@ -4,6 +4,11 @@ function HikingListController(hikingService) {
     ctrl.allTrailsRating = [];
     ctrl.displayBuddy = false;
 
+    ctrl.addFavorite = (favoriteParam) => {
+        hikingService.setFavorites(favoriteParam);
+        console.log("you clicked it");
+      }
+
     ctrl.getList = (location, distance, length, stars) => {
         ctrl.trailsArray = [];
 
@@ -111,11 +116,16 @@ angular
     
         <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id"
             ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
+
     
             <div ng-style=" trail.imgMedium != '' && {'background':'url({{trail.imgMedium}})', 'background-repeat':'no-repeat', 'background-size':'cover'} || trail.imgMedium === '' && {'background':'url(assets/trail-bg.jpg)', 'background-repeat':'no-repeat', 'background-size':'cover'}"
                 class="trail-card">
                 <div class="trail-card-info">
-                    <span>{{trail.name}}</span>
+                <div class="favorite" ng-click="$ctrl.addFavorite(trail); favorite=true">
+            <i ng-hide="favorite" class="material-icons" >check_box_outline_blank</i>
+            <i ng-show="favorite" class="material-icons" >check_box</i>           
+            </div>
+                    <span class="trailName">{{trail.name}}</span>
                     <span class="starRating">
                         <span ng-repeat="star in trail.starsImg track by $index">
                             <img class="star" src="{{star}}" />
@@ -174,4 +184,4 @@ angular
     });
 
 
-    
+    // <i class="material-icons favoriteIcon redIcon">favorite_border</i>
