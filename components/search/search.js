@@ -26,10 +26,10 @@ angular
     <form  class="search-container" ng-submit="$ctrl.getSearch(location, distance, length, stars)">
        <input class="searchInput location-search" type="text" ng-model="location" placeholder="Enter Location" style="text-align:left;"/>
         
-        
+        <div class="distanceAndStar">
         <div class="distanceSearch">
-        <input class="searchInput secondary-search-param distances" type="text" ng-model="distance" placeholder="Max Distance" style="text-align:left;"/>
-        <input class="searchInput secondary-search-param distances" type="text" ng-model="length" placeholder="Min Length" style="text-align:left;"/>
+        <input class="searchInput secondary-search-param distances dOne" type="text" ng-model="distance" placeholder="Max Distance" style="text-align:left;"/>
+        <input class="searchInput secondary-search-param distances dTwo" type="text" ng-model="length" placeholder="Min Length" style="text-align:left;"/>
         </div>
         <select class="searchInput secondary-search-param selectStars" ng-model="stars">
           <option value="">Min Stars</option>
@@ -40,6 +40,7 @@ angular
           <option value="4">Four</option>
           <option value="5">Five</option>
         </select>
+        </div>
       
         
 
