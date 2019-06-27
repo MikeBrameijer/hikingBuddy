@@ -4,6 +4,8 @@ function HikingListController(hikingService) {
     ctrl.allTrailsRating = [];
     ctrl.displayBuddy = false;
 
+    ctrl.window = window.innerWidth;
+    console.log(ctrl.window);
     ctrl.getList = (location, distance, length, stars) => {
         ctrl.trailsArray = [];
 
@@ -77,7 +79,19 @@ function HikingListController(hikingService) {
         ctrl.displayBuddy = true;
     } 
 
-    console.log(ctrl.formatLocation);
+    // console.log(ctrl.formatLocation);
+
+    ctrl.checkWindowWidth = () => {
+        if (ctrl.window < 768) {
+            ctrl.isDesktop = false;
+        } else {
+            ctrl.isDesktop = true;
+        }
+    }
+    ctrl.$onInit = () => {
+        ctrl.checkWindowWidth();
+        console.log(ctrl.isDesktop);
+    }
 }
 
 angular
@@ -110,10 +124,10 @@ angular
     <div class="mainContainer" id="searchResults">
     
         <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id"
-            ng-class="{true: 'fullView', false: 'partialView'}[trail.showDetails == true]">
+            ng-class="{true: 'fullView ', false: 'partialView'}[trail.showDetails == true]">
     
             <div ng-style=" trail.imgMedium != '' && {'background':'url({{trail.imgMedium}})', 'background-repeat':'no-repeat', 'background-size':'cover'} || trail.imgMedium === '' && {'background':'url(assets/trail-bg.jpg)', 'background-repeat':'no-repeat', 'background-size':'cover'}"
-                class="trail-card">
+                ng-class="{true: 'fullview-trail-card ', false: 'trail-card'}[trail.showDetails == true]">
                 <div class="trail-card-info">
                     <span>{{trail.name}}</span>
                     <span class="starRating">
@@ -131,8 +145,11 @@ angular
                     <div class="trail-details-button">
                         <button ng-click="$ctrl.changeHeight(true, trail.id)" ng-if="!trail.showDetails"> <img
                                 class="more-less-button" src="assets/plus.svg" /> </button>
+
+                                <span class="hide-me">
                         <button ng-click="$ctrl.changeHeight(false, trail.id)" ng-if="trail.showDetails"> <img
                                 class="more-less-button" src="assets/minus.svg" /> </button>
+                                </span>
                     </div>
                 </div>
             </div>
