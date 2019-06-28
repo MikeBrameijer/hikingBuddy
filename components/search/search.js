@@ -1,5 +1,5 @@
 "use strict";
-function SearchController() {  
+function SearchController($anchorScroll) {  
     const ctrl = this;
 
     ctrl.getSearch = (search, distance, length, stars) => {
@@ -9,6 +9,8 @@ function SearchController() {
           minLength: length,
           minStars: stars,
         });
+
+        $anchorScroll('#first');
       }
 
     // ctrl.search = (location) => {

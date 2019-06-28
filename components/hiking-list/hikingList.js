@@ -39,7 +39,7 @@ function HikingListController(hikingService) {
                         type: value.type,
                         imgMedium: value.imgMedium,
                         showDetails: false,
-                        mapLocation: "https://www.google.com/maps/search/?api=1&query=" + value.name
+                        mapLocation: "https://www.google.com/maps/search/?api=1&query=" + value.latitude + "," + value.longitude
                     }
                     ctrl.trailsArray.push(trailsObj);
                     ctrl.formatLocation =  hikingService.formatLocation;
@@ -128,7 +128,7 @@ angular
     
     <div class="mainContainer" id="searchResults">
     
-        <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id"
+        <div id="first" class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id"
             ng-class="{true: 'fullView ', false: 'partialView'}[trail.showDetails == true]">
     
             <div ng-style=" trail.imgMedium != '' && {'background':'url({{trail.imgMedium}})', 'background-repeat':'no-repeat', 'background-size':'cover'} || trail.imgMedium === '' && {'background':'url(assets/trail-bg.jpg)', 'background-repeat':'no-repeat', 'background-size':'cover'}"

@@ -609,7 +609,7 @@ i:hover {
             opacity: .9;
             display: flex;
             flex-basis: 75%;
-            justify-content: center;
+            justify-content: start;
         }
 
         .hide-me {
@@ -686,6 +686,7 @@ i:hover {
       background-color: lightgray;
     }
 
-  
+    
+
 
 }
