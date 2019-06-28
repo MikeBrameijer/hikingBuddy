@@ -128,7 +128,7 @@ angular
     
     <div class="mainContainer" id="searchResults">
     
-        <div id="first" class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id"
+        <div class="container" ng-repeat="trail in $ctrl.trailsArray | orderBy: sorting track by trail.id"
             ng-class="{true: 'fullView ', false: 'partialView'}[trail.showDetails == true]">
     
             <div ng-style=" trail.imgMedium != '' && {'background':'url({{trail.imgMedium}})', 'background-repeat':'no-repeat', 'background-size':'cover'} || trail.imgMedium === '' && {'background':'url(assets/trail-bg.jpg)', 'background-repeat':'no-repeat', 'background-size':'cover'}"
