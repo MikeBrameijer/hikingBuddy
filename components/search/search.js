@@ -12,9 +12,6 @@ function SearchController() {
 
       }
 
-    // ctrl.search = (location) => {
-    //     hikingService.getGeocode(location) 
-    // }
 
 }
 angular
@@ -55,6 +52,3 @@ angular
         searchRec: '&'
       }
 });
-
-/* <div class="extra-search-params"></div>  </div> */
-/* <div class="searchForm"></div>   </div> */
