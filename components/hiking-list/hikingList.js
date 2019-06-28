@@ -122,7 +122,7 @@ angular
             <option value="caloriesBurned">Calories- Low to High </option>
         </select>
     
-        <h2 class="format-location" ng-if="$ctrl.formatLocation != null">Showing results for {{$ctrl.formatLocation}}</h2>
+        <h2 class="format-location" ng-if="$ctrl.formatLocation != null">Showing Results For: {{$ctrl.formatLocation}}</h2>
     </div>
     
     

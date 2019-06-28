@@ -30,13 +30,8 @@ button {
    color: white;
  }
 
- nav {
-    /* background: url('assets/forest-bg.jpg');
-    background-repeat: no-repeat;
-     background-size: cover; */
- }
- 
- a {
+
+ .aTag {
    text-decoration: none;
    color: #363D4F;
    transition: color 0.3s ease;
@@ -53,26 +48,19 @@ button {
     outline: none;
  }
  .format-location{
-   /* background: rgba(255,255,255,0.5); */
    color: white;
-   /* opacity: .8; */
-   /* padding: 10px; */
-   /* border-radius: 5px; */
    width: 40%;
    height: 90%;
    margin: 0;
    font-size: 14px;
-   /* padding-top: 7%; */
-   font-weight: bold;
+     font-weight: bold;
  }
 
 .sort-trail {
   border-radius: 5px;
   display: flex;
   border: none;
-  /* height: 30px; */
-  /* padding:10px 25px 10px 25px; */
-  width: 40%;
+   width: 40%;
   padding: 5px 5px 5px 5px;
   height: 5vh;
   
@@ -92,7 +80,7 @@ button {
 }
 
  .buddy-popup {
-     /* border: solid 1px black; */
+     
      display: flex;
      position: relative;
      justify-content: space-evenly;
@@ -139,14 +127,12 @@ button {
    top: -7px;
    left: -5px;
    cursor: pointer;
-   opacity: 0; /* hide this */
-   z-index: 2; /* and place it over the hamburger */
+   opacity: 0; 
+   z-index: 2; 
    -webkit-touch-callout: none;
  }
  
- /*
-  * Hamburger
-  */
+
  #menuToggle span {
    display: block;
    width: 33px;
@@ -170,35 +156,25 @@ button {
    transform-origin: 0% 100%;
  }
  
- /* 
-  * Transform all the slices of hamburger
-  * into a crossmark.
-  */
+
  #menuToggle .routingInput:checked ~ span {
    opacity: 1;
    transform: rotate(45deg) translate(-2px, -1px);
    background: #363D4F;
  }
  
- /*
-  * But let's hide the middle one.
-  */
+
  #menuToggle .routingInput:checked ~ span:nth-last-child(3) {
    opacity: 0;
    transform: rotate(0deg) scale(0.2, 0.2);
  }
  
- /*
-  * the last one should go the other direction
-  */
+
  #menuToggle .routingInput:checked ~ span:nth-last-child(2) {
    transform: rotate(-45deg) translate(0, -1px);
  }
  
- /*
-  * Make this absolute positioned
-  * at the top left of the screen
-  */
+
  #menu {
    position: absolute;
    width: 150px;
@@ -208,8 +184,7 @@ button {
    background: #F8F9F4;
    list-style-type: none;
    -webkit-font-smoothing: antialiased;
-   /* to stop flickering of text in safari */
-   transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
    transform: translate(-100%, 0);
    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
  }
@@ -229,7 +204,6 @@ button {
  .buddyIconFront, .buddyIconRepeat {
   display: flex;
   border: none;
-  /* padding:10px 25px 10px 25px; */
   text-align: center;
   background-color: white;
   opacity: .9;
@@ -241,22 +215,16 @@ button {
  }
 
 .searchButton {
-   /* display: flex; */
    border: none;
    padding:10px 25px 10px 25px;
    text-align: center;
    background-color: white;
-   /* opacity: .9; */
-   font-size: 12px;
-   /* justify-content: center; */
-   /* align-items: center; */
-   /* margin: 25px auto; */
+     font-size: 12px;
    border-radius: 5px;
  }
 
  .searchInput {
   background-color: white;
-  /* opacity: .9; */
   padding:10px 25px 10px 25px;
    border: none;
    background-color: white;
@@ -312,17 +280,10 @@ button {
 
  .searchButton {
    color: #363D4F;
-   /* width: 279px;
-   height: 36px; */
    outline: none;
    width: 100%;
   
  }
-
- /* .lasher {
-   font-size: 20px;
-   margin: 0 auto;
- } */
 
  .heading {
    display: flex;
@@ -360,70 +321,6 @@ button {
    margin-top: -20px;
  }
 
- .text {
-  /* position:relative;
-  line-height:2em;
-  overflow:hidden; */
-  /* display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  flex-wrap: wrap;
-   */
-}
-
-/* .fadingEffect {
-  position:absolute;
-  top:0; bottom:0; right:0;
-  width:100%;
-  background: #363D4F;
-  -moz-animation: showHide 5s ease-in alternate infinite; /* Firefox */
-  /* -webkit-animation: showHide 5s ease-in alternate infinite; /* Safari and Chrome */
-  /* -ms-animation: showHide 5s ease-in alternate infinite; IE10 */
-  /* -o-animation: showHide 5s ease-in alternate infinite; Opera */
-  /* animation: showHide 5s ease-in alternate infinite;
-} */
-/* @-webkit-keyframes showHide { Chrome, Safari */
-  /* 0% {width:100%}
-  40% {width:0%}
-  60% {width:0%;}
-  100% {width:100%;}
-} */
-/* @-moz-keyframes showHide { FF */
-  /* 0% {width:100%}
-  40% {width:0%}
-  60% {width:0%;}
-  100% {width:100%;}
-} */
-/* @-ms-keyframes showHide { IE10 */
-  /* 0% {width:100%}
-  40% {width:0%}
-  60% {width:0%;}
-  100% {width:100%;}
-} */
-/* @-o-keyframes showHide { Opera */
-  /* 0% {width:100%}
-  40% {width:0%}
-  60% {width:0%;}
-  100% {width:100%;}
-} */
-/* @keyframes showHide {
-  0% {width:100%}
-  40% {width:0%}
-  60% {width:0%;}
-  100% {width:100%;}
-} */
-
-
-/* .mainContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* flex-direction: column;
-    align-items: center;
-    justify-content: center; */
-/* } */
-
-/*************************************************/
 
 .mainContainer {
     width: 90vw;
@@ -431,43 +328,13 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* flex-direction: column;
-    align-items: center;
-    justify-content: center; */
 }
-
-/* .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 95vw;
-    height: 120px;
-    margin: 10px;
-
-    color: black;
-    background-color: white;
-    opacity: .65;
-  
-    border-radius: 5px;
-    box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.2);
-   
-
-} */
 
 .container {
     height: 300px;
     width: 300px;
     margin-bottom: 10px;
-    /* border: solid 1px blue; */
-    /* margin: 24px;
-    padding: 12px; */
-    /* background-color: white; */
-    color:black;
-    /* border-radius: 5px; */
-    /* opacity: .9; */
-
-    /* background-repeat: no-repeat;
-    background-size: contain; */
+      color:black;
 }
 
 i {
@@ -480,16 +347,7 @@ i:hover {
   cursor: pointer;
 }
 
-.aboutPage {
-  /* font-weight: bold;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(255,255,255, 0.4);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover; */
-  
-}
+
 .aboutBottle {
   width: 50px;
   height: auto;
@@ -511,7 +369,7 @@ i:hover {
     width: inherit;
     margin: 0 auto;
     background-color: white;
-    /* opacity: 0.8; */
+
 }
 
 .trail-card-info {
@@ -587,30 +445,14 @@ i:hover {
 }
 
 .fullView {
-    /* display:flex; */
     height: auto;
-    /* width:inherit; */
-    /* -webkit-transition: 1s;
-    transition: 1s; */
-    /* background-color: red; */
 }
 
 .fullview-trail-card {
-    /* flex-basis: 25%; */
     height:300px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-/* .fullview-trail-container {
-    display:flex;
-} */
-
-.partialView {
-    /* height: 120px; */
-    /* -webkit-transition: 1s;
-    transition: 1s; */
 }
 
 .show {
@@ -621,29 +463,17 @@ i:hover {
     opacity: .9;
     display: flex;
     flex-direction: column;
-    /* flex-basis: 75%; */
-    /* -webkit-transition: visibility 1s;
-    transition: visibility 1s; */
 }
 
 .hide {
     visibility: hidden;
-
-    /* -webkit-transition: visibility .35s;
-    transition: visibility .35s; */
 }
 
 .trail-details {
     border-bottom: solid 1px #e0dcdc;
     padding: 12px;
-    /* margin: 24px; */
 }
 
-/* .searchForm {
-  width: 90vw;
-  margin: 0 auto;
-  margin-bottom: vh;
-} */
 .search-container{
     display: flex;
     flex-direction: column;
@@ -661,24 +491,13 @@ i:hover {
     display: flex;
     justify-content: center;
     margin-bottom: 7px;
-
 }
 
-/* .secondary-search-param {
-    width: 50%;
-} */
-/* .added-search-params {
-    display: flex;
-    flex-wrap: wrap;
-    width: 400px;
-    justify-content: center;
-} */
 .hiking-buddy-list {
     list-style-type: none;
 }
 
 .hiking-buddy-list > li {
-    /* margin-bottom: 10px; */
     display:flex;
     justify-content: space-between;
 }
@@ -692,17 +511,6 @@ i:hover {
     animation-name: bounce;
     animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
 }
-
-/* .box {
-    align-self: flex-end;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    background-color: #F44336;
-    height: 200px;
-    margin: 0 auto 0 auto;
-    transform-origin: bottom;
-    width: 200px;
-} */
 
 @keyframes bounce {
     0%   { transform: scale(1,1)      translateY(0); }
@@ -726,8 +534,6 @@ i:hover {
         .container {
             display:flex;
             width:inherit;
-            /* width: 35vw; */
-            /* padding: 25px; */
             margin: 5px;
         }
 
@@ -759,11 +565,6 @@ i:hover {
             left: calc(85.5% - 80vw);
         }
 
-        .trail-details-button {
-            /* width: 80%;
-            margin: 5px auto; */
-        }
-
         .searchInput, .searchButton {
           padding: 15px 30px 15px 30px;
           font-size: 18px;
@@ -771,15 +572,13 @@ i:hover {
 
         .distances {
          width: 35%;
-         /* height:  */
         }
 
         .selectStars {
           width: 35%;
           margin-left: 2.5%;
           height: 50px;
-         
-        }
+         }
 
         .format-location {
           font-size: 28px;
@@ -796,20 +595,10 @@ i:hover {
         .fullView {
             display:flex;
             width:inherit;
-
-            /* height: auto; */
-            /* flex: 1; */
-            /* -webkit-transition: 1s;
-            transition: 1s; */
-            /* background-color: red; */
-        }
-
-        .partialView {
-         /* flex-shrink: 1; */
         }
         
         .trail-card {
-            flex-basis: 25%;
+            flex-basis: 50%;
         }
 
         .hide {
@@ -855,7 +644,6 @@ i:hover {
 
     .mountainImage {
       margin: 0px;
-
     }
 
     .lasher {
@@ -871,15 +659,15 @@ i:hover {
 
     .buddy-popup {
         left: calc(87.4% - 80vw);
-    }
-
-    /* .hiking-buddy-icon:hover {
-        animation-duration: 2s;
-        animation-iteration-count: infinite;
-    } */
+         }
 
     .location-and-sort {
       margin-block: 10%;
+    }
+
+    .format-location {
+      display: flex;
+      align-items: flex-end;
     }
 
     .distanceAndStar {
