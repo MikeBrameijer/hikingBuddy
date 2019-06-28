@@ -20,13 +20,9 @@ angular
     template: `
     <section id="Saved">
 
-    
- 
-
-
-    <div class="mainContainer" id="searchResults">
-    <div ng-repeat="trail in $ctrl.favoriteArray" class="fullCard">
-      <div class="imageCard">
+        <div class="mainContainer" id="searchResults">
+            <div ng-repeat="trail in $ctrl.favoriteArray" class="fullCard">
+                <div class="imageCard">
       
 
       <div ng-style=" trail.imgMedium != '' && {'background':'url({{trail.imgMedium}})', 'background-repeat':'no-repeat', 'background-size':'cover'} || trail.imgMedium === '' && {'background':'url(assets/trail-bg.jpg)', 'background-repeat':'no-repeat', 'background-size':'cover'}"
@@ -48,13 +44,6 @@ angular
           <button class="" ng-click="$ctrl.retrieveBuddyData(trail)">
               <img class="hiking-buddy-icon bounce" src="assets/mountain.svg">
           </button>
-
-          <div class="trail-details-button">
-              <button ng-click="$ctrl.changeHeight(true, trail.id)" ng-if="!trail.showDetails"> <img
-                      class="more-less-button" src="assets/plus.svg" /> </button>
-              <button ng-click="$ctrl.changeHeight(false, trail.id)" ng-if="trail.showDetails"> <img
-                      class="more-less-button" src="assets/minus.svg" /> </button>
-          </div>
       </div>
   </div>
 

@@ -21,7 +21,7 @@ function HikingListController(hikingService) {
                     let trailsObj = {
                         id: value.id,
                         caloriesBurned: (((170*.454)*6)*(((value.length * 30) + ((value.ascent/1000) * 30))/60)),
-                        hikingTime: ((value.length * 30) + ((value.ascent/1000) * 30)),
+                        hikingTime: ((value.length * 30) + ((value.ascent/1000) * 30))*100,
                         lat: value.latitude,
                         lon: value.longitude,
                         name: value.name,
@@ -122,7 +122,7 @@ angular
             <option value="caloriesBurned">Calories- Low to High </option>
         </select>
     
-        <h2 class="format-location" ng-if="$ctrl.formatLocation != null">Showing results for {{$ctrl.formatLocation}}</h2>
+        <h2 class="format-location" ng-if="$ctrl.formatLocation != null">Showing Results For: {{$ctrl.formatLocation}}</h2>
     </div>
     
     
