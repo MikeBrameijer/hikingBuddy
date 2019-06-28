@@ -151,14 +151,12 @@ angular
                         <img class="hiking-buddy-icon bounce" src="assets/mountain.svg">
                     </button>
     
-                    <div class="trail-details-button">
+                    <div class="trail-details-button hide-me">
                         <button ng-click="$ctrl.changeHeight(true, trail.id)" ng-if="!trail.showDetails"> <img
                                 class="more-less-button" src="assets/plus.svg" /> </button>
 
-                                <span class="hide-me">
                         <button ng-click="$ctrl.changeHeight(false, trail.id)" ng-if="trail.showDetails"> <img
                                 class="more-less-button" src="assets/minus.svg" /> </button>
-                                </span>
                     </div>
                 </div>
             </div>

@@ -92,7 +92,7 @@ button {
      position: fixed;
      z-index: 12;
      top: 5vh;
-     left: calc(80% - 80vw);
+     left: calc(80% - 76vw);
      width: 80vw;
      overflow-y:scroll;
     }
@@ -562,7 +562,7 @@ i:hover {
     
         
         .buddy-popup {
-            left: calc(85.5% - 80vw);
+            left: calc(85.5% - 79vw);
         }
 
         .searchInput, .searchButton {
