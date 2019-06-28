@@ -87,9 +87,6 @@ function DifficultyCalcController(hikingService) {
     }
 
     ctrl.calculateDifficulty = (expLvl) => {
-        // formula from https://www.hikingincolorado.org/hikecalc.html
-        // Rating (Novice) = ( 0.002 x elevation gain [ in feet ] ) + round trip distance [ in miles ]
-        // Rating (Experienced) = ( 0.0005 x elevation gain [ in feet ] ) + round trip distance / 2 [ in miles ]
         ctrl.hikerExpLvl = expLvl;
         
         if(ctrl.hikerExpLvl === "Novice"){
@@ -98,7 +95,6 @@ function DifficultyCalcController(hikingService) {
         if(ctrl.hikerExpLvl === "Experienced"){
             ctrl.difficultyRating = (.0005 * ctrl.trail.ascent) + (ctrl.trail.length / 2);
         }
-        // console.log("difficultyRating " + ctrl.difficultyRating);
         
         if(ctrl.difficultyRating <= 5){
             ctrl.difficultySuggestion = "an easy";
@@ -107,7 +103,6 @@ function DifficultyCalcController(hikingService) {
         }else{
             ctrl.difficultySuggestion = "a Strenuous or Difficult";
         }
-        // cosnsole.log("difficultySuggestion " + ctrl.difficultySuggestion);
         return ctrl.difficultySuggestion;
     }
 
@@ -168,9 +163,6 @@ function DifficultyCalcController(hikingService) {
     }
 
 }
-    // 8oz every 30 minutes
-    // prehydtrate 2 hours before 20 oz
-
 
 angular.module("HikingApp")
 .component("difficultyCalc", {
@@ -186,8 +178,6 @@ angular.module("HikingApp")
         <h3>{{$ctrl.trail.name}}</h3>
     </div>
 
-    
-
         <ul class="hiking-buddy-list">
         <li>
         <div>{{ $ctrl.trailResponse }}</div>
@@ -199,7 +189,6 @@ angular.module("HikingApp")
         <div><img class="buddy-description-icons" src="assets/clock.svg"></div>
         </li>
 
-        
         <li> 
         <div>I would recommend that you take {{$ctrl.totalWaterIntakeFormat}}oz. of water.</div>
         
@@ -253,7 +242,6 @@ angular.module("HikingApp")
     `,
     controller: DifficultyCalcController,
     bindings: {
-        // trail: '<'
         displayBuddy: "="
     }
 })
