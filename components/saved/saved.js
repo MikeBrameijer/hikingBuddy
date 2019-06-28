@@ -1,23 +1,22 @@
 "use strict";
-function SavedController(hikingService) {  
+function SavedController(hikingService) {
     const ctrl = this;
 
     ctrl.favoriteArray = hikingService.favoriteArray;
-    // console.log(favoriteArray);
-   
-  ctrl.setRemoveFavorites = (removeParam) => {
-    hikingService.setRemoveFavorites(removeParam)
-    console.log("you removed it!");
-  }
 
- 
-  }
+    ctrl.setRemoveFavorites = (removeParam) => {
+        hikingService.setRemoveFavorites(removeParam)
+        console.log("you removed it!");
+    }
+
+
+}
 
 
 angular
-  .module("HikingApp")
-  .component("saved", {
-    template: `
+    .module("HikingApp")
+    .component("saved", {
+        template: `
     <section id="Saved">
 
         <div class="mainContainer" id="searchResults">
@@ -82,28 +81,28 @@ angular
 
    
     </section>
-    `,  
-    controller: SavedController,
- 
-});
+    `,
+        controller: SavedController,
+
+    });
 
 /* <div class="mainContainer" id="searchResults">
 <div ng-repeat="trail in $ctrl.favoriteArray" class="fullCard">
   <div class="imageCard">
-  
 
 
 
 
-      
+
+
       <div class="informationCard">
         <h2 class="cardDefault cardParams cardHeader cardSpacing">{{trail.name}}</h2>
         <div class="cardStats">
-       
+
         <div ng-style=" trail.imgMedium != '' && {'background':'url({{trail.imgMedium}})', 'background-repeat':'no-repeat', 'background-size':'cover'} || trail.imgMedium === '' && {'background':'url(assets/trail-bg.jpg)', 'background-repeat':'no-repeat', 'background-size':'cover'}"
         class="trail-card">
         <div class="trail-card-info">
-        
+
         <div class="favorite" ng-click="$ctrl.setRemoveFavorites(trail)">
         <i ng-hide="favorite" class="material-icons">check_box_outline_blank</i>
         <i ng-show="favorite" class="material-icons">check_box</i>
