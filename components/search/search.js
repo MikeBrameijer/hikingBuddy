@@ -28,7 +28,7 @@ angular
         
         <div class="distanceAndStar">
         <div class="distanceSearch">
-        <input class="searchInput secondary-search-param distances dOne" type="text" ng-model="distance" placeholder="Max Distance" style="text-align:left;"/>
+        <input class="searchInput secondary-search-param distances dOne" type="text" ng-model="distance" placeholder="Max Radius" style="text-align:left;"/>
         <input class="searchInput secondary-search-param distances dTwo" type="text" ng-model="length" placeholder="Min Length" style="text-align:left;"/>
         </div>
         <select class="searchInput secondary-search-param selectStars" ng-model="stars">

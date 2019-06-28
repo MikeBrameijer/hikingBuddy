@@ -186,6 +186,8 @@ angular.module("HikingApp")
         <h3>{{$ctrl.trail.name}}</h3>
     </div>
 
+    
+
         <ul class="hiking-buddy-list">
         <li>
         <div>{{ $ctrl.trailResponse }}</div>
@@ -193,7 +195,7 @@ angular.module("HikingApp")
         </li>
 
         <li>
-        <div>This {{$ctrl.trail.length}} mile trail should take you about {{$ctrl.totalHikeTimeFormat}}.</div>
+        <div>This {{$ctrl.trail.length}} mile trail  should take you about {{$ctrl.totalHikeTimeFormat}}.</div>
         <div><img class="buddy-description-icons" src="assets/clock.svg"></div>
         </li>
 
@@ -209,7 +211,7 @@ angular.module("HikingApp")
         </li>
         
         <li> 
-        <div>You will probaly burn about {{$ctrl.totalCalsBurnFormat}} Calories if you weigh 
+        <div>You will burn approximately {{$ctrl.totalCalsBurnFormat}} calories if you weigh 
         <input class="buddyInputLbs"  type="number" ng-model="hikerWeight" ng-init="hikerWeight = 170" ng-change="$ctrl.calculateCalories(hikerWeight)"> lbs.
         </div>
 
@@ -228,7 +230,7 @@ angular.module("HikingApp")
         </li>
 
         <li>
-        <div>Personally I think that if you are a 
+        <div>If you are a 
         <select class="buddyInputExp" ng-model="expLevel" ng-init="expLevel = 'Novice'" ng-change="$ctrl.calculateDifficulty(expLevel)">
           <option value="Novice" selected >Novice</option>
           <option value="Experienced">Experienced</option>

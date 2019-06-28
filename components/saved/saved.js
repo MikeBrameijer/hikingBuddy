@@ -20,13 +20,9 @@ angular
     template: `
     <section id="Saved">
 
-    
- 
-
-
-    <div class="mainContainer" id="searchResults">
-    <div ng-repeat="trail in $ctrl.favoriteArray" class="fullCard">
-      <div class="imageCard">
+        <div class="mainContainer" id="searchResults">
+            <div ng-repeat="trail in $ctrl.favoriteArray" class="fullCard">
+                <div class="imageCard">
       
 
       <div ng-style=" trail.imgMedium != '' && {'background':'url({{trail.imgMedium}})', 'background-repeat':'no-repeat', 'background-size':'cover'} || trail.imgMedium === '' && {'background':'url(assets/trail-bg.jpg)', 'background-repeat':'no-repeat', 'background-size':'cover'}"
