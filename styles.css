@@ -20,7 +20,11 @@ button {
    height:100%;
 
  }
- 
+
+ .imageCard {
+    width: 75vw;
+    height: 350px;
+}
 
  .cardContainer {
    color: white;
@@ -821,6 +825,12 @@ i:hover {
 
         .hide-me {
             display: none;
+        }
+
+        .imageCard {
+            width: 60vw;
+            margin-bottom: 25px;
+            height: auto;
         }
 }
 

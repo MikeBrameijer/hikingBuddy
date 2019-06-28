@@ -21,7 +21,7 @@ function HikingListController(hikingService) {
                     let trailsObj = {
                         id: value.id,
                         caloriesBurned: (((170*.454)*6)*(((value.length * 30) + ((value.ascent/1000) * 30))/60)),
-                        hikingTime: ((value.length * 30) + ((value.ascent/1000) * 30)),
+                        hikingTime: ((value.length * 30) + ((value.ascent/1000) * 30))*100,
                         lat: value.latitude,
                         lon: value.longitude,
                         name: value.name,

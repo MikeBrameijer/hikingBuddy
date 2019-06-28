@@ -48,13 +48,6 @@ angular
           <button class="" ng-click="$ctrl.retrieveBuddyData(trail)">
               <img class="hiking-buddy-icon bounce" src="assets/mountain.svg">
           </button>
-
-          <div class="trail-details-button">
-              <button ng-click="$ctrl.changeHeight(true, trail.id)" ng-if="!trail.showDetails"> <img
-                      class="more-less-button" src="assets/plus.svg" /> </button>
-              <button ng-click="$ctrl.changeHeight(false, trail.id)" ng-if="trail.showDetails"> <img
-                      class="more-less-button" src="assets/minus.svg" /> </button>
-          </div>
       </div>
   </div>
 
