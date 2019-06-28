@@ -190,12 +190,5 @@ angular
         
     `, 
         controller: HikingListController,
-        // bindings: {
-        //   me: '<',
-        //   onDelete: '&',
-        //   onUpdate: '&'
-        // }
+
     });
-
-
-    // <i class="material-icons favoriteIcon redIcon">favorite_border</i>

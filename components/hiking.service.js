@@ -11,9 +11,6 @@ function HikingService($http, $q) {
 
         service.getGeocode(search)
         .then((results) => {
-            //testing sending lat&lon to weather api-stretch goal
-            // service.getWeather(results);
-            
             service.trailLat = results.lat;
             service.trailLon = results.lon;
             service.formatLocation = results.formatLocation;
@@ -22,13 +19,9 @@ function HikingService($http, $q) {
             let apiParam = {
                 lat: service.trailLat,
                 lon: service.trailLon,
-                //NOTE: distance refers to distance between trail and LAT&LONG point(miles)
                 maxDistance: distance,
-                // maxResults: 3,
-                //NOTE: minLength refers to length of trail(miles)
                 minLength: length,
                 minStars: stars,
-                //NOTE: Need to find sortby values other than distance & quality
                 sort: 'distance',
                 key: service.key
             };
@@ -39,16 +32,11 @@ function HikingService($http, $q) {
                 params: apiParam,
             })
                 .then((response) => {
-                    // console.log("getTrails service response");
-                    // console.log(response);
-
                     service.globalLocation = response.data.trails;
                     console.log(response);
                     resolve(response.data.trails);
                 })
                 .catch((err) => {
-                    // console.log("it didnt work in the service");
-                    // console.log(err);
                     reject(error);
                 })
         })
@@ -70,13 +58,9 @@ function HikingService($http, $q) {
                 params: apiParam,
             })
                 .then((response) => {
-                    // console.log("getCampgrounds service response");
-                    // console.log(response.data.campgrounds);
                     resolve(response.data.campgrounds);
                 })
                 .catch((err) => {
-                    // console.log("Camping didn't work in the service");
-                    // console.log(err);
                     reject(error);
                 })
         })
@@ -102,54 +86,13 @@ function HikingService($http, $q) {
                         lat:  response.data.results[0].geometry.location.lat,
                         lon: response.data.results[0].geometry.location.lng
                     }
-                    // console.log("geoCode service response");
-                    // console.log(response);
-                    // console.log(response.data.results[0].geometry.location);
-                    
-                    // service.getTrails(location.lat, location.lon);
-                    // service.getTrails(location.lat, location.lon).then( (resp) => {
-                    //     resolve(resp);
-                    // })
-                    // resolve(service.getTrails(location.lat, location.lon));
-                    // service.getCamping(location.lat, location.lon);
                     resolve(location);
                 })
                 .catch( (err) => {
-                    // console.log("geocode didnt work");
-                    // console.log(err);
                     reject(error);
                 })
         })
     }
-
-        /**  **************************************************************
-         * STRETCH GOAL
-        service.getWeather = (search) => {
-            return $q(function (resolve, reject) {
-                $http({
-                    url: `https://api.openweathermap.org/data/2.5/forecast`,
-                    method: `GET`,
-                    params: {
-                        lat: search.lat,
-                        lon: search.lon,
-                        units: 'imperial',
-                        appid: service.weatherKey
-                    }
-                })
-                    .then((response) => {
-                        //data.list[""0""].dt
-                        let d = new Date(response.data.list[0].dt);
-                        // console.log(response);
-                        console.log(d);
-                    })
-                    .catch((error) => {
-                        // reject(error);
-                    })
-            })
-        }
-        ************************************************************* **/
-
-    
 
     service.setHikingBuddy = (data) => {
         service.hikingBuddy = data;
