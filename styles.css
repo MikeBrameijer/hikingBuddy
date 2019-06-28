@@ -20,6 +20,11 @@ button {
    height:100%;
 
  }
+ 
+
+ .cardContainer {
+   color: white;
+ }
 
  nav {
     /* background: url('assets/forest-bg.jpg');
@@ -461,6 +466,36 @@ button {
     background-size: contain; */
 }
 
+i {
+  display: flex;
+  margin: 10px;
+  align-content: flex-start;
+}
+
+i:hover {
+  cursor: pointer;
+}
+
+.aboutPage {
+  /* font-weight: bold;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255,255,255, 0.4);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  
+}
+.aboutBottle {
+  width: 50px;
+  height: auto;
+}
+
+.aboutFire {
+  width: 50px;
+  height: auto;
+}
+
 .trail-card {
     display: flex;
     position: relative;
@@ -781,7 +816,7 @@ button {
             opacity: .9;
             display: flex;
             flex-basis: 75%;
-            justify-content: center;
+            justify-content: start;
         }
 
         .hide-me {

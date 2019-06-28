@@ -1,5 +1,5 @@
 "use strict";
-function SearchController() {  
+function SearchController($anchorScroll) {  
     const ctrl = this;
 
     ctrl.getSearch = (search, distance, length, stars) => {
@@ -9,6 +9,8 @@ function SearchController() {
           minLength: length,
           minStars: stars,
         });
+
+        $anchorScroll('#first');
       }
 
     // ctrl.search = (location) => {
@@ -23,7 +25,7 @@ angular
         
     
     
-    <form  class="search-container" ng-submit="$ctrl.getSearch(location, distance, length, stars)" <a href="#firstResult">>
+    <form  class="search-container" ng-submit="$ctrl.getSearch(location, distance, length, stars)">
        <input class="searchInput location-search" type="text" ng-model="location" placeholder="Enter Location" style="text-align:left;"/>
         
         <div class="distanceAndStar">
